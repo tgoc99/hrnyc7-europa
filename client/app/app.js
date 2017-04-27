@@ -7,15 +7,14 @@ angular.module('app',[
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');
   $routeProvider
-    .when('/landing', {
+    .when('./app/landing', {
       templateUrl: './layout/landing.html'
     })
-    .when('/input', {
+    .when('./app/input', {
       templateUrl: './input/input.html',
       controller: 'inputController'
-
     })
-    .when('/dashboard', {
+    .when('./app/dashboard', {
       templateUrl: './dashboard/dashboard.html',
       controller: 'dashboardController'
     })
