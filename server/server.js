@@ -16,8 +16,9 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
 //serve up static files
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(__dirname + '/../client'));
 
 app.listen(port);
 console.log('server listening on port ' + port);
-console.log('serving static files from' + __dirname + '/../public');
+console.log('serving static files from' + __dirname + '/../client');
+
