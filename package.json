@@ -4,7 +4,7 @@
   "description": "Project Europa's Greenfield Submission-A tool to help jobseekers manage their job-search process in one central location.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
