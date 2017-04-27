@@ -3,6 +3,8 @@
 .LSOverride
 azure.err
 iisnode.yml
+client/lib/
+.DS_Store
 
 # Icon must ends with two \r.
 Icon
@@ -15,7 +17,6 @@ Icon
 .Spotlight-V100
 .Trashes
 node_modules/
-public/bower_components/
 
 # Floobits
 .floo
