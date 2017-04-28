@@ -60,7 +60,7 @@ var sampleData =
         name: 'Grace C. Puga',
         phone: '609-894-3202',
         email: 'huawillian@gmail.com'
-      }
+      },
       {
         name: 'Maricela M. Charette',
         phone: '858-795-4575',
@@ -101,7 +101,7 @@ var sampleData =
         name: 'Frank J. Hebert',
         phone: '740-304-4148',
         email: 'FrankJHebert@rhyta.com'
-      }
+      },
       {
         name: 'Afya Ruyah Halabi',
         phone: '440-332-8407',
@@ -138,7 +138,7 @@ var sampleData =
         name: 'TD Bank HR Department',
         phone: '262-958-9658',
         email: 'tdbank@gmail.com'
-      }
+      },
       {
         name: 'Ryuuma Nagano',
         phone: '928-428-0533',
