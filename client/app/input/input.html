@@ -49,14 +49,23 @@
         </md-input-container>
       </div>
       <div layout-gt-sm="row" layout-padding>
+        
         <md-input-container class="md-block" flex-gt-sm>
           <label>Current Application Status</label>
-          <input ng-model="job.currentStatus">
+          <md-select ng-model="job.currentStatus">
+            <md-option ng-repeat="status in statuses" value="{{status}}">
+              {{status}}
+            </md-option>
+          </md-select>
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm>
           <label>Next Step</label>
-          <input ng-model="job.nextStep.name">
+          <md-select ng-model="job.nextStep.name">
+            <md-option ng-repeat="step in steps" value="{{step}}">
+              {{step}}
+            </md-option>
+          </md-select>
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm>
