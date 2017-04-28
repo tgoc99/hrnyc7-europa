@@ -4,7 +4,7 @@
   "description": "Project Europa's Greenfield Submission-A tool to help jobseekers manage their job-search process in one central location.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/hrnyc7-europa/hrnyc7-europa/issues"
   },
-  "homepage": "https://github.com/hrnyc7-europa/hrnyc7-europa#readme"
+  "homepage": "https://github.com/hrnyc7-europa/hrnyc7-europa#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "mongoose": "^4.9.6",
+    "morgan": "^1.8.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
+  }
 }
