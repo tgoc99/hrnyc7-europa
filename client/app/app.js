@@ -7,6 +7,7 @@ angular.module('app',[
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');
   $routeProvider
+    // I think this should just be '/'
     .when('/landing', {
       templateUrl: './app/layout/landing.html'
     })
