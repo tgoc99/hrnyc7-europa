@@ -7,16 +7,42 @@ angular.module('app',[
 .config(function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('');
   $routeProvider
+    // I think this should just be '/'
     .when('/landing', {
-      templateUrl: './layout/landing.html'
+      templateUrl: './app/layout/landing.html'
     })
     .when('/input', {
-      templateUrl: './input/input.html',
+      templateUrl: './app/input/input.html',
       controller: 'inputController'
-
     })
     .when('/dashboard', {
-      templateUrl: './dashboard/dashboard.html',
+      templateUrl: './app/dashboard/dashboard.html',
       controller: 'dashboardController'
     })
 })
+
+// .     .       .  .   . .   .   . .    +  .
+//   .     .  :     .    .. :. .___---------___.
+//        .  .   .    .  :.:. _".^ .^ ^.  '.. :"-_. .
+//     .  :       .  .  .:../:            . .^  :.:\.
+//         .   . :: +. :.:/: .   .    .        . . .:\
+//  .  :    .     . _ :::/:               .  ^ .  . .:\
+//   .. . .   . - : :.:./.                        .  .:\
+//   .      .     . :..|:                    .  .  ^. .:|
+//     .       . : : ..||        .                . . !:|
+//   .     . . . ::. ::\(                           . :)/
+//  .   .     : . : .:.|. ######              .#######::|
+//   :.. .  :-  : .:  ::|.#######           ..########:|
+//  .  .  .  ..  .  .. :\ ########          :######## :/
+//   .        .+ :: : -.:\ ########       . ########.:/
+//     .  .+   . . . . :.:\. #######       #######..:/
+//       :: . . . . ::.:..:.\           .   .   ..:/
+//    .   .   .  .. :  -::::.\.       | |     . .:/
+//       .  :  .  .  .-:.":.::.\             ..:/
+//  .      -.   . . . .: .:::.:.\.           .:/
+// .   .   .  :      : ....::_:..:\   ___.  :/
+//    .   .  .   .:. .. .  .: :.:.:\       :/
+//      +   .   .   : . ::. :.:. .:.|\  .:/|
+//      .         +   .  .  ...:: ..|  --.:|
+// .      . . .   .  .  . ... :..:.."(  ..)"
+//  .   .       .      :  .   .: ::/  .  .::\
