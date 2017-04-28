@@ -5,6 +5,7 @@ azure.err
 iisnode.yml
 client/lib/
 .DS_Store
+server/config/
 
 # Icon must ends with two \r.
 Icon
