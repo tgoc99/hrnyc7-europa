@@ -4,8 +4,11 @@ angular.module('app',[
   'app.input',
   'app.dashboard',
 ])
-.config(function($locationProvider, $routeProvider) {
+.config(function($locationProvider, $routeProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('');
+  $mdThemingProvider.theme('default')
+    .primaryPalette('teal')
+    .accentPalette('blue');
   $routeProvider
     // I think this should just be '/'
     .when('/landing', {
