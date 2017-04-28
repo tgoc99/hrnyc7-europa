@@ -119,7 +119,7 @@ module.exports = function(app, express) {
 		let companyName = req.query.company;
 
 		let options = {
-			uri: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?"
+			uri: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?",
 			qs: {
 				q: companyName,
 				count: 10,
