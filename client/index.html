@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" ng-app='app'>
-<head>
-  <meta charset="utf-8">
-  <meta name="'viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
-  <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="utf-8">
+    <meta name="'viewport" content="width=device-width, initial-scale=1">
 
+    <!-- FONTS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
-  <script src="lib/angular/angular.min.js"></script>
-  <script src="lib/angular-route/angular-route.min.js"></script>
-  <script src="lib/angular-animate/angular-animate.min.js"></script>
-  <script src="lib/angular-aria/angular-aria.min.js"></script>
-  <script src="lib/angular-messages/angular-messages.min.js"></script>
-  <script src="lib/angular-mocks/angular-mocks.js"></script>
-  <script src="lib/angular-material/angular-material.min.js"></script>
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="style.css">
 
-  <title>Job Search Tool</title>
-</head>
-<body>
+    <!-- ANGULAR -->
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <script src="lib/angular-aria/angular-aria.min.js"></script>
+    <script src="lib/angular-messages/angular-messages.min.js"></script>
+    <script src="lib/angular-mocks/angular-mocks.js"></script>
+    <script src="lib/angular-material/angular-material.min.js"></script>
 
+    <title>Job Search Tool</title>
+  </head>
+  <body>
+
+    <!-- NAV BAR -->
     <md-toolbar>
-
       <div class="md-toolbar-tools">
         <h2 md-truncate flex>Job Search Tool</h2>
         <md-nav-bar md-selected-nav-item="currentNavItem">
@@ -28,15 +33,13 @@
           <md-nav-item md-nav-href="#input" name="input">Insert Job</md-nav-item>
         </md-nav-bar>
       </div>
-
     </md-toolbar>
 
-  <div class="container">
-    <div ng-view></div>
-  </div>
+    <div class="container "ng-view></div>
 
-  <script src="app/app.js"></script>
-  <script src="app/dashboard/dashboard.controller.js"></script>
-  <script src="app/input/input.controller.js"></script>
-</body>
+    <!-- APP -->
+    <script src="app/app.js"></script>
+    <script src="app/dashboard/dashboard.controller.js"></script>
+    <script src="app/input/input.controller.js"></script>
+  </body>
 </html>
