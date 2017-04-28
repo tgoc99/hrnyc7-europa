@@ -8,15 +8,15 @@ angular.module('app',[
   $locationProvider.hashPrefix('');
   $routeProvider
     .when('/landing', {
-      templateUrl: './layout/landing.html'
+      templateUrl: './app/layout/landing.html'
     })
     .when('/input', {
-      templateUrl: './input/input.html',
+      templateUrl: './app/input/input.html',
       controller: 'inputController'
 
     })
     .when('/dashboard', {
-      templateUrl: './dashboard/dashboard.html',
+      templateUrl: './app/dashboard/dashboard.html',
       controller: 'dashboardController'
     })
 })
