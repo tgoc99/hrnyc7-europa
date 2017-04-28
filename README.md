@@ -1,12 +1,12 @@
-# Project Name
+# Job Search Management Tool
 
-> Pithy project description
+Job seekers can use this dashboard to plan and manage the entire job application process.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Thomas O'Connor
+  - __Scrum Master__: Willian Hua
+  - __Development Team Members__: Arturo Ruvalcaba, Joel Camacho
 
 ## Table of Contents
 
@@ -19,16 +19,57 @@
 1. [Contributing](#contributing)
 
 ## Usage
+1. Install dependencies (instructions below)
+2. npm start
 
-> Some usage instructions
+## Project File Structure
+/ [ root ] 
+ 	README.md
+ 	package.json
+.gitignore
+/server
+server.js
+   	server.config.js
+	/routes
+routes.js
+/config
+	config.js
+/utils
+	helpers.js
+middleware.js
+/models
+  		 . . .
+/client
+	index.html
+    	style.css
+	/lib
+		. . .
+/assets
+		. . .
+  	/app
+      		app.js
+      		/layout
+	        	topbar.controller.js
+	        	topbar.html
+		sidebar.controller.js
+		sidebar.html
+/dashboard
+dashboard.controller.js
+        	dashboard.html
+	      		/input
+				job-entry.html
+				job-entry.controller.js
+     		/services
+			. . .
+/node_modules
+bower.json
+.bowerrc
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node.js latest
+- npm latest
+- bower latest
 
 ## Development
 
@@ -39,14 +80,15 @@ From within the root directory:
 ```sh
 sudo npm install -g bower
 npm install
+cd public
 bower install
+cd ..
 ```
-
-### Roadmap
-
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+## Style Guide
+
+See [STYLE-GUIDE.md](STYLE-GUIDE.md) for style guidelines.
