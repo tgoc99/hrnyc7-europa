@@ -15,19 +15,23 @@ angular.module('app.input', [
     contact: {name: '',
               phone:'',
               email:''},
-    nextStep: {name: 'Send follow-up E-mail',
+    nextStep: {name: 'Send Follow-up E-mail',
                comments:'(Two weeks from now)',
                date:nextStepDate},
     currentStatus: 'Application Sent',
     comments: ''
   };
 
+  $scope.statuses = ['Application Sent', 'Phone Screen', 'On-Site Interview', 'Offer Received', 'Other']
+  $scope.steps = ['Send Follow-up E-mail', 'Send Thank You E-mail', 'Schedule Next Interaction', 'Respond to Request', 'Other']
+
+  // UNCOMMENT LINES FOR POST REQUEST ONCE SERVER SETUP
   $scope.submitJob = function(data){
     console.log('here')
-    $http.post('/jobs', $scope.job)
-    .then(function(data){
+    // $http.post('/api/users', $scope.job)
+    // .then(function(data){
       $location.path('/dashboard')
-    })
+    // })
   }
 
 })
