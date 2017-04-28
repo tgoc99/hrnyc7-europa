@@ -1,0 +1,21 @@
+* {
+  border: 1px solid red;
+}
+
+html, body {
+  background-color: rgb(55, 64, 70);
+}
+
+.wrapper {
+  margin: auto;
+  width: 90%;
+}
+
+/*
+DASHBOARD
+*/
+
+.job-img {
+  background-position: center;
+  background-size: cover;
+}
