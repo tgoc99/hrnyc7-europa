@@ -15,7 +15,7 @@ module.exports = function(app, express) {
 
 	//query params : ?:username = ''&token=''
 	//body: (fields: )
-	app.update('/api/users', function(req, res, next) {
+	app.patch('/api/users', function(req, res, next) {
 
 		next();
 	});
