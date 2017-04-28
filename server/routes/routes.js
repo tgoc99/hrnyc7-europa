@@ -134,7 +134,7 @@ module.exports = function(app, express) {
 		};
 		rp(options)
 		.then(function(stories) {
-			res.status(200).send(stories.value);
+			res.status(200).send(stories);
 		})
 		.catch(function(err) {
 			console.log('API call failed!');
