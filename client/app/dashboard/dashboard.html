@@ -1,20 +1,35 @@
+
+
 <div layout="row">
 
-  <div class="dashboard-left" flex="33">
-    <md-card>
-      <md-card-content>
-        Recent News Widget
-      </md-card-content>
-    </md-card>
-    <md-card>
-      <md-card-content>
-        Tasks Widget
-      </md-card-content>
-    </md-card>
-    <md-calendar ng-model="birthday"></md-calendar>
+  <div class="dashboard-left" flex="50">
+
+    <div class="sidebar-row">
+      <div class="sidebar-col" style="background-color:red">
+
+      </div>
+      <div class="sidebar-col">
+        <div class="sidebar-row-small" style="background-color:green">
+
+        </div>
+        <div class="sidebar-row-small" style="background-color:blue">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-row">
+      <div class="sidebar-col" style="background-color:yellow">
+
+      </div>
+      <div class="sidebar-col" style="background-color:gray">
+
+      </div>
+    </div>
+
   </div>
 
-  <div class="dashboard-right" flex="66">
+  <div class="dashboard-right" flex="50">
 
     <md-card ng-repeat="job in jobs">
       <md-card-header>
