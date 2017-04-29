@@ -7,6 +7,7 @@ var sampleData =
     position: 'Hacker in Residence',
     salary: '$65,000',
     applicationDate: '04/27/2017',
+    imgURL: 'http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/54ad45d5e4b0d6033e5e1243/559bbf3ee4b0c021321aca31/1442518858893/?format=1000w',
     contactInformation:
     [
       {
@@ -49,6 +50,7 @@ var sampleData =
     position: 'Junior Software Developer',
     salary: '$155,000',
     applicationDate: '04/27/2017',
+    imgURL: 'https://www.wired.com/wp-content/uploads/2015/09/google-logo-1200x630.jpg',
     contactInformation:
     [
       {
@@ -95,6 +97,7 @@ var sampleData =
     position: 'Junior Front End Developer',
     salary: '$90,000',
     applicationDate: '04/15/2017',
+    imgURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png',
     contactInformation:
     [
       {
@@ -127,6 +130,7 @@ var sampleData =
     position: 'Junior Back End Developer',
     salary: '$105,000',
     applicationDate: '04/05/2017',
+    imgURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toronto-Dominion_Bank_logo.svg/2000px-Toronto-Dominion_Bank_logo.svg.png',
     contactInformation:
     [
       {

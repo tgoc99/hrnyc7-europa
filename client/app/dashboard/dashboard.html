@@ -15,29 +15,70 @@
   </div>
 
   <div class="dashboard-right" flex="66">
+
     <md-card ng-repeat="job in jobs">
       <md-card-header>
         <md-card-avatar class="job-img"
-                        style="background-image:url('https://www.wired.com/wp-content/uploads/2015/09/google-logo-1200x630.jpg')">
+                        style="{{setBackgroundImg(job)}}">
         </md-card-avatar>
         <md-card-header-text>
           <span class="md-headline">{{job.companyName}}</span>
           <span class="md-subhead">{{job.position}}</span>
-          <span class="md-subhead">{{job.salary}}</span>
-          <span class="md-subhead">{{job.applicationDate}}</span>
         </md-card-header-text>
+        <md-button class="md-fab md-mini">
+            <md-icon>star</md-icon>
+        </md-button>
         <md-button class="md-fab md-mini">
             <md-icon>settings</md-icon>
         </md-button>
+        <md-button class="md-fab md-mini">
+            <md-icon>expand_more</md-icon>
+        </md-button>
       </md-card-header>
 
-      <div layout="row">
-        <md-card-content ng-repeat="contact in job.contactInformation" layout="column">
-          <span class="md-headline">{{contact.name}}</span>
-          <span class="md-subhead">{{contact.phone}}</span>
-          <span class="md-subhead">{{contact.email}}</span>
-        </md-card-content>
-      </div>
+
+
+        <md-tabs md-dynamic-height="" md-border-bottom="">
+
+          <md-tab label="INFO">
+            <md-content class="md-padding">
+              <p class=".md-subhead application-info">Date Applied: {{getDate(job)}}</p>
+              <p class=".md-subhead application-info">Link: </p>
+              <p class=".md-subhead application-info">Current Status: Phone Screen</p>
+            </md-content>
+          </md-tab>
+
+          <md-tab label="CONTACT">
+            <md-content ng-repeat='contact in job.contactInformation'>
+              <md-divider layout="column" class="contact-divider">
+                <p class=".md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
+                <p class=".md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phone}}</p>
+                <p class=".md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
+                <span class="contact-options">
+                  <md-icon>edit</md-icon>
+                  <md-icon>delete</md-icon>
+                </span>
+              </md-divider>
+            </md-content>
+          </md-tab>
+
+          <md-tab label="STEPS">
+            <md-content class="md-padding">
+              <h1 class="md-display-2">Tab Three</h1>
+              <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+            </md-content>
+          </md-tab>
+
+        </md-tabs>
+
     </md-card>
   </div>
 </div>
+
+
+
+<!-- <md-card-content ng-repeat="contact in job.contactInformation" layout="column">
+  <span class="md-headline">{{contact.name}}</span>
+  <span class="md-subhead">{{contact.phone}}</span>
+  <span class="md-subhead">{{contact.email}}</span>
+</md-card-content> -->

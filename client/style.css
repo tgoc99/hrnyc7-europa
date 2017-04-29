@@ -19,3 +19,22 @@ DASHBOARD
   background-position: center;
   background-size: cover;
 }
+
+.contact-divider {
+  padding: 16px;
+}
+
+.contact-options {
+  position: relative;
+  top: -33px;
+  text-align: right;
+}
+
+.contact-info {
+  margin: 5px 0;
+  font-size: 0.8em;
+}
+
+.contact-info md-icon {
+  margin-right: 10px;
+}
