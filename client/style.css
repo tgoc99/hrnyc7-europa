@@ -55,29 +55,25 @@ NEWS WIDGET
 }
 
 #news-widget .news-img-container {
-  min-height: 104px;
-  max-height: 104px;
+  min-height: 125px;
+  max-height: 125px;
   background-image: cover;
   background-position: center;
   background-size: 100%;
 }
 
-#news-widget md-card-title {
-  max-height: 104px;
-}
-
-#news-widget .md-title {
-  text-align: center;
-}
-
 #news-widget md-content {
-  min-height: 176px;
+  height: 255px;
   background-color: white;
   padding: 16px;
 }
 
+#news-widget span {
+  text-align: center;
+}
+
 #news-widget md-footer {
-  max-height: 36px;
+  max-height: 40px;
   text-align: center;
 }
 
