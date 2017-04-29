@@ -7,11 +7,11 @@ var Task = require('../db/models/task.js');
 var Step = require('../db/models/step.js');
 var Contact = require('../db/models/contact.js');
 var Job = require('../db/models/job.js');
+const rp = require('request-promise');
+const config = require('../config/config.js');
 
 module.exports = function(app, express) {
 	// -------------------- ?username=admin , for admin access ------------------
-
-
 	//query params : ?:username = ''&token=''
 	// e.g. GET /api/users?username=admin
 	// e.g. GET /api/users?username=someExistingUserName&token=someValidToken
@@ -90,8 +90,6 @@ module.exports = function(app, express) {
 				res.send('successful update');
 			}
 		});
-
-
 	});
 
 	//query params : ?:username = ''&token=''
@@ -116,16 +114,37 @@ module.exports = function(app, express) {
 		});
 	});
 
-	//query params : ?companyname
-	app.get('/api/news', function(req, res, next) {
+	//query params : ?company="example"
+	app.get('/api/news', function(req, res) {
+		let companyName = req.query.company;
 
-		next();
+		let options = {
+			uri: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?",
+			qs: {
+				q: companyName,
+				count: 10,
+				offset: 0,
+				mkt: 'en-us',
+				safeSearch: 'Moderate'
+			},
+			headers: {
+				'Ocp-Apim-Subscription-Key': config.apiKeys.bingSearch
+			},
+			json: true
+		};
+		rp(options)
+		.then(function(stories) {
+			res.status(200).send(stories);
+		})
+		.catch(function(err) {
+			console.log('API call failed!');
+		});
 	});
 
 	//query params : ?companyname
 	app.get('/api/company', function(req, res, next) {
 
-		next();
+		
 	});
 
 	//query params :?username=''&password=''
@@ -140,3 +159,4 @@ module.exports = function(app, express) {
 		next();
 	});
 };
+
