@@ -1,0 +1,26 @@
+<div layout="column" ng-cloak class="md-inline-form">
+  <div layout="row" layout-align="center">
+    <img layout="row" src='../../assets/logo-placeholder.jpeg' class='logo' width="50%">
+  </div>
+  <div layout="row" layout-align="center">
+    <h1>Sign up for your free account!</h1>
+  </div> 
+  <div layout="row" layout-align="center">
+    <form name="jobForm" ng-submit="submitJob()">
+      <md-input-container>
+        <label>User Name</label>
+        <input ng-model="username">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input ng-model="password">
+      </md-input-container>
+
+      <md-input-container layout="row">
+        <label>E-mail</label>
+        <input ng-model="email">
+      </md-input-container>
+    </form>
+  </div>
+</div>

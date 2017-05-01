@@ -8,7 +8,7 @@ var Step = require('../db/models/step.js');
 var Contact = require('../db/models/contact.js');
 var Job = require('../db/models/job.js');
 const rp = require('request-promise');
-const config = require('../config/config.js');
+// const config = require('../config/config.js');
 
 module.exports = function(app, express) {
 	// -------------------- ?username=admin , for admin access ------------------
