@@ -11,7 +11,7 @@ angular.module('app',[
     .accentPalette('blue');
   $routeProvider
     // I think this should just be '/'
-    .when('/landing', {
+    .when('/', {
       templateUrl: './app/layout/landing.html'
     })
     .when('/input', {

@@ -8,12 +8,12 @@ angular.module('app.input', [
   nextStepDate.setDate(nextStepDate.getDate() + 14);
 
   $scope.job = {
-    appDate: today,
+    applicationDate: today,
     companyName: '',
     position: '',
     salary: '',
-    contact: {name: '',
-              phone:'',
+    contacts: {name: '',
+              phoneNumber:'',
               email:''},
     nextStep: {name: 'Send Follow-up E-mail',
                comments:'(Two weeks from now)',
