@@ -1,16 +1,16 @@
 <div layout="column" ng-cloak class="md-inline-form">
-  <h2>Input Application Data</h2>
+  <span class="md-headline">Input Application Data</span>
 
   <md-content layout-padding>
     <form name="jobForm" ng-submit="submitJob()">
       <div layout="row">
 
-        <md-input-container class="md-block" flex-gt-sm="25">
+        <md-input-container flex-gt-sm="25">
           <label>App Date</label>
           <md-datepicker ng-model="job.appDate"></md-datepicker>
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container flex-gt-sm>
           <label>Company Name</label>
           <md-icon class="material-icons">business</md-icon>
           <input ng-model="job.companyName">
@@ -18,7 +18,7 @@
 
       </div>
       <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container flex-gt-sm>
           <label>Position Title</label>
           <input ng-model="job.position">
         </md-input-container>
@@ -49,8 +49,7 @@
         </md-input-container>
       </div>
       <div layout-gt-sm="row" layout-padding>
-        
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container flex-gt-sm>
           <label>Current Application Status</label>
           <md-select ng-model="job.currentStatus">
             <md-option ng-repeat="status in statuses" value="{{status}}">
@@ -59,7 +58,7 @@
           </md-select>
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container flex-gt-sm>
           <label>Next Step</label>
           <md-select ng-model="job.nextStep.name">
             <md-option ng-repeat="step in steps" value="{{step}}">
@@ -68,12 +67,12 @@
           </md-select>
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container flex-gt-sm>
           <label>Next Step Comments</label>
           <input ng-model="job.nextStep.comments">
         </md-input-container>
 
-        <md-input-container class="md-block" flex-gt-sm>
+        <md-input-container flex-gt-sm>
           <label>Next Step Date</label>
           <md-datepicker ng-model="job.nextStep.date"></md-datepicker>
         </md-input-container>

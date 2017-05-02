@@ -1,26 +1,34 @@
 <div layout="column" ng-cloak class="md-inline-form">
   <div layout="row" layout-align="center">
-    <img layout="row" src='../../assets/logo-placeholder.jpeg' class='logo' width="50%">
+    <img src='../../assets/logo-placeholder.jpeg' class='logo' width="50%">
   </div>
-  <div layout="row" layout-align="center">
-    <h1>Sign up for your free account!</h1>
+  <div ng-show="showSignUp" layout="row" layout-align="center">
+    <h2>Sign up for your free account!</h2>
   </div> 
-  <div layout="row" layout-align="center">
-    <form name="jobForm" ng-submit="submitJob()">
-      <md-input-container>
+  <div ng-show="!showSignUp" layout="row" layout-align="center">
+    <h2>Please Sign in</h2>
+  </div> 
+  <form name="jobForm" ng-submit="submitJob()">
+    <div layout="row" layout-align="center">
+      <md-input-container flex='30'>
         <label>User Name</label>
-        <input ng-model="username">
+        <input ng-model="username" ng-required="true">
       </md-input-container>
-
-      <md-input-container>
+    </div>
+    <div layout="row" layout-align="center">
+      <md-input-container flex='30'>
         <label>Password</label>
-        <input ng-model="password">
+        <input ng-model="password" ng-required="true">
       </md-input-container>
-
-      <md-input-container layout="row">
-        <label>E-mail</label>
-        <input ng-model="email">
-      </md-input-container>
-    </form>
+    </div>
+    <div ng-show="showSignUp" layout="row" layout-align="center top">
+      <md-button type="submit" class="md-primary">Sign Up</md-button>
+    </div>
+    <div ng-show="!showSignUp" layout="row" layout-align="center top">
+      <md-button type="submit" class="md-primary">Sign In</md-button>
+    </div>
+  </form>
+  <div layout="row" layout-align="center top">
+    <md-button ng-click="toggleAuth()" class="md-primary">Already have an account?</md-button>
   </div>
 </div>
