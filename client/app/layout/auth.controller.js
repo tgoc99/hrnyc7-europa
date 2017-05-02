@@ -5,32 +5,29 @@ angular.module('app.auth', [
 .controller('authController', function($scope, $http, $location) {
 
   $scope.user = {
-    user: '',
+    username: '',
     password: '',
-    email: ''
   }
+
   $scope.showSignUp = true;
   $scope.toggleAuth = () => {
     $scope.showSignUp = !$scope.showSignUp;
     console.log($scope.showSignUp)
   }
-
-
-  // UNCOMMENT LINES FOR POST REQUEST ONCE SERVER SETUP
-  $scope.signUp = function(data){
-    console.log('here')
-    // $http.post('/api/users', $scope.user)
-    // .then(function(data){
-    //   $location.path('/dashboard')
-    // })
-  }
-
-  $scope.signIn = function(data){
-    console.log('here')
-    // $http.post('/api/users', $scope.user)
-    // .then(function(data){
-    //   $location.path('/dashboard')
-    // })
+  
+  // send to correct path based on sign in or sign up NEED TO ADD CATCH
+  $scope.authenticateUser = function(data){
+    if($scope.showSignUp){
+      $http.post('/api/register', $scope.user)
+      .then(function(data){
+        $location.path('/dashboard')
+      })
+    } else {
+      $http.post('/api/login', $scope.user)
+      .then(function(data){
+        $location.path('/dashboard')
+      })
+    }
   }
 
 })
