@@ -60,8 +60,9 @@ module.exports = function(app, express) {
 		});
 	});
 
-	//query params : ?company="example"
+	//query params : ?company=example
 	app.get('/api/news', function(req, res) {
+
 		let companyName = req.query.company;
 
 		let options = {
@@ -87,10 +88,26 @@ module.exports = function(app, express) {
 		});
 	});
 
-	//query params : ?companyname
-	app.get('/api/company', function(req, res, next) {
+	//query params : ?domain=example.com
+	app.get('/api/companyInfo', function(req, res, next) {
+		let companyName = req.query.domain;
 
-		
+		let options = {
+			uri: "https://api.fullcontact.com/v2/company/lookup.json?",
+			qs: {
+				domain: companyName
+			},
+			headers: {
+				'X-FullContact-APIKey' : config.apiKeys.fullContact
+			}
+		};
+		rp(options)
+		.then(function(response) {
+			res.status(200).json(response);
+		})
+		.catch(function(err) {
+			res.status(400).send('Something\s wrong, please try again!')
+		})
 	});
 
 	//in req.body: (username: password: )
@@ -156,4 +173,3 @@ module.exports = function(app, express) {
 	  });
 	});
 };
-
