@@ -1,16 +1,18 @@
 var db = require('../db-config.js');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var Job = require('./job.js');
+var passportLocalMongoose = require('passport-local-mongoose');
 
-var User = mongoose.model('User', { 
-	name: {
+var UserSchema = new Schema({
+	username: {
 		type: String,
-		required: [true, 'User needs a unique name field'],
-		unique: true
+		// required: [true, 'User needs a unique name field'],
+		// unique: true
 	},
 	password: {
 		type: String,
-		required: [true, 'User needs a password field']
+		// required: [true, 'User needs a password field']
 	},
 	profilePic: {
 		type: String,
@@ -18,5 +20,9 @@ var User = mongoose.model('User', {
 	},
 	jobs: [Job.schema]
 });
+
+UserSchema.plugin(passportLocalMongoose);
+
+var User = mongoose.model('User', UserSchema);
 
 module.exports = User;
