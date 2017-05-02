@@ -5,7 +5,7 @@ angular.module('app',[
   'app.dashboard',
   'app.auth'
 ])
-.config(function($locationProvider, $routeProvider, $mdThemingProvider) {
+.config(function($locationProvider, $routeProvider, $mdThemingProvider, $httpProvider) {
   $locationProvider.hashPrefix('');
   $mdThemingProvider.theme('default')
     .primaryPalette('teal')
@@ -24,7 +24,20 @@ angular.module('app',[
       templateUrl: './app/dashboard/dashboard.html',
       controller: 'dashboardController'
     })
+    .when('/logout', {
+      redirectTo: '/'
+    })
+
 })
+.run(function ($rootScope, $location, $http) {
+  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+    $http.get('api/status').then(function(data){
+      if(next.$$route && !data.data.status){
+        $location.path('/');
+      }
+    })
+  })
+});
 
 // .     .       .  .   . .   .   . .    +  .
 //   .     .  :     .    .. :. .___---------___.

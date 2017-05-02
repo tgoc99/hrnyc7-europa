@@ -4,6 +4,8 @@ angular.module('app.auth', [
 ])
 .controller('authController', function($scope, $http, $location) {
 
+  $http.get('/api/logout');
+
   $scope.user = {
     username: '',
     password: '',
@@ -18,12 +20,12 @@ angular.module('app.auth', [
   // send to correct path based on sign in or sign up NEED TO ADD CATCH
   $scope.authenticateUser = function(data){
     if($scope.showSignUp){
-      $http.post('/api/register', $scope.user)
+      $http.post('/api/register', JSON.stringify($scope.user))
       .then(function(data){
         $location.path('/dashboard')
       })
     } else {
-      $http.post('/api/login', $scope.user)
+      $http.post('/api/login', JSON.stringify($scope.user))
       .then(function(data){
         $location.path('/dashboard')
       })
