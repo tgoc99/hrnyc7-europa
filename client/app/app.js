@@ -3,6 +3,7 @@ angular.module('app',[
   'ngMaterial',
   'app.input',
   'app.dashboard',
+  'app.auth'
 ])
 .config(function($locationProvider, $routeProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('');
@@ -12,7 +13,8 @@ angular.module('app',[
   $routeProvider
     // I think this should just be '/'
     .when('/', {
-      templateUrl: './app/layout/landing.html'
+      templateUrl: './app/layout/landing.html',
+      controller: 'authController'
     })
     .when('/input', {
       templateUrl: './app/input/input.html',
