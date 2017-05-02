@@ -29,37 +29,63 @@ module.exports = function(app, express) {
 		next();
 	});
 
-	//query params : ?company="example"
+	//query params : ?company=example
 	app.get('/api/news', function(req, res) {
-		let companyName = req.query.company;
 
-		let options = {
-			uri: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?"
-			qs: {
-				q: companyName,
-				count: 10,
-				offset: 0,
-				mkt: 'en-us',
-				safeSearch: 'Moderate'
-			},
-			headers: {
-				'Ocp-Apim-Subscription-Key': config.apiKeys.bingSearch
-			},
-			json: true
-		};
-		rp(options)
-		.then(function(stories) {
-			res.status(200).send(stories.value);
-		})
-		.catch(function(err) {
-			console.log('API call failed!');
-		});
+		if(req.method === 'GET') {
+			let companyName = req.query.company;
+
+			let options = {
+				uri: "https://api.cognitive.microsoft.com/bing/v5.0/news/search?",
+				qs: {
+					q: companyName,
+					count: 10,
+					offset: 0,
+					mkt: 'en-us',
+					safeSearch: 'Moderate'
+				},
+				headers: {
+					'Ocp-Apim-Subscription-Key': config.apiKeys.bingSearch
+				},
+				json: true
+			};
+			rp(options)
+			.then(function(stories) {
+				res.status(200).json(stories.value);
+			})
+			.catch(function(err) {
+				res.status(400).send('something went wrong')
+			});
+		} else {
+			res.status(400).send('Invalid Request!');
+		}
 	});
 
-	//query params : ?companyname
-	app.get('/api/company', function(req, res, next) {
+	//query params : ?domain=example.com
+	app.get('/api/companyInfo', function(req, res, next) {
 
-		
+		if(req.method === 'GET') {
+			let companyName = req.query.domain;
+
+			let options = {
+				uri: "https://api.fullcontact.com/v2/company/lookup.json?",
+				qs: {
+					domain: companyName
+				},
+				headers: {
+					'X-FullContact-APIKey' : config.apiKeys.fullContact
+				}
+			};
+			rp(options)
+			.then(function(response) {
+				res.status(200).json(response);
+			})
+			.catch(function(err) {
+				res.status(400).send('Something\s wrong, please try again!')
+			})
+		} else {
+			res.status(400).send('Invalid Request!')
+		}
 	});
 
 	//query params :?username=''&password=''
@@ -74,4 +100,3 @@ module.exports = function(app, express) {
 		next();
 	});
 };
-
