@@ -1,5 +1,6 @@
 var db = require('../db/db-config.js');
 var mongoose = require('mongoose');
+var passport = require('passport');
 
 // import mongoose models
 var User = require('../db/models/user.js');
@@ -7,25 +8,17 @@ var Task = require('../db/models/task.js');
 var Step = require('../db/models/step.js');
 var Contact = require('../db/models/contact.js');
 var Job = require('../db/models/job.js');
+
 const rp = require('request-promise');
 // const config = require('../config/config.js');
 
 module.exports = function(app, express) {
-	// -------------------- ?username=admin , for admin access ------------------
-	//query params : ?:username = ''&token=''
-	// e.g. GET /api/users?username=admin
-	// e.g. GET /api/users?username=someExistingUserName&token=someValidToken
+
 	app.get('/api/users', function(req, res) {
-		var username = req.query.username;
-		var token = req.query.token;
+		console.log('session info get /api/users', req.session.passport.user);
+		var username = req.session.passport.user;
 
-		if(username != 'admin' && token === undefined) {
-			console.log('invalid get users', username, token);
-			res.status(400).send('invalid username or token');
-			return;
-		}
-
-		User.find({ name: username }).exec(function(err, user){
+		User.find({ username: username }).exec(function(err, user){
 			if(user.length === 0) {
 				console.log('unsuccessful retrieve user', username);
 				res.status(400).send('null');
@@ -36,49 +29,10 @@ module.exports = function(app, express) {
 		});
 	});
 
-	// query params : none
-	// in body: (username: ''password: '')
-	// respond with token
-	app.post('/api/users', function(req, res) {
-		var username = req.body.username;
-		var password = req.body.password;
-
-		if(username === undefined || password === undefined) {
-			res.status(400).send('invalid username or password');
-			return;
-		}
-
-		var newUser = new User({
-			name: username,
-			password: password
-		});
-
-		newUser.save(function (err, user) {
-			console.log(err, user);
-
-			if (err) {
-				console.log('username already exists!', username, user);
-				res.status(400).send(err);
-			} else {
-				console.log('saved', user);
-				res.send(user);
-			}
-		});
-
-	});
-
-	//query params : ?:username = ''&token=''
-	//body: (fields: User)
+	// in body: User object
 	app.patch('/api/users', function(req, res) {
-		var username = req.query.username;
-		var token = req.query.token;
+		var username = req.session.passport.user;
 		var body = req.body;
-
-		if(username != 'admin' && token === undefined) {
-			console.log('invalid get users', username, token);
-			res.status(400).send('invalid username or token');
-			return;
-		}
 
 		User.update({ _id: body._id }, body).exec(function(err, user){
 			console.log('updating', err, user, 'with', username, body);
@@ -92,18 +46,10 @@ module.exports = function(app, express) {
 		});
 	});
 
-	//query params : ?:username = ''&token=''
 	app.delete('/api/users', function(req, res) {
-		var username = req.query.username;
-		var token = req.query.token;
+		var username = req.session.passport.user;
 
-		if(username != 'admin' && token === undefined) {
-			console.log('invalid get users', username, token);
-			res.status(400).send('invalid username or token');
-			return;
-		}
-
-		User.remove({ name: username }).exec(function(err, user){
+		User.remove({ username: username }).exec(function(err, user){
 			if(err) {
 				console.log('unsuccessful remove user', username);
 				res.status(400).send('unsuccessful remove');
@@ -147,16 +93,67 @@ module.exports = function(app, express) {
 		
 	});
 
-	//query params :?username=''&password=''
-	app.get('/api/auth', function(req, res, next) {
+	//in req.body: (username: password: )
+	app.post('/api/register', function(req, res) {
+		console.log('attempting to register', req.body.username, req.body.password);
 
-		next();
+	  User.register(new User({ username: req.body.username }),
+	    req.body.password, function(err, account) {
+	    if (err) {
+	      return res.status(500).json({
+	        err: err
+	      });
+	    }
+	    passport.authenticate('local')(req, res, function () {
+	      return res.status(200).json({
+	        status: 'Registration successful!'
+	      });
+	    });
+	  });
 	});
 
 	//in req.body: (username: password: )
-	app.post('/api/auth', function(req, res, next) {
+	app.post('/api/login', function(req, res, next) {
+	  passport.authenticate('local', function(err, user, info) {
+	    if (err) {
+	      return next(err);
+	    }
+	    if (!user) {
+	      return res.status(401).json({
+	        err: info
+	      });
+	    }
+	    req.logIn(user, function(err) {
+	      if (err) {
+	        return res.status(500).json({
+	          err: 'Could not log in user'
+	        });
+	      }
+	      res.status(200).json({
+	        status: 'Login successful!'
+	      });
+	    });
+	  })(req, res, next);
+	});
 
-		next();
+	// get /api/logout, respond {status: "Bye"}
+	app.get('/api/logout', function(req, res) {
+	  req.logout();
+	  res.status(200).json({
+	    status: 'Bye!'
+	  });
+	});
+
+	// get /api/status respond {status: true/false}
+	app.get('/api/status', function(req, res) {
+	  if (!req.isAuthenticated()) {
+	    return res.status(200).json({
+	      status: false
+	    });
+	  }
+	  res.status(200).json({
+	    status: true
+	  });
 	});
 };
 
