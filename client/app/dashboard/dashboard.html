@@ -1,18 +1,150 @@
-<md-card ng-repeat="job in jobs">
-  <md-card-header>
-    <md-card-header-text>
-      <span class="md-headline">{{job.companyName}}</span>
-      <span class="md-subhead">{{job.position}}</span>
-      <span class="md-subhead">{{job.salary}}</span>
-      <span class="md-subhead">{{job.applicationDate}}</span>
-    </md-card-header-text>
-  </md-card-header>
+<div layout="row">
 
-  <div layout="row">
-    <md-card-content ng-repeat="contact in job.contactInformation" layout="column">
-      <span class="md-headline">{{contact.name}}</span>
-      <span class="md-subhead">{{contact.phone}}</span>
-      <span class="md-subhead">{{contact.email}}</span>
-    </md-card-content>
+  <div class="dashboard-left" flex="50">
+
+    <div class="sidebar-row">
+      <div class="sidebar-col widget-container" style="background-color:red">
+        <!-- PROFILE INFO -->
+
+        <md-card class='widget'>
+          profile info
+        </md-card>
+
+      </div>
+      <div class="sidebar-col">
+        <div class="sidebar-row-small widget-container" style="background-color:green">
+          <!-- PROFILE GOALS -->
+
+          <md-card class='widget'>
+            goals
+          </md-card>
+
+        </div>
+        <div class="sidebar-row-small widget-container" style="background-color:blue">
+          <!-- TASKS -->
+
+          <md-card class='widget'>
+            tasks
+          </md-card>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-row">
+      <div class="sidebar-col widget-container" style="background-color:yellow">
+        <!-- NEWS -->
+
+        <md-card id="news-widget" class='widget'>
+
+          <md-divider class="news-img-container" style="background-image:url('http://www.abc.net.au/news/image/7081416-3x2-940x627.jpg')">
+            <md-button class="news-settings md-fab md-mini">
+                <md-icon>settings</md-icon>
+            </md-button>
+          </md-divider>
+
+          <md-content>
+            <span class="md-headline">North Korea Test Fire of Ballistic Missile Fails, U.S. Officials Say</span>
+            <p>
+              By Ryan Browne and Steve Almasy, CNN
+            </p>
+            <p>
+              North Korea on Saturday launched a ballistic missile that blew up over land, a spokesman for the US Pacific Command said.
+              The missile didn't leave North Korean territory, US Navy Cmdr. Dave Benham said.
+            </p>
+            <p>
+              John Kirby, a CNN military and diplomatic analyst, said the regime of North Korean leader Kim Jong Un had a message for the United States and others.
+              "This is Kim giving us the finger. Giving China the finger. Giving the UN the finger. I think timing is absolutely planned and preordained in his mind," he said.
+              Trump's administration has delivered a drumbeat of warnings about the dangers of North Korea this week, using presidential statements, an unusual White House briefing for the Senate, and a White House lunch for UN ambassadors to underscore that Pyongyang is a priority.
+            </p>
+          </md-content>
+
+          <md-footer>
+            <md-button>
+                <md-icon>navigate_before</md-icon>
+            </md-button>
+            <md-button>
+                Read More ...
+            </md-button>
+            <md-button>
+                <md-icon>navigate_next</md-icon>
+            </md-button>
+          </md-footer>
+
+        </md-card>
+
+      </div>
+      <div class="sidebar-col widget-container" style="background-color:gray">
+        <!-- CALENDAR -->
+        <md-card class='widget'>
+          calendar
+        </md-card>
+
+      </div>
+    </div>
+
   </div>
-</md-card>
+
+  <div class="dashboard-right" flex="50">
+
+    <md-card ng-repeat="job in jobs">
+      <md-card-header>
+        <md-card-avatar class="job-img"
+                        style="{{setBackgroundImg(job)}}">
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-headline">{{job.companyName}}</span>
+          <span class="md-subhead">{{job.position}}</span>
+        </md-card-header-text>
+        <md-button class="md-fab md-mini">
+            <md-icon>star</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini">
+            <md-icon>settings</md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini">
+            <md-icon>expand_more</md-icon>
+        </md-button>
+      </md-card-header>
+
+
+
+        <md-tabs md-dynamic-height="" md-border-bottom="">
+
+          <md-tab label="INFO">
+            <md-content class="md-padding">
+              <p class=".md-subhead application-info">Date Applied: {{getDate(job)}}</p>
+              <p class=".md-subhead application-info">Link: </p>
+              <p class=".md-subhead application-info">Current Status: Phone Screen</p>
+            </md-content>
+          </md-tab>
+
+          <md-tab label="CONTACT">
+            <md-content ng-repeat='contact in job.contactInformation'>
+              <md-divider layout="column" class="contact-divider">
+                <p class=".md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
+                <p class=".md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phone}}</p>
+                <p class=".md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
+                <span class="contact-options">
+                  <md-icon>edit</md-icon>
+                  <md-icon>delete</md-icon>
+                </span>
+              </md-divider>
+            </md-content>
+          </md-tab>
+
+          <md-tab label="STEPS">
+            <md-content class="md-padding">
+              <h1 class="md-display-2">Tab Three</h1>
+              <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+              <p>John Kirby, a CNN military and diplomatic analyst, said the regime of North Korean leader Kim Jong Un had a message for the United States and others.
+"This is Kim giving us the finger. Giving China the finger. Giving the UN the finger. I think timing is absolutely planned and preordained in his mind," he said.
+Trump's administration has delivered a drumbeat of warnings about the dangers of North Korea this week, using presidential statements, an unusual White House briefing for the Senate, and a White House lunch for UN ambassadors to underscore that Pyongyang is a priority.</p>
+            </md-content>
+          </md-tab>
+
+        </md-tabs>
+
+    </md-card>
+  </div>
+</div>

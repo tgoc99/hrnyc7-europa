@@ -1,0 +1,110 @@
+* {
+  /*border: 1px solid red;*/
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: rgb(55, 64, 70);
+}
+
+.wrapper {
+  margin: auto;
+  width: 95%;
+}
+
+/*
+SIDEBAR
+*/
+
+.sidebar-row {
+  display: flex;
+  height: 450px;
+}
+
+.sidebar-col {
+  height: 450px;
+  width: 50%;
+}
+
+.sidebar-row-small {
+  width: 100%;
+  height: 225px;
+}
+
+.widget-container {
+  padding: 15px;
+}
+
+.widget {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+NEWS WIDGET
+*/
+
+#news-widget .news-settings {
+  position: relative;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+#news-widget .news-img-container {
+  min-height: 125px;
+  max-height: 125px;
+  background-image: cover;
+  background-position: center;
+  background-size: 100%;
+}
+
+#news-widget md-content {
+  height: 255px;
+  background-color: white;
+  padding: 16px;
+}
+
+#news-widget span {
+  text-align: center;
+}
+
+#news-widget md-footer {
+  max-height: 40px;
+  text-align: center;
+}
+
+#news-widget button {
+  margin: 0;
+}
+
+/*
+DASHBOARD
+*/
+
+.job-img {
+  background-position: center;
+  background-size: cover;
+}
+
+.contact-divider {
+  padding: 16px;
+}
+
+.contact-options {
+  position: relative;
+  top: -33px;
+  text-align: right;
+}
+
+.contact-info {
+  margin: 5px 0;
+  font-size: 0.8em;
+}
+
+.contact-info md-icon {
+  margin-right: 10px;
+}
