@@ -10,7 +10,7 @@ var Contact = require('../db/models/contact.js');
 var Job = require('../db/models/job.js');
 
 const rp = require('request-promise');
-// const config = require('../config/config.js');
+const config = require('../config/config.js');
 
 module.exports = function(app, express) {
 
@@ -89,7 +89,8 @@ module.exports = function(app, express) {
 	});
 
 	//query params : ?domain=example.com
-	app.get('/api/companyInfo', function(req, res, next) {
+	app.get('/api/companyInfo', function(req, res) {
+
 		let companyName = req.query.domain;
 
 		let options = {
