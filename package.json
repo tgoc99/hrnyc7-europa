@@ -17,13 +17,19 @@
   },
   "homepage": "https://github.com/hrnyc7-europa/hrnyc7-europa#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.1",
     "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.0"
   }
