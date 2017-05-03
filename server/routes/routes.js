@@ -174,7 +174,115 @@ module.exports = function(app, express) {
 		});
 	});
 
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                    Tasks
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+	app.get('/api/tasks', function(req, res) {
+		console.log('session info get /api/tasks', req.session.passport.user);
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve tasks', username);
+				res.status(400).send('null');
+			} else {
+				console.log('successful retrieve tasks', username, user[0].tasks);
+				res.send(user[0].tasks);
+			}
+		});
+	});
+
+	// body (name)
+	app.post('/api/tasks', function(req, res) {
+		console.log('session info post /api/tasks', req.session.passport.user);
+		console.log('attempting to create tasks', req.body);
+
+		var username = req.session.passport.user;
+
+		User.findOneAndUpdate(
+	        { username: username },
+	        {$push: {"tasks": req.body}},
+	        {safe: true, upsert: true, new : true},
+	        function(err, model) {
+	        	if(err) {
+	        		res.status(401).send(err);
+	        	} else {
+	        		res.send('New tasks created');
+	        	}
+	        }
+	    );
+	});
+
+	// body (_id)  _id is found inside specific tasks and the name
+	// tasks array can be retrieved using get /api/tasks
+	app.patch('/api/tasks', function(req, res) {
+		console.log('session info patch /api/tasks', req.session.passport.user);
+		console.log('attempting to patch tasks', req.body);
+
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).lean().exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve tasks', username);
+				res.status(400).send('null');
+			} else {
+				user[0].tasks.forEach((task) => {
+					if(task._id == req.body._id) {
+						for(var key in req.body) {
+							task[key] = req.body[key];
+						}
+					}
+				});
+
+				User.findOneAndUpdate(
+			        { username: username },
+			        { $set: user[0] }, 
+			        { new: true }, 
+			        function(err, model) {
+			        	if(err) {
+			        		res.status(401).send(err);
+			        	} else {
+			        		res.send('Job updated');
+			        	}
+			        }
+			    );
+			}
+		});
+	});
+
+	// body (_id)  _id is found inside specific tasks
+	// tasks array can be retrieved using get /api/tasks
+	app.delete('/api/tasks', function(req, res) {
+		console.log('session info delete /api/tasks', req.session.passport.user);
+		console.log('attempting to delete tasks', req.body);
+
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).lean().exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve tasks', username);
+				res.status(400).send('null');
+			} else {
+				user[0].tasks = user[0].tasks.filter((task) => {
+					return task._id != req.body._id;
+				});
+
+				User.findOneAndUpdate(
+			        { username: username },
+			        { $set: user[0] }, 
+			        { new: true }, 
+			        function(err, model) {
+			        	if(err) {
+			        		res.status(401).send(err);
+			        	} else {
+			        		res.send('Job removed');
+			        	}
+			        }
+			    );
+			}
+		});
+	});
 
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
