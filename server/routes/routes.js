@@ -14,6 +14,10 @@ const config = require('../config/config.js');
 
 module.exports = function(app, express) {
 
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                    Users
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	app.get('/api/users', function(req, res) {
 		console.log('session info get /api/users', req.session.passport.user);
 		var username = req.session.passport.user;
@@ -60,6 +64,123 @@ module.exports = function(app, express) {
 		});
 	});
 
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                    Jobs
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	app.get('/api/jobs', function(req, res) {
+		console.log('session info get /api/jobs', req.session.passport.user);
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve jobs', username);
+				res.status(400).send('null');
+			} else {
+				console.log('successful retrieve jobs', username, user[0].jobs);
+				res.send(user[0].jobs);
+			}
+		});
+	});
+
+	// body (companyname, position)
+	app.post('/api/jobs', function(req, res) {
+		console.log('session info post /api/jobs', req.session.passport.user);
+		console.log('attempting to create job', req.body);
+
+		var username = req.session.passport.user;
+
+		User.findOneAndUpdate(
+	        { username: username },
+	        {$push: {"jobs": req.body}},
+	        {safe: true, upsert: true, new : true},
+	        function(err, model) {
+	        	if(err) {
+	        		res.status(401).send(err);
+	        	} else {
+	        		res.send('New job created');
+	        	}
+	        }
+	    );
+	});
+
+	// body (_id)  _id is found inside specific job, and any fields to be updated
+	// job array can be retrieved using get /api/jobs
+	app.patch('/api/jobs', function(req, res) {
+		console.log('session info patch /api/jobs', req.session.passport.user);
+		console.log('attempting to patch job', req.body);
+
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).lean().exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve jobs', username);
+				res.status(400).send('null');
+			} else {
+				user[0].jobs.forEach((job) => {
+					if(job._id == req.body._id) {
+						for(var key in req.body) {
+							job[key] = req.body[key];
+						}
+					}
+				});
+
+				User.findOneAndUpdate(
+			        { username: username },
+			        { $set: user[0] }, 
+			        { new: true }, 
+			        function(err, model) {
+			        	if(err) {
+			        		res.status(401).send(err);
+			        	} else {
+			        		res.send('Job updated');
+			        	}
+			        }
+			    );
+			}
+		});
+	});
+
+	// body (_id)  _id is found inside specific job
+	// job array can be retrieved using get /api/jobs
+	app.delete('/api/jobs', function(req, res) {
+		console.log('session info delete /api/jobs', req.session.passport.user);
+		console.log('attempting to delete job', req.body);
+
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).lean().exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve jobs', username);
+				res.status(400).send('null');
+			} else {
+				user[0].jobs = user[0].jobs.filter((job) => {
+					return job._id != req.body._id;
+				});
+
+				User.findOneAndUpdate(
+			        { username: username },
+			        { $set: user[0] }, 
+			        { new: true }, 
+			        function(err, model) {
+			        	if(err) {
+			        		res.status(401).send(err);
+			        	} else {
+			        		res.send('Job removed');
+			        	}
+			        }
+			    );
+			}
+		});
+	});
+
+
+
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                        News
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	//query params : ?company=example
 	app.get('/api/news', function(req, res) {
 
@@ -88,6 +209,10 @@ module.exports = function(app, express) {
 		});
 	});
 
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                  Company Information
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	//query params : ?domain=example.com
 	app.get('/api/companyInfo', function(req, res) {
 
@@ -110,6 +235,10 @@ module.exports = function(app, express) {
 			res.status(400).send('Something\s wrong, please try again!')
 		})
 	});
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                    Authentication
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	//in req.body: (username: password: )
 	app.post('/api/register', function(req, res) {
