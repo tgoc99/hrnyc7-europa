@@ -3,28 +3,57 @@
   <div class="dashboard-left" flex="50">
 
     <div class="sidebar-row">
-      <div class="sidebar-col widget-container" style="background-color:red">
+      <!-- <div class="sidebar-col widget-container" style="background-color:red"> -->
+      <div class="sidebar-col widget-container">
         <!-- PROFILE INFO -->
 
-        <md-card class='widget'>
-          profile info
+        <md-card id="profile-widget" class='widget'>
+
+          <img class="profile-img" src="https://i.imgflip.com/xyx99.jpg?a414816">
+          <span class="md-headline">Harold Fulanito</span>
+          <p>harold1000@gmail.com</p>
+          <p>New York City, NY</p>
+          <p>Active Applications: 4</p>
         </md-card>
 
       </div>
       <div class="sidebar-col">
-        <div class="sidebar-row-small widget-container" style="background-color:green">
+        <!-- <div class="sidebar-row-small widget-container" style="background-color:green"> -->
+        <div class="sidebar-row-small widget-container">
           <!-- PROFILE GOALS -->
 
-          <md-card class='widget'>
-            goals
+          <md-card id="goals-widget" class='widget'>
+            <span class="md-headline">Your current goal </span>
+            <p>Complete 10 job applications</p>
+
+            <!-- bar -->
+            <div class="bar-back">
+              <div class="bar-front">
+                40%
+              </div>
+            </div>
+
+            <p>4 / 10</p>
           </md-card>
 
         </div>
-        <div class="sidebar-row-small widget-container" style="background-color:blue">
+        <!-- <div class="sidebar-row-small widget-container" style="background-color:blue"> -->
+        <div class="sidebar-row-small widget-container">
           <!-- TASKS -->
 
-          <md-card class='widget'>
-            tasks
+          <md-card id="tasks-widget" class='widget'>
+            <span class="md-headline">Your upcoming tasks </span>
+            <md-content>
+              <ul>
+                <md-checkbox>Bring back that Mulan szechuan McNugget sauce</md-checkbox>
+                <md-checkbox>Complete this dashboard</md-checkbox>
+                <md-checkbox>Complete greenfield project</md-checkbox>
+                <md-checkbox>Graduate from HR</md-checkbox>
+                <md-checkbox>Find a job</md-checkbox>
+                <md-checkbox>Become the next Elon Musk</md-checkbox>
+                <md-checkbox>Be remembered for generations to come</md-checkbox>
+              </ul>
+            </md-content>
           </md-card>
 
         </div>
@@ -32,7 +61,8 @@
     </div>
 
     <div class="sidebar-row">
-      <div class="sidebar-col widget-container" style="background-color:yellow">
+      <!-- <div class="sidebar-col widget-container" style="background-color:yellow"> -->
+      <div class="sidebar-col widget-container">
         <!-- NEWS -->
 
         <md-card id="news-widget" class='widget'>
@@ -74,7 +104,8 @@
         </md-card>
 
       </div>
-      <div class="sidebar-col widget-container" style="background-color:gray">
+      <!-- <div class="sidebar-col widget-container" style="background-color:gray"> -->
+      <div class="sidebar-col widget-container">
         <!-- CALENDAR -->
         <md-card class='widget'>
           calendar
