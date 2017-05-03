@@ -6,8 +6,13 @@
       <div class="sidebar-col widget-container" style="background-color:red">
         <!-- PROFILE INFO -->
 
-        <md-card class='widget'>
-          profile info
+        <md-card id="profile-widget" class='widget'>
+
+          <img class="profile-img" src="https://i.imgflip.com/xyx99.jpg?a414816">
+          <span class="md-headline">Harold Fulanito</span>
+          <p>harold1000@gmail.com</p>
+          <p>New York City, NY</p>
+          <p>Active Applications: 4</p>
         </md-card>
 
       </div>
@@ -15,16 +20,37 @@
         <div class="sidebar-row-small widget-container" style="background-color:green">
           <!-- PROFILE GOALS -->
 
-          <md-card class='widget'>
-            goals
+          <md-card id="goals-widget" class='widget'>
+            <span class="md-headline">Your current goal </span>
+            <p>Complete 10 job applications</p>
+
+            <!-- bar -->
+            <div class="bar-back">
+              <div class="bar-front">
+                40%
+              </div>
+            </div>
+
+            <p>4 / 10</p>
           </md-card>
 
         </div>
         <div class="sidebar-row-small widget-container" style="background-color:blue">
           <!-- TASKS -->
 
-          <md-card class='widget'>
-            tasks
+          <md-card id="tasks-widget" class='widget'>
+            <span class="md-headline">Your upcoming tasks </span>
+            <md-content>
+              <ul>
+                <md-checkbox>Bring back that Mulan szechuan McNugget sauce</md-checkbox>
+                <md-checkbox>Complete this dashboard</md-checkbox>
+                <md-checkbox>Complete greenfield project</md-checkbox>
+                <md-checkbox>Graduate from HR</md-checkbox>
+                <md-checkbox>Find a job</md-checkbox>
+                <md-checkbox>Become the next Elon Musk</md-checkbox>
+                <md-checkbox>Be remembered for generations to come</md-checkbox>
+              </ul>
+            </md-content>
           </md-card>
 
         </div>
