@@ -48,64 +48,7 @@
 
   <div class="dashboard-right" flex="50">
 
-    <md-card ng-repeat="job in jobs">
-      <md-card-header>
-        <md-card-avatar class="job-img"
-                        style="{{setBackgroundImg(job)}}">
-        </md-card-avatar>
-        <md-card-header-text>
-          <span class="md-headline">{{job.companyName}}</span>
-          <span class="md-subhead">{{job.position}}</span>
-        </md-card-header-text>
-        <md-button class="md-fab md-mini">
-            <md-icon>star</md-icon>
-        </md-button>
-        <md-button class="md-fab md-mini">
-            <md-icon>settings</md-icon>
-        </md-button>
-        <md-button class="md-fab md-mini">
-            <md-icon>expand_more</md-icon>
-        </md-button>
-      </md-card-header>
+    <job-widget data="job" ng-repeat="job in jobs"></job-widget>
 
-
-
-        <md-tabs md-dynamic-height="" md-border-bottom="">
-
-          <md-tab label="INFO">
-            <md-content class="md-padding">
-              <p class=".md-subhead application-info">Date Applied: {{getDate(job)}}</p>
-              <p class=".md-subhead application-info">Link: </p>
-              <p class=".md-subhead application-info">Current Status: Phone Screen</p>
-            </md-content>
-          </md-tab>
-
-          <md-tab label="CONTACT">
-            <md-content ng-repeat='contact in job.contactInformation'>
-              <md-divider layout="column" class="contact-divider">
-                <p class=".md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
-                <p class=".md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phone}}</p>
-                <p class=".md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
-                <span class="contact-options">
-                  <md-icon>edit</md-icon>
-                  <md-icon>delete</md-icon>
-                </span>
-              </md-divider>
-            </md-content>
-          </md-tab>
-
-          <md-tab label="STEPS">
-            <md-content class="md-padding">
-              <h1 class="md-display-2">Tab Three</h1>
-              <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-              <p>John Kirby, a CNN military and diplomatic analyst, said the regime of North Korean leader Kim Jong Un had a message for the United States and others.
-"This is Kim giving us the finger. Giving China the finger. Giving the UN the finger. I think timing is absolutely planned and preordained in his mind," he said.
-Trump's administration has delivered a drumbeat of warnings about the dangers of North Korea this week, using presidential statements, an unusual White House briefing for the Senate, and a White House lunch for UN ambassadors to underscore that Pyongyang is a priority.</p>
-            </md-content>
-          </md-tab>
-
-        </md-tabs>
-
-    </md-card>
   </div>
 </div>
