@@ -1,5 +1,5 @@
 angular.module('app.dashboard',['ngMaterial'])
-  .controller('dashboardController', function dashboardController($scope){
+  .controller('dashboardController', function dashboardController($scope, Companies, User, Jobs, Tasks){
     $scope.jobs = sampleData;
 
     $scope.setBackgroundImg = function(job) {
@@ -14,5 +14,10 @@ angular.module('app.dashboard',['ngMaterial'])
       return `${dateFormat}  |  ${fromNow}`
     }
 
-    
+    $scope.test = function() {
+      Companies.getNews('amazon')
+      .then(function(res) {
+        console.log(res)
+      })
+    }
   });

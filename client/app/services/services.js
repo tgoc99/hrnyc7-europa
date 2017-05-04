@@ -1,6 +1,6 @@
 angular.module('app.services', [])
 
-.factory('Company', function($http) {
+.factory('Companies', function($http) {
 	return {
 		getInfo: function(companyUrl) {
 			return $http({
@@ -11,7 +11,8 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				return res;
+				console.log(res.data)
+				return res.data;
 			})
 			.catch(function(err) {
 				console.log(err)
@@ -27,7 +28,7 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				return res;
+				return res.data;
 			})
 			.catch(function(err) {
 				console.log(err);
@@ -44,7 +45,8 @@ angular.module('app.services', [])
 				url: 'api/users',
 			})
 			.then(function(res) {
-				return res
+				console.log(res)
+				return res.data
 			})
 			.catch(function(err) {
 				console.log(err)
@@ -58,7 +60,31 @@ angular.module('app.services', [])
 				data: data
 			})
 			.then(function(res) {
-				return res;
+				console.log(res);
+				return res.data;
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		delete: function() {
+			return $http({
+				method: 'DELETE',
+				url: 'api/users'
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data;
+			})
+		},
+		getCompanies: function() {
+			return $http({
+				method: 'GET',
+				url: 'api/companies'
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data;
 			})
 			.catch(function(err) {
 				console.log(err)
@@ -69,8 +95,114 @@ angular.module('app.services', [])
 
 .factory('Jobs', function($http) {
 	return {
-		update: function() {
-			
+		create: function(data) {
+			return $http({
+				method: 'POST',
+				url: 'api/jobs',
+				data: data
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		get: function() {
+			return $http({
+				method: 'GET',
+				url: 'api/jobs',
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		update: function(data) {
+			return $http({
+				method: 'PATCH',
+				url: 'api/jobs',
+				data: data
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		delete: function(data) {
+			return $http({
+				method: 'DELETE',
+				url: 'api/jobs',
+				data: data
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+		}
+	}
+})
+
+.factory('Tasks', function($http) {
+	return {
+		create: function(data) {
+			return $http({
+				method: 'POST',
+				url: 'api/tasks',
+				data: data
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		get: function() {
+			return $http({
+				method: 'GET',
+				url: 'api/tasks',
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		update: function(data) {
+			return $http({
+				method: 'PATCH',
+				url: 'api/tasks',
+				data: data
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
+			.catch(function(err) {
+				console.log(err)
+			})
+		},
+		delete: function(data) {
+			return $http({
+				method: 'DELETE',
+				url: 'api/tasks',
+				data: data
+			})
+			.then(function(res) {
+				console.log(res)
+				return res.data
+			})
 		}
 	}
 })
