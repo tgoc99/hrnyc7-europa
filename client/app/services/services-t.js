@@ -43,7 +43,7 @@ angular.module('app.services.t', []) // fix this when combine
     status: status
   }
 })
-.factory('News', ($http) => {
+.factory('News', ($http) => { 
   var getNews = companiesArray => {
     return Promise.all(companiesArray.map(comp => {
       return $http.get('/api/news/?company='+comp)
