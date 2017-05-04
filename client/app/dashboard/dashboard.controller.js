@@ -1,4 +1,4 @@
-angular.module('app.dashboard',['ngMaterial', 'profileInfoWidget'])
+angular.module('app.dashboard',['ngMaterial', 'profileInfoWidget', 'newsWidget'])
   .controller('dashboardController', function dashboardController($scope){
     $scope.jobs = sampleData;
 
