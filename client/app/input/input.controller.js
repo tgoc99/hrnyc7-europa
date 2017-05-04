@@ -2,42 +2,49 @@ angular.module('app.input', [
   'ngMaterial',
   'ngMessages'
 ])
-.controller('inputController', function($scope, $http, $location, News, Companies) {
-  var today = new Date();
-  var nextStepDate = new Date();
-  nextStepDate.setDate(nextStepDate.getDate() + 14);
-
-  $scope.cal= today;
-
-  News.getNews(['google', 'amazon']).then((data)=>console.log(data));
-  Companies.getInfo('google.com').then((data)=>console.log(data));
-
+.controller('inputController', function($scope, $http, $location, News, Companies, Jobs) {
+  
   $scope.job = {
-    applicationDate: today,
-    companyName: '',
-    companySite: '',
-    position: '',
-    salary: '',
-    contacts: {name: '',
-              phoneNumber:'',
-              email:''},
-    nextStep: {name: 'Send Follow-up E-mail',
-               comments:'(Two weeks from now)',
-               date:nextStepDate},
-    currentStatus: 'Application Sent',
-    comments: ''
+    company: undefined,
+    salary: undefined,
+    dateCreated: new Date(),
+    position: undefined,
+    contacts: [{name: undefined,
+              phoneNumber: undefined,
+              email: undefined}],
+    link: undefined,
+    website: undefined,
+    description: undefined,
+    imageUrl: undefined,
+    currentStep: {name: undefined,
+              comments:[],
+              dueDate: null}, 
+    nextStep: {name: undefined,
+              comments:[],
+              dueDate: null}
   };
 
-  $scope.statuses = ['Application Sent', 'Phone Screen', 'On-Site Interview', 'Offer Received', 'Other']
-  $scope.steps = ['Send Follow-up E-mail', 'Send Thank You E-mail', 'Schedule Next Interaction', 'Respond to Request', 'Other']
-
-  // UNCOMMENT LINES FOR POST REQUEST ONCE SERVER SETUP
   $scope.submitJob = function(data){
-    console.log('here')
-    $http.post('/api/users', $scope.job)
-    .then(function(data){
-      $location.path('/dashboard')
-    })
+    console.log($scope.job);
+
+    if($scope.job.nextStep.name === undefined) {
+      $scope.job.nextStep = null;
+    }
+
+    if($scope.job.contacts[0].name === undefined) {
+      $scope.job.contacts = [];
+    }
+
+    Companies.getInfo($scope.job.website).then((data)=> {
+      console.log(data);
+
+      if(data === undefined) return;
+
+      $scope.job.imageUrl = data.logo;
+      $scope.job.description = data.organization.overview;
+
+      Jobs.create($scope.job);
+    });
   }
 
 })
