@@ -2,9 +2,9 @@ angular.module('app.auth', [
   'ngMaterial',
   'ngMessages'
 ])
-.controller('authController', function($scope, $http, $location) {
+.controller('authController', function($scope, $http, $location, Auth) {
 
-  $http.get('/api/logout');
+  Auth.logout();
 
   $scope.user = {
     username: '',
@@ -14,21 +14,14 @@ angular.module('app.auth', [
   $scope.showSignUp = true;
   $scope.toggleAuth = () => {
     $scope.showSignUp = !$scope.showSignUp;
-    console.log($scope.showSignUp)
   }
 
-  // send to correct path based on sign in or sign up NEED TO ADD CATCH
-  $scope.authenticateUser = function(data){
+  // send to correct path based on sign in or sign up
+  $scope.authenticateUser = function(userData){
     if($scope.showSignUp){
-      $http.post('/api/register', JSON.stringify($scope.user))
-      .then(function(data){
-        $location.path('/dashboard')
-      })
+      Auth.register(userData);
     } else {
-      $http.post('/api/login', JSON.stringify($scope.user))
-      .then(function(data){
-        $location.path('/dashboard')
-      })
+      Auth.signin(userData);
     }
   }
 

@@ -6,6 +6,7 @@ angular.module('app',[
   'app.auth',
   'app.calendar',
   'app.services'
+  'app.services.t'
 ])
 .config(function($locationProvider, $routeProvider, $mdThemingProvider, $httpProvider) {
   $locationProvider.hashPrefix('');
@@ -30,15 +31,7 @@ angular.module('app',[
     })
 
 })
-.run(function ($rootScope, $location, $http) {
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    $http.get('api/status').then(function(data){
-      if(next.$$route && !data.data.status){
-        $location.path('/');
-      }
-    })
-  })
-});
+.run((Auth) => Auth.status)
 
 // .     .       .  .   . .   .   . .    +  .
 //   .     .  :     .    .. :. .___---------___.
