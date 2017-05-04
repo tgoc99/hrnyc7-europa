@@ -104,7 +104,7 @@ module.exports = function(app, express) {
 		};
 		rp(options)
 		.then(function(response) {
-			res.status(200).json(response);
+			res.status(200).send(response);
 		})
 		.catch(function(err) {
 			res.status(400).send('Something\s wrong, please try again!')

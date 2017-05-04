@@ -174,6 +174,20 @@ Trump's administration has delivered a drumbeat of warnings about the dangers of
             </md-content>
           </md-tab>
 
+          <md-tab label="NEWS">
+            <md-content ng-repeat='contact in job.contactInformation'>
+              <md-divider layout="column" class="contact-divider">
+                <p class=".md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
+                <p class=".md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phone}}</p>
+                <p class=".md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
+                <span class="contact-options">
+                  <md-icon>edit</md-icon>
+                  <md-icon>delete</md-icon>
+                </span>
+              </md-divider>
+            </md-content>
+          </md-tab>
+
         </md-tabs>
 
     </md-card>
