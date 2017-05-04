@@ -307,6 +307,29 @@ module.exports = function(app, express) {
 	});
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                User Due Dates For Tasks
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	app.get('/api/dates', function(req, res) {
+		console.log('session info get /api/dates', req.session.passport.user);
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve user', username);
+				res.status(400).send('null');
+			} else {
+				console.log('successful retrieve user', username);
+				var userSteps = [];
+				user[0].jobs.forEach(job => userSteps = userSteps.concat(job.steps));
+				var dates = userSteps.map(step => step.dueDate);
+				dates = dates.filter(step => !!step);
+				res.send(dates);
+			}
+		});
+	});
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//                        News
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
