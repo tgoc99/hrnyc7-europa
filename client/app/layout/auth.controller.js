@@ -16,7 +16,7 @@ angular.module('app.auth', [
     $scope.showSignUp = !$scope.showSignUp;
     console.log($scope.showSignUp)
   }
-  
+
   // send to correct path based on sign in or sign up NEED TO ADD CATCH
   $scope.authenticateUser = function(data){
     if($scope.showSignUp){
