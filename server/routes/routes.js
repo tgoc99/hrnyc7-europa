@@ -284,6 +284,27 @@ module.exports = function(app, express) {
 		});
 	});
 
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//                     User Companies
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	app.get('/api/companies', function(req, res) {
+		console.log('session info get /api/jobs', req.session.passport.user);
+		var username = req.session.passport.user;
+
+		User.find({ username: username }).exec(function(err, user){
+			if(user.length === 0) {
+				console.log('unsuccessful retrieve jobs', username);
+				res.status(400).send('null');
+			} else {
+				console.log('successful retrieve jobs', username, user[0].jobs);
+
+				var companies = user[0].jobs.map(obj => obj.company);
+
+				res.send(companies.filter((val, index) => companies.indexOf(val) === index));
+			}
+		});
+	});
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//                        News
