@@ -20,7 +20,9 @@ angular.
       [
         {
           description: 'Bring back that Mulan szechuan McNugget sauce',
-          // other fields?
+          // other fields not used for the moment
+          // dueDate
+          // dateCreated
         },
         {
           description: 'Save the earth',

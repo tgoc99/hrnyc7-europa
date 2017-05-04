@@ -9,6 +9,7 @@ var UserSchema = new Schema({
 	username: {
 		type: String,
 	},
+	// change to imageUrl? seems more consistent :)
 	profilePic: {
 		type: String,
 		default: 'http://www.swaconhospital.com/wp-content/uploads/2016/12/3244.png'
@@ -17,6 +18,7 @@ var UserSchema = new Schema({
 		type: String,
 		default: 'Please update the email...'
 	},
+	// change to tasksList? seems more consistent :)
 	tasks: [Task.schema],
 	jobs: [Job.schema]
 });

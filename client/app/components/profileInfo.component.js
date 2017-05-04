@@ -18,8 +18,8 @@ angular.
       this.imageUrl = 'https://i.imgflip.com/xyx99.jpg?a414816';
       this.username = 'Harold Fulanito';
       this.email = 'harold1000@gmail.com';
-      this.city = 'New York City';
-      this.state = 'NY';
-      this.activeApplications = 4;
+      this.city = 'New York City'; // add to schema?
+      this.state = 'NY'; // add to schema?
+      this.activeApplications = 4; // loop through user.jobs to get this
     }
   });
