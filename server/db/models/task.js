@@ -7,8 +7,7 @@ var Task = mongoose.model('Task', {
 		required: [true, 'Task needs a name field']
 	},
 	dueDate: {
-		type: Date,
-		default: +new Date() + 7*24*60*60*1000
+		type: Date
 	},
 	dateCreated: {
 		type: Date,
