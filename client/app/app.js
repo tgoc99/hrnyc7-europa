@@ -5,7 +5,7 @@ angular.module('app',[
   'app.dashboard',
   'app.auth',
   'app.calendar',
-  'app.services'
+  'app.services',
   'app.services.t'
 ])
 .config(function($locationProvider, $routeProvider, $mdThemingProvider, $httpProvider) {
