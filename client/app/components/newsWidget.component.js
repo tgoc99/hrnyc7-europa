@@ -6,21 +6,24 @@ angular.
     template:
     `
     <md-card id="news-widget" class='widget'>
-      <md-divider class="news-img-container" style="background-image:url('{{$ctrl.imageUrl}}')">
-      </md-divider>
+      <md-divider class="news-img-container" style="background-image:url('{{$ctrl.imageUrl}}')"></md-divider>
+
       <md-content>
         <span class="md-headline">{{$ctrl.title}}</span>
         <p>By {{$ctrl.author}}, {{$ctrl.source}}</p>
         <p>{{$ctrl.content}}</p>
       </md-content>
+
       <md-footer>
         <md-button>
+            <md-tooltip md-direction="top">Previous Article</md-tooltip>
             <md-icon>navigate_before</md-icon>
         </md-button>
         <md-button>
             Read More ...
         </md-button>
         <md-button>
+            <md-tooltip md-direction="top">Next Article</md-tooltip>
             <md-icon>navigate_next</md-icon>
         </md-button>
       </md-footer>

@@ -5,11 +5,11 @@ angular.
   component('calendarWidget', {
     template:
     `
-    <md-card id="calendar-widget" class='widget'>
-
+    <md-card id="calendar-widget" class='left-widget'>
+  
     </md-card>
     `,
     controller: function() {
-
+      // nothing here yet
     }
   });

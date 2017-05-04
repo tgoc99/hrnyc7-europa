@@ -62,12 +62,20 @@ SIDEBAR
 }
 
 /*
+WIDGETS
+*/
+
+.settings-btn {
+  position: absolute;
+}
+
+/*
 PROFILE WIDGET
 */
 
 #profile-widget {
   text-align: center;
-  padding: 10px;
+  padding: 16px;
 }
 
 .profile-img {
@@ -85,18 +93,17 @@ PROFILE WIDGET
   margin-bottom: 0;
 }
 
-
-
 /*
 GOALS WIDGET
 */
 
 #goals-widget {
-  padding: 10px;
+  position: relative;
   text-align: center;
+  padding: 10px;
 }
 
-.bar-back {
+.progress-bar-back {
   background-color: rgba(0, 0, 0, .15);
   width: 90%;
   height: 40px;
@@ -105,7 +112,7 @@ GOALS WIDGET
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
 }
 
-.bar-front {
+.progress-bar-front {
   background-color: rgb(41,98,255);
   color: white;
   font-weight: bold;
@@ -178,24 +185,18 @@ NEWS WIDGET
 DASHBOARD
 */
 
-.job-img {
+.job-widget-image {
   background-position: center;
   background-size: cover;
 }
 
 .contact-divider {
   padding: 16px;
-}
-
-.contact-options {
   position: relative;
-  top: -33px;
-  text-align: right;
 }
 
 .contact-info {
   margin: 5px 0;
-  font-size: 0.8em;
 }
 
 .contact-info md-icon {

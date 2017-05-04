@@ -1,54 +1,28 @@
 <div layout="row">
-
-
-
   <div class="dashboard-left" flex="50">
-
     <div class="sidebar-row">
-      <!-- <div class="sidebar-col widget-container" style="background-color:red"> -->
       <div class="sidebar-col widget-container">
-        <!-- PROFILE INFO -->
-        <profile-info-widget></profile-info-widget>
+        <profile-widget></profile-widget>
       </div>
       <div class="sidebar-col">
-        <!-- <div class="sidebar-row-small widget-container" style="background-color:green"> -->
         <div class="sidebar-row-small widget-container">
-          <!-- PROFILE GOALS -->
-
           <goals-widget></goals-widget>
-
         </div>
-        <!-- <div class="sidebar-row-small widget-container" style="background-color:blue"> -->
         <div class="sidebar-row-small widget-container">
-          <!-- TASKS -->
-
           <tasks-widget></tasks-widget>
-
         </div>
       </div>
     </div>
-
     <div class="sidebar-row">
-      <!-- <div class="sidebar-col widget-container" style="background-color:yellow"> -->
       <div class="sidebar-col widget-container">
-        <!-- NEWS -->
-
         <news-widget></news-widget>
-
       </div>
-      <!-- <div class="sidebar-col widget-container" style="background-color:gray"> -->
       <div class="sidebar-col widget-container">
-        <!-- CALENDAR -->
         <calendar-widget></calendar-widget>
-
       </div>
     </div>
-
   </div>
-
   <div class="dashboard-right" flex="50">
-
     <job-widget data="job" ng-repeat="job in jobs"></job-widget>
-
   </div>
 </div>
