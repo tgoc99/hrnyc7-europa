@@ -4,9 +4,7 @@ angular.module('app',[
   'app.input',
   'app.dashboard',
   'app.auth',
-  'app.calendar',
-  'app.services',
-  'app.services.t'
+  'app.services'
 ])
 .config(function($locationProvider, $routeProvider, $mdThemingProvider, $httpProvider) {
   $locationProvider.hashPrefix('');
