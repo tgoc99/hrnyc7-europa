@@ -1,122 +1,29 @@
 <div layout="row">
-
   <div class="dashboard-left" flex="50">
-
     <div class="sidebar-row">
-      <!-- <div class="sidebar-col widget-container" style="background-color:red"> -->
       <div class="sidebar-col widget-container">
-        <!-- PROFILE INFO -->
-
-        <md-card id="profile-widget" class='widget'>
-
-          <img class="profile-img" src="https://i.imgflip.com/xyx99.jpg?a414816">
-          <span class="md-headline">Harold Fulanito</span>
-          <p>harold1000@gmail.com</p>
-          <p>New York City, NY</p>
-          <p>Active Applications: 4</p>
-        </md-card>
-
+        <profile-widget></profile-widget>
       </div>
       <div class="sidebar-col">
-        <!-- <div class="sidebar-row-small widget-container" style="background-color:green"> -->
         <div class="sidebar-row-small widget-container">
-          <!-- PROFILE GOALS -->
-
-          <md-card id="goals-widget" class='widget'>
-            <span class="md-headline">Your current goal </span>
-            <p>Complete 10 job applications</p>
-
-            <!-- bar -->
-            <div class="bar-back">
-              <div class="bar-front">
-                40%
-              </div>
-            </div>
-
-            <p>4 / 10</p>
-          </md-card>
-
+          <goals-widget></goals-widget>
         </div>
-        <!-- <div class="sidebar-row-small widget-container" style="background-color:blue"> -->
         <div class="sidebar-row-small widget-container">
-          <!-- TASKS -->
-
-          <md-card id="tasks-widget" class='widget'>
-            <span class="md-headline">Your upcoming tasks </span>
-            <md-content>
-              <ul>
-                <md-checkbox>Bring back that Mulan szechuan McNugget sauce</md-checkbox>
-                <md-checkbox>Complete this dashboard</md-checkbox>
-                <md-checkbox>Complete greenfield project</md-checkbox>
-                <md-checkbox>Graduate from HR</md-checkbox>
-                <md-checkbox>Find a job</md-checkbox>
-                <md-checkbox>Become the next Elon Musk</md-checkbox>
-                <md-checkbox>Be remembered for generations to come</md-checkbox>
-              </ul>
-            </md-content>
-          </md-card>
-
+          <tasks-widget></tasks-widget>
         </div>
       </div>
     </div>
-
     <div class="sidebar-row">
-      <!-- <div class="sidebar-col widget-container" style="background-color:yellow"> -->
       <div class="sidebar-col widget-container">
-        <!-- NEWS -->
-
-        <md-card id="news-widget" class='widget'>
-
-          <md-divider class="news-img-container" style="background-image:url('http://www.abc.net.au/news/image/7081416-3x2-940x627.jpg')">
-            <md-button class="news-settings md-fab md-mini">
-                <md-icon>settings</md-icon>
-            </md-button>
-          </md-divider>
-
-          <md-content>
-            <span class="md-headline">North Korea Test Fire of Ballistic Missile Fails, U.S. Officials Say</span>
-            <p>
-              By Ryan Browne and Steve Almasy, CNN
-            </p>
-            <p>
-              North Korea on Saturday launched a ballistic missile that blew up over land, a spokesman for the US Pacific Command said.
-              The missile didn't leave North Korean territory, US Navy Cmdr. Dave Benham said.
-            </p>
-            <p>
-              John Kirby, a CNN military and diplomatic analyst, said the regime of North Korean leader Kim Jong Un had a message for the United States and others.
-              "This is Kim giving us the finger. Giving China the finger. Giving the UN the finger. I think timing is absolutely planned and preordained in his mind," he said.
-              Trump's administration has delivered a drumbeat of warnings about the dangers of North Korea this week, using presidential statements, an unusual White House briefing for the Senate, and a White House lunch for UN ambassadors to underscore that Pyongyang is a priority.
-            </p>
-          </md-content>
-
-          <md-footer>
-            <md-button>
-                <md-icon>navigate_before</md-icon>
-            </md-button>
-            <md-button>
-                Read More ...
-            </md-button>
-            <md-button>
-                <md-icon>navigate_next</md-icon>
-            </md-button>
-          </md-footer>
-
-        </md-card>
-
+        <news-widget></news-widget>
       </div>
-      <!-- <div class="sidebar-col widget-container" style="background-color:gray"> -->
       <div class="sidebar-col widget-container">
-        <!-- CALENDAR -->
-        <md-card class='widget'>
-          calendar
-        </md-card>
-
+        <calendar-widget></calendar-widget>
       </div>
     </div>
-
   </div>
-
   <div class="dashboard-right" flex="50">
+
 
     <md-card ng-repeat="job in jobs">
       <md-card-header>
@@ -191,5 +98,8 @@ Trump's administration has delivered a drumbeat of warnings about the dangers of
         </md-tabs>
 
     </md-card>
+
+    <job-widget data="job" ng-repeat="job in jobs"></job-widget>
+
   </div>
 </div>

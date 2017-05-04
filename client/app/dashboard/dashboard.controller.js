@@ -13,4 +13,6 @@ angular.module('app.dashboard',['ngMaterial'])
       var fromNow = moment(date).fromNow();
       return `${dateFormat}  |  ${fromNow}`
     }
+
+    
   });
