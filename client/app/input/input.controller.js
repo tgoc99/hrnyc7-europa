@@ -2,7 +2,7 @@ angular.module('app.input', [
   'ngMaterial',
   'ngMessages'
 ])
-.controller('inputController', function($scope, $http, $location, News, Company) {
+.controller('inputController', function($scope, $http, $location, News, Companies) {
   var today = new Date();
   var nextStepDate = new Date();
   nextStepDate.setDate(nextStepDate.getDate() + 14);
@@ -10,7 +10,7 @@ angular.module('app.input', [
   $scope.cal= today;
 
   News.getNews(['google', 'amazon']).then((data)=>console.log(data));
-  Company.getCompanyInfo('google.com').then((data)=>console.log(data));
+  Companies.getInfo('google.com').then((data)=>console.log(data));
 
   $scope.job = {
     applicationDate: today,
