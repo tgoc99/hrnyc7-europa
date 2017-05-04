@@ -2,12 +2,15 @@ angular.module('app.input', [
   'ngMaterial',
   'ngMessages'
 ])
-.controller('inputController', function($scope, $http, $location) {
+.controller('inputController', function($scope, $http, $location, News, Company) {
   var today = new Date();
   var nextStepDate = new Date();
   nextStepDate.setDate(nextStepDate.getDate() + 14);
 
   $scope.cal= today;
+
+  News.getNews(['google', 'amazon']).then((data)=>console.log(data));
+  Company.getCompanyInfo('google.com').then((data)=>console.log(data));
 
   $scope.job = {
     applicationDate: today,
