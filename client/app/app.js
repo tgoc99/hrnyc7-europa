@@ -3,7 +3,10 @@ angular.module('app',[
   'ngMaterial',
   'app.input',
   'app.dashboard',
-  'app.auth'
+  'app.auth',
+  'app.calendar',
+  'app.services',
+  'app.services.t'
 ])
 .config(function($locationProvider, $routeProvider, $mdThemingProvider, $httpProvider) {
   $locationProvider.hashPrefix('');
@@ -11,7 +14,6 @@ angular.module('app',[
     .primaryPalette('teal')
     .accentPalette('blue');
   $routeProvider
-    // I think this should just be '/'
     .when('/', {
       templateUrl: './app/layout/landing.html',
       controller: 'authController'
@@ -29,15 +31,7 @@ angular.module('app',[
     })
 
 })
-.run(function ($rootScope, $location, $http) {
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    $http.get('api/status').then(function(data){
-      if(next.$$route && !data.data.status){
-        $location.path('/');
-      }
-    })
-  })
-});
+.run((Auth) => Auth.status)
 
 // .     .       .  .   . .   .   . .    +  .
 //   .     .  :     .    .. :. .___---------___.
