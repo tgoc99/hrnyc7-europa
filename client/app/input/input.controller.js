@@ -7,9 +7,12 @@ angular.module('app.input', [
   var nextStepDate = new Date();
   nextStepDate.setDate(nextStepDate.getDate() + 14);
 
+  $scope.cal= today;
+
   $scope.job = {
     applicationDate: today,
     companyName: '',
+    companySite: '',
     position: '',
     salary: '',
     contacts: {name: '',
@@ -28,10 +31,10 @@ angular.module('app.input', [
   // UNCOMMENT LINES FOR POST REQUEST ONCE SERVER SETUP
   $scope.submitJob = function(data){
     console.log('here')
-    // $http.post('/api/users', $scope.job)
-    // .then(function(data){
+    $http.post('/api/users', $scope.job)
+    .then(function(data){
       $location.path('/dashboard')
-    // })
+    })
   }
 
 })

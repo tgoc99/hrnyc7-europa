@@ -7,8 +7,11 @@ var Step = mongoose.model('Step', {
 		required: [true, 'Step needs a name field']
 	},
 	dueDate: {
+		type: Date
+	},
+	dateCreated: {
 		type: Date,
-		default: +new Date() + 7*24*60*60*1000
+		default: Date.now
 	},
 	comments: [String]
 });

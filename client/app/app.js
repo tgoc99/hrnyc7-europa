@@ -3,7 +3,8 @@ angular.module('app',[
   'ngMaterial',
   'app.input',
   'app.dashboard',
-  'app.auth'
+  'app.auth',
+  'app.calendar'
 ])
 .config(function($locationProvider, $routeProvider, $mdThemingProvider, $httpProvider) {
   $locationProvider.hashPrefix('');
@@ -11,7 +12,6 @@ angular.module('app',[
     .primaryPalette('teal')
     .accentPalette('blue');
   $routeProvider
-    // I think this should just be '/'
     .when('/', {
       templateUrl: './app/layout/landing.html',
       controller: 'authController'
