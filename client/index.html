@@ -28,13 +28,17 @@
 
     <!-- NAV BAR -->
     <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2 md-truncate flex>Job Search Tool</h2>
+      <div id="navbar" class="md-toolbar-tools">
+        <h2 md-truncate flex>Linked List</h2>
         <md-nav-bar aria-label="Navbar" md-selected-nav-item="currentNavItem">
-          <md-nav-item md-nav-href="#/" name="landing">Home</md-nav-item>
+          <!-- <md-nav-item md-nav-href="#/" name="landing">Home</md-nav-item> -->
           <md-nav-item md-nav-href="#dashboard" name="dashboard">Dashboard</md-nav-item>
           <md-nav-item md-nav-href="#input" name="input">Insert Job</md-nav-item>
           <md-nav-item md-nav-href="#logout" name="logout">Logout</md-nav-item>
+          <!-- <md-button class="md-raised md-accent"><md-icon>home</md-icon>HOME</md-button>
+          <md-button class="md-raised md-accent"><md-icon>dashboard</md-icon>DASHBOARD</md-button>
+          <md-button class="md-raised md-accent"><md-icon>note_add</md-icon>ADD JOB</md-button>
+          <md-button class="md-raised md-accent"><md-icon>chevron_right</md-icon>LOGOUT</md-button> -->
         </md-nav-bar>
       </div>
     </md-toolbar>
@@ -44,9 +48,19 @@
     <!-- APP -->
     <script type="text/javascript" src="app/app.js"></script>
     <script type="text/javascript" src="app/dashboard/dashboard.controller.js"></script>
-    <script type="text/javascript" src="app/dashboard/sample-job-data.js"></script>
+    <script type="text/javascript" src="app/dashboard/sampleJobsData.js"></script>
     <script type="text/javascript" src="app/input/input.controller.js"></script>
     <script type="text/javascript" src="app/layout/auth.controller.js"></script>
+    
+    <!-- Replace this with the calendarWidget below-->
     <script type="text/javascript" src="app/layout/calendar.component.js"></script>
+    
+    <script type="text/javascript" src="app/components/profileWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/newsWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/goalsWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/tasksWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/calendarWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/jobWidget.component.js"></script>
+
   </body>
 </html>
