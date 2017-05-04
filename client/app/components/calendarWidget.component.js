@@ -1,15 +1,14 @@
-angular.module('calendarWidget', []);
-
-angular.
-  module('calendarWidget').
-  component('calendarWidget', {
-    template:
-    `
-    <md-card id="calendar-widget" class='left-widget'>
-  
-    </md-card>
-    `,
-    controller: function() {
-      // nothing here yet
-    }
-  });
+angular.module('calendarWidget', [])
+.component('calendarWidget', {
+  templateUrl: './app/layout/jobCalendar.html',
+  controller: function calendarController($scope){
+    $scope.today = new Date();
+    $scope.filterDates = function(date) {
+      var day = date.getDay();
+      return day === 0 || day === 6;
+    };
+  },
+  bindings: {
+    userDates: '='
+  }
+})
