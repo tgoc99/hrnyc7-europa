@@ -26,7 +26,7 @@ angular.
     controller: function() {
       // sample data
       this.goal = 10;
-      this.current = 4; // loop through user.jobs to get this
+      this.current = 11; // loop through user.jobs to get this
 
       this.setPercentage = function() {
         var completed = this.current >= this.goal;
