@@ -1,7 +1,9 @@
 <div layout="column" ng-cloak class="md-inline-form">
-  <span class="md-headline">Input Application Data</span>
 
   <md-content layout-padding>
+    <div layout="row" layout-align="center">
+      <span class="md-headline">Input Application Data</span>
+    </div>
     <form name="jobForm" ng-submit="submitJob()">
       <div layout="row">
 
@@ -10,10 +12,15 @@
           <md-datepicker ng-model="job.appDate"></md-datepicker>
         </md-input-container>
 
-        <md-input-container flex-gt-sm>
+        <md-input-container class="md-block md-icon-float" flex-gt-sm>
           <label>Company Name</label>
           <md-icon class="material-icons">business</md-icon>
           <input ng-model="job.companyName">
+        </md-input-container>
+
+        <md-input-container flex-gt-sm>
+          <label>Company Website</label>
+          <input ng-model="job.companySite">
         </md-input-container>
 
       </div>
