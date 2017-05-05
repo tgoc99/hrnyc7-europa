@@ -3,194 +3,85 @@
 var sampleData =
 [
   {
-    companyName: 'Hack Reactor',
-    position: 'Hacker in Residence',
-    salary: '$65,000',
-    applicationDate: '04/27/2017',
-    imgURL: 'http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/54ad45d5e4b0d6033e5e1243/559bbf3ee4b0c021321aca31/1442518858893/?format=1000w',
-    contactInformation:
-    [
+    "nextStep": {
+      "name": "???",
+      "dueDate": "2017-05-09T19:02:25.090Z",
+      "_id": "590ccc71a5f9240ab767f60b",
+      "comments": [
+        "some comment"
+      ],
+      "dateCreated": "2017-05-05T19:03:13.703Z"
+    },
+    "currentStep": {
+      "dueDate": "2017-05-06T04:00:00.000Z",
+      "name": "asdasd",
+      "_id": "590cc9cfa5f9240ab767f5de",
+      "comments": [
+        "asdasdasdadsad"
+      ],
+      "dateCreated": "2017-05-05T18:51:59.875Z"
+    },
+    "position": "Senior Web Developer",
+    "company": "google",
+    "_id": "590cc9cfa5f9240ab767f5dc",
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA, 94043, US",
+    "founded": "1998",
+    "approxEmployees": "50000",
+    "officialName": "Google Inc.",
+    "imageUrl": "https://d2ojpxxtu63wzl.cloudfront.net/static/b560062037213e5dd697ef328cecdd3c_9c5671e1cd34db87e3d8bbfb230555c37b4572c9769d40c5eb04b6233b0e2a57",
+    "description": "Google’s mission is to organize the world’s information and make it universally accessible and useful.",
+    "website": "http://google.com",
+    "link": "http://www.asd.com",
+    "contacts": [
       {
-        name: 'Hack Reactor Office',
-        phone: '722-600-6349',
-        email: 'hackreactor@gmail.com'
-      },
-      {
-        name: 'Willian Hua',
-        phone: '453-638-3845',
-        email: 'huawillian@gmail.com'
+        "name": "asdsad",
+        "_id": "590cc9cfa5f9240ab767f5dd",
+        "email": "sd@gmail.com",
+        "phoneNumber": "123-123-1234"
       }
     ],
-    steps:
-    [
-      {
-        name: 'Phone Screen',
-        date: '04/27/2017',
-        comments:
-        [
-          'Interview went really well',
-          'I really need to work on my Angular skills',
-          'I got a hard coding question, review Cracking the Coding Interview'
-        ]
-      },
-      {
-        name: 'Whiteboarding Interview',
-        date: '05/14/2017',
-        comments:
-        [
-          'Im kinds worried about this',
-          'Remember to ask about health insurance'
-        ]
-      }
-    ],
-    currentStep: 0
+    "dateCreated": "2017-05-05T18:49:52.797Z",
+    "salary": "123556"
   },
   {
-    companyName: 'Google',
-    position: 'Junior Software Developer',
-    salary: '$155,000',
-    applicationDate: '04/27/2017',
-    imgURL: 'https://www.wired.com/wp-content/uploads/2015/09/google-logo-1200x630.jpg',
-    contactInformation:
-    [
+    "nextStep": {
+      "dueDate": "2017-05-25T04:00:00.000Z",
+      "name": "Follow Up",
+      "_id": "590ccd6da5f9240ab767f68b",
+      "comments": [
+        "yea"
+      ],
+      "dateCreated": "2017-05-05T19:07:25.937Z"
+    },
+    "currentStep": {
+      "dueDate": "2017-05-10T04:00:00.000Z",
+      "name": "Interview",
+      "_id": "590ccd6da5f9240ab767f68a",
+      "comments": [
+        "????????????"
+      ],
+      "dateCreated": "2017-05-05T19:07:25.936Z"
+    },
+    "position": "Junior Web Developer",
+    "company": "ebay",
+    "_id": "590ccd6da5f9240ab767f688",
+    "address": "2065 Hamilton Ave, San Jose, CA, 95125, US",
+    "founded": "1995",
+    "approxEmployees": "20000",
+    "officialName": "eBay Inc.",
+    "imageUrl": "https://d2ojpxxtu63wzl.cloudfront.net/static/a3908ee022272b93c06e66df437c0511_0feb658d0bcecd87295c5feb46d4b8aecda03002f0ae06106aa8d06e732cbe51",
+    "description": "eBay Inc. (eBay) is a technology company based in the US. It offers technology platforms for e-commerce and online payments. The companys e-commerce platform, eBay.com, is an online marketplace for the sale of goods. The platform offers buyers and sellers a wide range of choice to buy or sell goods through listing format, item condition and delivery format. The company under the StubHub platform offers event tickets including sports, concert, theater and other live entertainment events. It also operates online classifieds websites such as eBay Classifieds, Kijiji, Gumtree, Marktplaats.nl and mobile.de. It also provides e-commerce technologies, online marketing services and omni-channel operations capabilities to enterprise clients and retailers through eBay Enterprise. eBay is headquartered in San Jose, California, the US.The company reported revenues of (US Dollars) US$8,592 million for the fiscal year ended December 2015 (FY2015), a decrease of 2.3% over FY2014. In FY2015, the companys operating margin was 25.6%, compared to an operating margin of 28.2% in FY2014. In FY2015, the company recorded a net margin of 20.1%, compared to a net margin of 0.5% in FY2014.The company reported revenues of US$2,137 million for the first quarter ended March 2016, a decrease of 8% over the previous quarter.",
+    "website": "http://ebay.com",
+    "link": "http://asdasd.com",
+    "contacts": [
       {
-        name: 'Sidney O. Kenney',
-        phone: '720-938-3441',
-        email: 'SidneyOKenney@rhyta.com'
-      },
-      {
-        name: 'Grace C. Puga',
-        phone: '609-894-3202',
-        email: 'huawillian@gmail.com'
-      },
-      {
-        name: 'Maricela M. Charette',
-        phone: '858-795-4575',
-        email: 'MaricelaMCharette@jourrapide.com'
+        "name": "asdl",
+        "_id": "590ccd6da5f9240ab767f689",
+        "email": "K@gmail.com",
+        "phoneNumber": "4900349090"
       }
     ],
-    steps:
-    [
-      {
-        name: 'Applied Online',
-        date: '04/27/2017',
-        comments:
-        [
-          'Company seems really nice',
-          'I should spend more time on my cover letters'
-        ]
-      },
-      {
-        name: 'Phone Screen',
-        date: '03/30/2017',
-        comments:
-        [
-          'Im also worried about this',
-          'Review data structures'
-        ]
-      }
-    ],
-    currentStep: 1
-  },
-  {
-    companyName: 'LinkedIn',
-    position: 'Junior Front End Developer',
-    salary: '$90,000',
-    applicationDate: '04/15/2017',
-    imgURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png',
-    contactInformation:
-    [
-      {
-        name: 'Frank J. Hebert',
-        phone: '740-304-4148',
-        email: 'FrankJHebert@rhyta.com'
-      },
-      {
-        name: 'Afya Ruyah Halabi',
-        phone: '440-332-8407',
-        email: 'AfyaRuyahHalabi@dayrep.com'
-      }
-    ],
-    steps:
-    [
-      {
-        name: 'Applied Online',
-        date: '03/15/2017',
-        comments:
-        [
-          'Im not too sure about this one',
-          'Website mentioned pretty good job opportunities abroad'
-        ]
-      }
-    ],
-    currentStep: 0
-  },
-  {
-    companyName: 'TD Bank',
-    position: 'Junior Back End Developer',
-    salary: '$105,000',
-    applicationDate: '04/05/2017',
-    imgURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toronto-Dominion_Bank_logo.svg/2000px-Toronto-Dominion_Bank_logo.svg.png',
-    contactInformation:
-    [
-      {
-        name: 'Rebeca Gomes Cardoso',
-        phone: '973-992-5160',
-        email: 'rebegomez@rhyta.com'
-      },
-      {
-        name: 'TD Bank HR Department',
-        phone: '262-958-9658',
-        email: 'tdbank@gmail.com'
-      },
-      {
-        name: 'Ryuuma Nagano',
-        phone: '928-428-0533',
-        email: 'RyuumaNagano@rhyta.com'
-      }
-    ],
-    steps:
-    [
-      {
-        name: 'Career Fair',
-        date: '04/01/2017',
-        comments:
-        [
-          'Interviewer smells funny',
-          'Work life balance seems really good',
-          'Should try to get an interview ASAP, only one spot available'
-        ]
-      },
-      {
-        name: 'Coding Challenge',
-        date: '04/02/2017',
-        comments:
-        [
-          'I had to make a calculator in JSFuck',
-          'Took me about 3 hours to complete'
-        ]
-      },
-      {
-        name: 'Interview',
-        date: '04/10/2017',
-        comments:
-        [
-          'I think this went really well',
-          'I aced the whiteboarding challenge'
-        ]
-      },
-      {
-        name: 'Second Interview',
-        date: '05/03/2017',
-        comments:
-        [
-          'Should study Node and Express',
-          'Interview focused on technical skills',
-          'Should mention my HR projects',
-          'Dont forget to mention your HS rank (made it to legend this month)'
-        ]
-      }
-    ],
-    currentStep: 3
-  },
+    "dateCreated": "2017-05-05T19:06:32.751Z",
+    "salary": "123123"
+  }
 ]

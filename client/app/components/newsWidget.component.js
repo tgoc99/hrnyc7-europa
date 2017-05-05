@@ -29,8 +29,11 @@ angular.
       </md-footer>
     </md-card>
     `,
-    controller: function() {
+    controller: function(News) {
       // sample data
+      News.getNews([]).then(data=>{
+        
+      })
       this.imageUrl = 'http://www.abc.net.au/news/image/7081416-3x2-940x627.jpg';
       this.title = 'North Korea Test Fire of Ballistic Missile Fails, U.S. Officials Say';
       this.author = 'Ryan Browne and Steve Almasy';
