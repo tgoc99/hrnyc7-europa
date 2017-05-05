@@ -1,34 +1,39 @@
-<div layout="column" ng-cloak class="md-inline-form">
-  <div layout="row" layout-align="center">
-    <img src='../../assets/logo-placeholder.jpeg' class='logo' width="50%">
-  </div>
-  <div ng-show="showSignUp" layout="row" layout-align="center">
-    <h2>Sign up for your free account!</h2>
-  </div> 
-  <div ng-show="!showSignUp" layout="row" layout-align="center">
-    <h2>Please Sign in</h2>
-  </div> 
-  <form name="jobForm" ng-submit="authenticateUser(user)">
-    <div layout="row" layout-align="center">
-      <md-input-container flex='30'>
-        <label>User Name</label>
-        <input ng-model="user.username" ng-required="true">
-      </md-input-container>
-    </div>
-    <div layout="row" layout-align="center">
-      <md-input-container flex='30'>
-        <label>Password</label>
-        <input ng-model="user.password" ng-required="true">
-      </md-input-container>
-    </div>
-    <div ng-show="showSignUp" layout="row" layout-align="center top">
-      <md-button type="submit" class="md-primary">Sign Up</md-button>
-    </div>
-    <div ng-show="!showSignUp" layout="row" layout-align="center top">
-      <md-button type="submit" class="md-primary">Sign In</md-button>
-    </div>
-  </form>
-  <div layout="row" layout-align="center top">
-    <md-button ng-click="toggleAuth()" class="md-primary">Already have an account?</md-button>
-  </div>
+<div class="landingContainer" layout="row" layout-align="center center">
+  <md-card class="landingCard">
+    <md-card-content layout-padding>
+      <div layout="column" ng-cloak class="md-inline-form">
+        <div ng-show="showSignUp" layout="row" layout-align="center" class="md-title">
+          <h2 flex='80'>Sign up for your free account!</h2>
+        </div> 
+        <div ng-show="!showSignUp" layout="row" layout-align="center" class="md-title">
+          <h2 flex='80'>Please Sign in</h2>
+        </div> 
+        <form name="jobForm" ng-submit="authenticateUser(user)">
+          <div layout="row" layout-align="center">
+            <md-input-container flex='80'>
+              <label>User Name</label>
+              <input ng-model="user.username" ng-required="true">
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="center">
+            <md-input-container flex='80'>
+              <label>Password</label>
+              <input ng-model="user.password" ng-required="true">
+            </md-input-container>
+          </div>
+          <div ng-show="showSignUp" layout="row" layout-align="center top">
+            <md-button type="submit" class="md-primary">Sign Up</md-button>
+          </div>
+          <div ng-show="!showSignUp" layout="row" layout-align="center top">
+            <md-button type="submit" class="md-primary">Sign In</md-button>
+          </div>
+        </form>
+        <div layout="row" layout-align="center top">
+          <md-button ng-click="toggleAuth()" class="md-primary">Already have an account?</md-button>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
 </div>
+
+<div class="landingBackground"> </div>
