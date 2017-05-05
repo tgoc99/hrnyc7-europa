@@ -5,6 +5,7 @@ angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'ne
 
       Jobs.get()
       .then(function(data) {
+        console.log(data)
         $scope.jobs = data
       })
       .catch(function(err) {

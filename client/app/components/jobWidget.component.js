@@ -19,15 +19,20 @@ angular.
             <md-icon>{{$ctrl.renderFavoriteIcon()}}</md-icon>
         </md-button>
 
-        <md-button class="md-fab md-mini">
-            <md-tooltip md-direction="top">Settings</md-tooltip>
-            <md-icon>settings</md-icon>
+        <md-button class="md-fab md-mini" ng-click="$ctrl.editJob()">
+            <md-tooltip md-direction="top">Edit Job</md-tooltip>
+            <md-icon>edit</md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-mini" ng-click="$ctrl.deleteJob($ctrl.data)">
+            <md-tooltip md-direction="top">Delete Job</md-tooltip>
+            <md-icon>delete</md-icon>
         </md-button>
       </md-card-header>
 
       <md-tabs md-dynamic-height="" md-border-bottom="">
 
-          <md-tab label="JOB INFO">
+          <md-tab label="JOB OVERVIEW">
             <md-content class="md-padding">
               <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.dateCreated)}}</p>
               <p class="md-subhead"><strong>Application Link: </strong>{{$ctrl.data.link}}</p>
@@ -37,9 +42,14 @@ angular.
             </md-content>
           </md-tab>
 
-          <md-tab label="COMPANY INFO">
+          <md-tab label="COMPANY DETAILS">
           <md-content class="md-padding">
+            <p class="md-subhead"><strong>Company: </strong>{{$ctrl.data.officialName}}</p>
+            <p class="md-subhead"><strong>Website: </strong><a href='http://{{$ctrl.data.website}}'/>{{$ctrl.data.website}}</a></p>
             <p class="md-subhead"><strong>Description: </strong>{{$ctrl.data.description}}</p>
+            <p class="md-subhead"><strong>Founded: </strong>{{$ctrl.data.founded}}</p>
+            <p class="md-subhead"><strong># of Employees: </strong>{{$ctrl.data.approxEmployees}}</p>
+            <p class="md-subhead"><strong>Address: </strong>{{$ctrl.data.address}}</p>
             </md-content>
           </md-tab>
 
@@ -83,9 +93,13 @@ angular.
     bindings: {
      data: '='
     },
-    controller: function() {
+    controller: function($window, $scope, $route, $mdDialog, Jobs) {
       // favorite icon
       this.favorite = false;
+
+      Jobs.get().then(function(data) {
+        $scope.jobs = data;
+      });
 
       this.toggleFavorite = function() {
         this.favorite = !this.favorite;
@@ -106,6 +120,103 @@ angular.
         var dateFormated = moment(date).format("MMM Do YY");
         var dateFromNow = moment(date).fromNow();
         return `${dateFromNow} on ${dateFormated}`;
+      }
+
+      this.deleteJob = function(job) {
+        let query = JSON.stringify({_id : job._id});
+
+        if($window.confirm('Are you sure you want to delete this job?')) {
+          Jobs.delete(query)
+          .then(function(res) {
+            $route.reload()
+            $window.alert(res);
+          })
+          .catch(function(err) {
+            console.log(err)
+          })
+        }
+      }
+
+      this.editJob = function(event) {
+        $mdDialog.show({
+          clickOutsideToClose: true,
+          scope: $scope,        
+          preserveScope: true,           
+          template: `
+          <md-dialog>
+            <md-dialog-content>
+              <div layout="row" layout-align="center">
+                <span class="md-headline"></span>
+              </div>
+
+              <form name="jobForm" ng-submit="submitJob()">
+
+                <div layout-gt-sm="row" layout-padding>
+                  <md-input-container flex-gt-sm="30">
+                    <label>Add Contact's Name</label>
+                    <md-icon class="material-icons">contacts</md-icon>
+                    <input ng-model="job.contacts[0].name">
+                  </md-input-container>
+
+                  <md-input-container flex-gt-sm="35">
+                    <label>Contact's Phone Number</label>
+                    <md-icon class="material-icons">call</md-icon>
+                    <input ng-model="job.contacts[0].phoneNumber">
+                  </md-input-container>
+
+                  <md-input-container flex-gt-sm="35">
+                    <label>Contact's E-mail</label>
+                    <md-icon class="material-icons">email</md-icon>
+                    <input ng-model="job.contacts[0].email" type='email'>
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row" layout-padding>
+                  <md-input-container flex-gt-sm>
+                    <label>Current Step</label>
+                    <input ng-model="job.currentStep.name" required>
+                  </md-input-container>
+
+                  <md-input-container flex-gt-sm>
+                    <label>Current Step Date</label>
+                    <md-datepicker ng-model="job.currentStep.dueDate" required></md-datepicker>
+                  </md-input-container>
+
+                  <md-input-container flex-gt-sm="35">
+                    <label>Current Step Comments</label>
+                    <md-icon class="material-icons">comment</md-icon>
+                    <input ng-model="job.currentStep.comments[0]">
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row" layout-padding>
+                  <md-input-container flex-gt-sm>
+                    <label>Next Step</label>
+                    <input ng-model="job.nextStep.name">
+                  </md-input-container>
+
+                  <md-input-container flex-gt-sm>
+                    <label>Next Step Date</label>
+                    <md-datepicker ng-model="job.nextStep.dueDate"></md-datepicker>
+                  </md-input-container>
+
+                  <md-input-container flex-gt-sm="35">
+                    <label>Next Step Comments</label>
+                    <md-icon class="material-icons">comment</md-icon>
+                    <input ng-model="job.nextStep.comments[0]">
+                  </md-input-container>
+                </div>
+
+                <md-button type="submit" class="md-primary">Modify Job</md-button>
+              </form>
+            </md-dialog-content>
+          </md-dialog>`,
+          controller: function DialogController($scope, $mdDialog) {
+            $scope.closeDialog = function() {
+              $mdDialog.hide();
+            }
+          }
+        })
       }
     }
   });

@@ -144,11 +144,14 @@ angular.module('app.services', [])
 				console.log(err)
 			})
 		},
-		delete: function(data) {
+		delete: function(jobData) {
 			return $http({
 				method: 'DELETE',
 				url: 'api/jobs',
-				data: data
+				data: jobData,
+				headers: {
+					'Content-type': 'application/json;charset=utf-8'
+				}
 			})
 			.then(function(res) {
 				console.log(res)
