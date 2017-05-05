@@ -321,7 +321,10 @@ module.exports = function(app, express) {
 			} else {
 				console.log('successful retrieve user', username);
 				var userSteps = [];
-				user[0].jobs.forEach(job => userSteps = userSteps.concat(job.steps));
+				user[0].jobs.forEach(job => {
+					userSteps = userSteps.concat(job.currentStep);
+					userSteps = userSteps.concat(job.nextStep);
+				});
 				var dates = userSteps.map(step => step.dueDate);
 				dates = dates.filter(step => !!step);
 				res.send(dates);
