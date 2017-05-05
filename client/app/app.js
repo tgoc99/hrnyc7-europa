@@ -29,7 +29,7 @@ angular.module('app',[
     })
 
 })
-.run((Auth) => Auth.status)
+.run((Auth, $rootScope, $location, $http) => Auth.status($rootScope, $location, $http))
 
 // .     .       .  .   . .   .   . .    +  .
 //   .     .  :     .    .. :. .___---------___.
