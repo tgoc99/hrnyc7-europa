@@ -1,0 +1,30 @@
+<div layout="row">
+  <div class="dashboard-left" flex="50">
+    <div class="sidebar-row">
+      <div class="sidebar-col widget-container">
+        <profile-widget></profile-widget>
+      </div>
+      <div class="sidebar-col">
+        <div class="sidebar-row-small widget-container">
+          <goals-widget></goals-widget>
+        </div>
+        <div class="sidebar-row-small widget-container">
+          <tasks-widget></tasks-widget>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-row">
+      <div class="sidebar-col widget-container">
+        <news-widget></news-widget>
+      </div>
+      <div class="sidebar-col widget-container">
+        <calendar-widget></calendar-widget>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-right" flex="50">
+
+    <job-widget data="job" ng-repeat="job in jobs"></job-widget>
+
+  </div>
+</div>

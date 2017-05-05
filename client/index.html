@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <meta name="'viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ANGULAR -->
+    <script type="text/javascript" src="lib/moment/moment.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="lib/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="lib/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="lib/angular-mocks/angular-mocks.js"></script>
+    <script type="text/javascript" src="lib/angular-material/angular-material.min.js"></script>
+
+    <title>Job Search Tool</title>
+  </head>
+  <body>
+
+    <!-- NAV BAR -->
+    <md-toolbar style="min-height:70px" ng-controller="navController">
+      <div id="navbar" class="md-toolbar-tools">
+        <i class="material-icons" style="font-size: 50px; margin-right: 20px;">assignment</i>
+
+
+        <h2 md-truncate flex>Linked List</h2>
+        <md-nav-bar aria-label="Navbar" md-selected-nav-item="currentNavItem">
+          <!-- <md-nav-item md-nav-href="#/" name="landing">Home</md-nav-item> -->
+          <md-nav-item ng-show="showSignUp" md-nav-href="#dashboard" name="dashboard" ng-click="">Dashboard</md-nav-item>
+          <md-nav-item ng-show="showSignUp" md-nav-href="#input" name="input">Insert Job</md-nav-item>
+          <md-nav-item ng-show="showSignUp" md-nav-href="#logout" name="logout">Logout</md-nav-item>
+          <!-- <md-button class="md-raised md-accent"><md-icon>home</md-icon>HOME</md-button>
+          <md-button class="md-raised md-accent"><md-icon>dashboard</md-icon>DASHBOARD</md-button>
+          <md-button class="md-raised md-accent"><md-icon>note_add</md-icon>ADD JOB</md-button>
+          <md-button class="md-raised md-accent"><md-icon>chevron_right</md-icon>LOGOUT</md-button> -->
+        </md-nav-bar>
+      </div>
+    </md-toolbar>
+
+    <div class="wrapper container" ng-view></div>
+
+    <!-- APP -->
+    <script type="text/javascript" src="app/services/services.js"></script>
+    <script type="text/javascript" src="app/dashboard/dashboard.controller.js"></script>
+    <script type="text/javascript" src="app/dashboard/sampleJobsData.js"></script>
+    <script type="text/javascript" src="app/input/input.controller.js"></script>
+    <script type="text/javascript" src="app/layout/auth.controller.js"></script>
+
+    <script type="text/javascript" src="app/app.js"></script>
+    
+    <!-- Replace this with the calendarWidget below-->    
+    <script type="text/javascript" src="app/components/profileWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/newsWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/goalsWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/tasksWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/calendarWidget.component.js"></script>
+    <script type="text/javascript" src="app/components/jobWidget.component.js"></script>
+
+  </body>
+</html>
