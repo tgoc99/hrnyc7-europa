@@ -16,6 +16,10 @@ angular.module('app.input', [
     website: undefined,
     description: undefined,
     imageUrl: undefined,
+    officialName: undefined,
+    approxEmployees: undefined,
+    founded: undefined,
+    address: undefined,
     currentStep: {name: undefined,
               comments:[],
               dueDate: null}, 
@@ -42,6 +46,18 @@ angular.module('app.input', [
 
       $scope.job.imageUrl = data.logo;
       $scope.job.description = data.organization.overview;
+      $scope.job.officialName = data.organization.name;
+      $scope.job.approxEmployees = data.organization.approxEmployees;
+      $scope.job.founded = data.organization.founded;
+
+      var addr = data.organization.contactInfo.addresses[0];
+
+      $scope.job.address = addr.addressLine1 + ", "
+        + addr.locality + ", "
+        + addr.region.code + ", "
+        + addr.postalCode + ", "
+        + addr.country.code;
+
 
       Jobs.create($scope.job);
     });
