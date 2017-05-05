@@ -29,10 +29,10 @@ angular.
 
           <md-tab label="GENERAL">
             <md-content class="md-padding">
-              <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.applicationDate)}}</p>
-              <p class="md-subhead"><strong>Application Link: </strong> http://sammpleUrl.com</p>
-              <p class="md-subhead"><strong>Current Step: </strong>Send Application</p>
-              <p class="md-subhead"><strong>Next Step: </strong>Phone Screen</p>
+              <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.data.dateCreated}}</p>
+              <p class="md-subhead"><strong>Application Link: </strong>{{$ctrl.data.link}}</p>
+              <p class="md-subhead"><strong>Current Step: </strong>{{$ctrl.data.steps[0]}}</p>
+              <p class="md-subhead"><strong>Next Step: </strong>{{$ctrl.data.steps[1]}}</p>
             </md-content>
           </md-tab>
 

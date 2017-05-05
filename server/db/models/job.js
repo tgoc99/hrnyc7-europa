@@ -15,7 +15,7 @@ var Job = mongoose.model('Job', {
 	},
 	dateCreated: {
 		type: Date,
-		default: Date.now
+		default: ''
 	},
 	position: {
 		type: String,
