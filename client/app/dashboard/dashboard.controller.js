@@ -3,15 +3,9 @@ angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'ne
     
     $scope.getJobs = function() {
 
-      $scope.jobs;
-
       Jobs.get()
       .then(function(data) {
-        if(data.length === 0) {
-          $scope.jobs = [{company: 'Input an application to get started!'}]
-        } else {
-          $scope.jobs = data
-        }
+        $scope.jobs = data
       })
       .catch(function(err) {
         console.log(err)
