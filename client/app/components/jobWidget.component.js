@@ -7,10 +7,10 @@ angular.
     `
     <md-card>
       <md-card-header>
-        <md-card-avatar class="job-widget-image" style="{{$ctrl.imageStyle($ctrl.data.imgURL)}}"></md-card-avatar>
+        <md-card-avatar class="job-widget-image" style="{{$ctrl.imageStyle($ctrl.data.imageUrl)}}"></md-card-avatar>
 
         <md-card-header-text>
-          <span class="md-headline">{{$ctrl.data.companyName}}</span>
+          <span class="md-headline">{{$ctrl.data.company}}</span>
           <span class="md-subhead">{{$ctrl.data.position}}</span>
         </md-card-header-text>
 
@@ -27,34 +27,51 @@ angular.
 
       <md-tabs md-dynamic-height="" md-border-bottom="">
 
-          <md-tab label="GENERAL">
+          <md-tab label="JOB INFO">
             <md-content class="md-padding">
-              <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.applicationDate)}}</p>
-              <p class="md-subhead"><strong>Application Link: </strong> http://sammpleUrl.com</p>
-              <p class="md-subhead"><strong>Current Step: </strong>Send Application</p>
-              <p class="md-subhead"><strong>Next Step: </strong>Phone Screen</p>
+              <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.dateCreated)}}</p>
+              <p class="md-subhead"><strong>Application Link: </strong>{{$ctrl.data.link}}</p>
+              <p class="md-subhead"><strong>Current Step: </strong>{{$ctrl.data.currentStep.name}}</p>
+              <p class="md-subhead"><strong>Next Step: </strong>{{$ctrl.data.nextStep.name}}</p>
+              <p class="md-subhead"><strong>Salary: </strong>\${{$ctrl.data.salary}}</p>
             </md-content>
           </md-tab>
 
           <md-tab label="COMPANY INFO">
-
+          <md-content class="md-padding">
+            <p class="md-subhead"><strong>Description: </strong>{{$ctrl.data.description}}</p>
+            </md-content>
           </md-tab>
 
-          <md-tab label="CONTACT">
-            <md-content ng-repeat='contact in $ctrl.data.contactInformation'>
+          <md-tab label="CONTACTS">
+            <md-content ng-repeat='contact in $ctrl.data.contacts'>
               <md-divider layout="column" class="contact-divider">
                 <p class="md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
-                <p class="md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phone}}</p>
+                <p class="md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phoneNumber}}</p>
                 <p class="md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
               </md-divider>
             </md-content>
           </md-tab>
 
-          <md-tab label="STEPS">
+          <md-tab label="STEP DETAILS">
+          <md-content class="md-padding">
 
+            <md-divider layout="column" class="contact-divider">
+              <p class="md-subhead"> <strong>Current Step: </strong> {{$ctrl.data.currentStep.name}}</p>
+              <p class="md-subhead"> <strong>Due Date: </strong> {{$ctrl.parseDate($ctrl.data.currentStep.dueDate)}}</p>
+              <p class="md-subhead"> <strong>Comments: </strong> 
+                <md-content ng-repeat='comment in $ctrl.data.currentStep.comments'> {{comment}} </md-content>
+              </p>
+            </md-divider>
+
+            <md-divider layout="column" class="contact-divider">
+              <p class="md-subhead"> <strong>Next Step: </strong> {{$ctrl.data.nextStep.name}}</p>
+              <p class="md-subhead"> <strong>Due Date: </strong> {{$ctrl.parseDate($ctrl.data.nextStep.dueDate)}}</p>
+              <p class="md-subhead"> <strong>Comments: </strong> 
+                <md-content ng-repeat='comment in $ctrl.data.nextStep.comments'> {{comment}} </md-content>
+              </p>
+            </md-divider>
           </md-tab>
-
-          <md-tab label="TASKS">
 
           </md-tab>
 
