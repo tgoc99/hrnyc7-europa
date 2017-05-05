@@ -12,7 +12,7 @@ angular.module('calendarWidget', [])
 
     $http.get('/api/dates')
     .then(data => {
-      var jsDates = data.map(date => new Date(date));
+      var jsDates = data.data.map(date => new Date(date));
       $scope.dates = jsDates.map(date=> {
         return [date.getFullYear(), date.getMonth(), date.getDate()]
       });

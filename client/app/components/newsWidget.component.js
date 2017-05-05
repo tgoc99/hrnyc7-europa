@@ -31,7 +31,7 @@ angular.
     `,
     controller: function(News) {
       // sample data
-      News.getNews().then(data=>{
+      News.getNews([]).then(data=>{
         
       })
       this.imageUrl = 'http://www.abc.net.au/news/image/7081416-3x2-940x627.jpg';

@@ -29,6 +29,13 @@ angular.module('app',[
     })
 
 })
+.controller('navController', function($scope, $location, $interval) {
+    $scope.showSignUp = false;
+
+    $interval(function(){
+        $scope.showSignUp = $location.url() !== "/";
+    }, 500);
+})
 .run((Auth, $rootScope, $location, $http) => Auth.status($rootScope, $location, $http))
 
 // .     .       .  .   . .   .   . .    +  .
