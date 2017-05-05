@@ -1,5 +1,15 @@
 <div class="landingContainer" layout="row" layout-align="center center">
-  <md-card class="landingCard">
+
+  <div flex='60' layout="column" layout-align="center start" ng-show="!getStarted">
+    <div flex='100' class="md-display-3" style="color:white; 5px 5px #FFF;"> LinkedList</div>
+    <br>
+    <div flex='100' class="md-title" style="color:white; 5px 5px #FFF;"> 
+    Organize, manage, and plan your entire job application process with our slick dashboard and easy-to-use job creation form. </div>
+    <br>
+    <md-button flex='100' ng-click="toggleGetStarted()" class="md-primary" style="background-color: rgb(0,150,136);color: white;"> GET STARTED </md-button>
+  </div>
+
+  <md-card class="landingCard" ng-show="getStarted">
     <md-card-content layout-padding>
       <div layout="column" ng-cloak class="md-inline-form">
         <div ng-show="showSignUp" layout="row" layout-align="center" class="md-title">
@@ -34,6 +44,7 @@
       </div>
     </md-card-content>
   </md-card>
+
 </div>
 
 <div class="landingBackground"> </div>

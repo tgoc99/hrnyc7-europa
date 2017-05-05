@@ -25,7 +25,7 @@ LANDING
     background-image: url('./assets/pexels-photo-300001.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
-    filter:brightness(50%);
+    filter:sepia(75%) brightness(20%);
   }
 
   .landingCard {
