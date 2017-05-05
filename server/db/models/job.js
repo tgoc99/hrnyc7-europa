@@ -32,11 +32,27 @@ var Job = mongoose.model('Job', {
 	},
 	description: {
 		type: String,
-		default: 'Please update the description...'
+		default: 'description was not found from website link...'
 	},
 	imageUrl: {
 		type: String,
-		default: 'Please update the imageUrl...'
+		default: 'imageUrl was not found from website link...'
+	},
+	officialName: {
+		type: String,
+		default: 'officialName was not found from website link...'
+	},
+	approxEmployees: {
+		type: String,
+		default: 'approxEmployees was not found from website link...'
+	},
+	founded: {
+		type: String,
+		default: 'founded was not found from website link...'
+	},
+	address: {
+		type: String,
+		default: 'address was not found from website link...'
 	},
 	currentStep: Step.schema,
 	nextStep: Step.schema
