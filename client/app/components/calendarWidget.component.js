@@ -1,24 +1,38 @@
 angular.module('calendarWidget', [])
 .component('calendarWidget', {
   templateUrl: './app/layout/jobCalendar.html',
-  controller: function calendarController($scope, $http){
-    $scope.date;
+  controller: function calendarController($scope, $http, $route, $mdDialog){
+    // $scope.date = new Date();
     $scope.today = new Date();
     $scope.dates = [];
 
     //LATER SET MAXDATE AS LATEST DATE FROM API
     $scope.maxDate = new Date();
     $scope.maxDate.setDate($scope.today.getDate() + 21);
+    $scope.taskData;
 
     $http.get('/api/dates')
     .then(data => {
-      var jsDates = data.data.map(date => new Date(date));
+      $scope.taskData = data;
+      console.log($scope.taskData)
+      var jsDates = data.data.map(date => new Date(date.dueDate));
       $scope.dates = jsDates.map(date=> {
         return [date.getFullYear(), date.getMonth(), date.getDate()]
       });
     });
 
-    console.log('dates:', $scope.dates)
+    $scope.showPrerenderedDialog = function(ev) {
+      $scope.date = ev.target.parentNode.attributes['aria-label'].value;
+      $scope.taskDate = new Date($scope.date);
+      $scope.task = $scope.taskData.data.filter(task => new Date(task.dueDate).getTime() === $scope.taskDate.getTime())
+
+      $mdDialog.show({
+        contentElement: '#myDialog',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true
+      });
+    };
 
     $scope.filterDates = date => {
       var year = date.getFullYear();
@@ -32,5 +46,5 @@ angular.module('calendarWidget', [])
         return acc;
       }, false)
     };
-  },
+  }
 })
