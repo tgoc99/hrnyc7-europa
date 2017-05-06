@@ -32,4 +32,9 @@ angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'ne
         console.log(res)
       })
     }
+
+    $scope.filterJobs = function (job) {
+        return (angular.lowercase(job.company).indexOf(angular.lowercase($scope.search) || '') !== -1 ||
+                angular.lowercase(job.position).indexOf(angular.lowercase($scope.search) || '') !== -1);
+    };
   });
