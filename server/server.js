@@ -11,6 +11,9 @@ var hash = require('bcrypt-nodejs');
 var passport = require('passport');
 var localStrategy = require('passport-local' ).Strategy;
 
+// adding favicon in express
+var favicon = require('serve-favicon');
+
 // user schema/model
 var User = require('./db/models/user.js');
 
@@ -38,6 +41,9 @@ app.use(passport.session());
 
 //serve up static files
 app.use(express.static(__dirname + '/../client'));
+
+// add favicon
+app.use(favicon(__dirname + '/../client/favicon.ico'));
 
 // configure passport
 passport.use(new localStrategy(User.authenticate()));

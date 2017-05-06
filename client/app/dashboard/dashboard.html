@@ -1,38 +1,49 @@
-<div layout="row">
-  <div class="dashboard-left" flex="50">
-    <div class="sidebar-row">
-      <div class="sidebar-col widget-container">
-        <profile-widget></profile-widget>
-      </div>
-      <div class="sidebar-col">
-        <div class="sidebar-row-small widget-container">
-          <goals-widget></goals-widget>
-        </div>
-        <div class="sidebar-row-small widget-container">
-          <tasks-widget></tasks-widget>
-        </div>
-      </div>
-    </div>
-    <div class="sidebar-row">
-      <div class="sidebar-col widget-container">
-        <news-widget></news-widget>
-      </div>
-      <div class="sidebar-col widget-container">
-        <calendar-widget></calendar-widget>
-      </div>
-    </div>
-  </div>
-  <div class="dashboard-right" flex="50">
+<div layout="row" layout-wrap layout-padding>
 
-    <job-widget data="job" ng-repeat="job in jobs" ng-if="jobs.length !== 0"></job-widget>
+  <div flex-gt-sm="60" flex-gt-xs="70" flex="100" layout-wrap flex-order-gt-xs="1">
+    <div layout-margin layout-padding flex="100" style="background-color:white;">
+      <md-input-container flex="100">
+        <label> Search Jobs </label>
+        <md-icon class="material-icons">search</md-icon>
+        <input type="text">
+      </md-input-container>
+    </div>
+
+    <job-widget flex="100" data="job" ng-repeat="job in jobs" ng-if="jobs.length !== 0"></job-widget>
+
     <md-card ng-if="jobs.length === 0">
       <md-card-header>
         <md-card-header-text>
           <span class="md-headline">Click on 'Insert Job' above to track an application!</span>
         </md-card-header-text>
-        
       </md-card-header>
     </md-card>
 
+  </div>
+
+  <div flex-gt-sm="40" flex-gt-xs="30" flex="100" flex-order-gt-xs="-1">
+    <div layout-gt-sm="row" flex="100">
+      <div flex="100" class="widget-container">
+        <goals-widget flex></goals-widget>
+      </div>
+    </div>
+
+    <div layout-gt-sm="row" flex="100">
+      <div layout-gt-sm="col" flex-gt-sm="50" flex="100" class="widget-container">
+        <profile-widget flex></profile-widget>
+      </div>
+      <div layout-gt-sm="col" flex-gt-sm="50" flex="100" class="widget-container">
+        <news-widget flex></news-widget>
+      </div>
+    </div>
+
+    <div layout-gt-sm="row" flex="100">
+      <div layout-gt-sm="col" flex-gt-sm="50" flex="100" class="widget-container">
+        <calendar-widget flex></calendar-widget>
+      </div>
+      <div layout-gt-sm="col" flex-gt-sm="50" flex="100" class="widget-container">
+        <tasks-widget flex></tasks-widget>
+      </div>
+    </div>
   </div>
 </div>

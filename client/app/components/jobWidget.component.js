@@ -32,7 +32,12 @@ angular.
 
       <md-tabs md-dynamic-height="" md-border-bottom="">
 
+          <md-tab>
+            <md-tab-label><md-icon>expand_less</md-icon></md-tab-label>
+          </md-tab>
+
           <md-tab label="JOB OVERVIEW">
+
             <md-content class="md-padding">
               <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.dateCreated)}}</p>
               <p class="md-subhead"><strong>Application Link: </strong>{{$ctrl.data.link}}</p>
