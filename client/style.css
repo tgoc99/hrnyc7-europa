@@ -293,16 +293,37 @@ NEWS WIDGET
 
 #news-widget span {
   text-align: center;
+  font-size: 12pt;
+  font-weight: bold;
 }
 
 #news-widget md-footer {
   max-height: 40px;
-
   text-align: center;
 }
 
 #news-widget button {
   margin: 0;
+  min-height: 20px;
+  min-width: 40px;
+}
+
+#news-widget p {
+  font-size: 10pt;
+}
+
+#news-widget div {
+  margin: 0;
+  font-size: 9pt;
+}
+
+.md-calendar-date:not(.md-disabled) {
+  font-weight: bold;
+}
+
+.md-calendar-date.md-calendar-date-disabled {
+  font-size: 8pt;
+  background-color: lightgrey;
 }
 
 /*

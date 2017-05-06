@@ -325,8 +325,11 @@ module.exports = function(app, express) {
 					userSteps = userSteps.concat(job.currentStep);
 					userSteps = userSteps.concat(job.nextStep);
 				});
-				var dates = userSteps.map(step => step.dueDate);
-				dates = dates.filter(step => !!step);
+
+        userSteps = userSteps.filter(step => !!step);
+
+				var dates = userSteps.filter(step => !!step.dueDate);
+
 				res.send(dates);
 			}
 		});
