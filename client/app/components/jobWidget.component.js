@@ -14,10 +14,10 @@ angular.
           <span class="md-subhead">{{$ctrl.data.position}}</span>
         </md-card-header-text>
 
-        <md-button class="md-fab md-mini" ng-click="$ctrl.toggleFavorite()">
+        <!--<md-button class="md-fab md-mini" ng-click="$ctrl.toggleFavorite()">
             <md-tooltip md-direction="top">Set as Favorite</md-tooltip>
             <md-icon>{{$ctrl.renderFavoriteIcon()}}</md-icon>
-        </md-button>
+        </md-button>-->
 
         <md-button class="md-fab md-mini" ng-click="$ctrl.editJob()">
             <md-tooltip md-direction="top">Edit Job</md-tooltip>
@@ -30,13 +30,13 @@ angular.
         </md-button>
       </md-card-header>
 
-      <md-tabs md-dynamic-height="" md-border-bottom="">
+      <md-tabs md-dynamic-height="" md-border-bottom="" md-center-tabs="true" md-stretch-tabs="always">
 
-          <md-tab>
+         <!--<md-tab>
             <md-tab-label><md-icon>expand_less</md-icon></md-tab-label>
-          </md-tab>
+          </md-tab>-->
 
-          <md-tab label="JOB OVERVIEW">
+          <md-tab label="JOB">
 
             <md-content class="md-padding">
               <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.dateCreated)}}</p>
@@ -47,7 +47,7 @@ angular.
             </md-content>
           </md-tab>
 
-          <md-tab label="COMPANY DETAILS">
+          <md-tab label="COMPANY">
           <md-content class="md-padding">
             <p class="md-subhead"><strong>Company: </strong>{{$ctrl.data.officialName}}</p>
             <p class="md-subhead"><strong>Website: </strong><a href='http://{{$ctrl.data.website}}'/>{{$ctrl.data.website}}</a></p>
@@ -58,7 +58,7 @@ angular.
             </md-content>
           </md-tab>
 
-          <md-tab label="CONTACTS">
+          <md-tab label="CONTACT">
             <md-content ng-repeat='contact in $ctrl.data.contacts'>
               <md-divider layout="column" class="contact-divider">
                 <p class="md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
@@ -68,8 +68,7 @@ angular.
             </md-content>
           </md-tab>
 
-          <md-tab label="STEP DETAILS">
-          <md-content class="md-padding">
+          <md-tab label="STATUS">
 
             <md-divider layout="column" class="contact-divider">
               <p class="md-subhead"> <strong>Current Step: </strong> {{$ctrl.data.currentStep.name}}</p>
@@ -93,7 +92,6 @@ angular.
         </md-tabs>
 
     </md-card>
-  </div>
     `,
     bindings: {
      data: '='
@@ -116,8 +114,9 @@ angular.
       }
 
       // parse the style string for setting the logo image
+      // parse the style string for setting the logo image
       this.imageStyle = function(imageUrl) {
-        return `background-image:url('${imageUrl}')`;
+        return `background-image:url('${imageUrl}');width:120px;background-repeat: no-repeat;background-size:cover;margin-right:10px`;
       };
 
       // use moment.js to parse de date data in a user-friendly format
@@ -169,7 +168,7 @@ angular.
                   <md-input-container flex="30">
                     <label>Salary</label>
                     <md-icon class="material-icons">attach_money</md-icon>
-                    <input ng-model="$ctrl.data.salary" type="number">
+                    <input ng-model="$ctrl.data.salary">
                   </md-input-container>
                 </div>
                 <div layout="row">
@@ -261,10 +260,11 @@ angular.
             $scope.updateJob = function(job) {
               Jobs.update(JSON.stringify(job))
               .then(function(res) {
-
+                $scope.closeDialog()
+                $window.alert(res)
               })
               .catch(function(err) {
-
+                console.log(err)
               })
             }
           }
