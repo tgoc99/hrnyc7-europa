@@ -58,8 +58,10 @@ angular.module('app.input', [
         + addr.postalCode + ", "
         + addr.country.code;
 
-
-      Jobs.create($scope.job);
+      Jobs.create($scope.job).then((res) => {
+        alert(res);
+        $location.url('/dashboard');
+      });
     });
   }
 
