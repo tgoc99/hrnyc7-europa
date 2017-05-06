@@ -68,7 +68,7 @@ angular.
 
             <md-divider layout="column" class="contact-divider">
               <p class="md-subhead"> <strong>Current Step: </strong> {{$ctrl.data.currentStep.name}}</p>
-              <p class="md-subhead"> <strong>Due Date: </strong> {{$ctrl.parseDate($ctrl.data.currentStep.dueDate)}}</p>
+              <p class="md-subhead"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.currentStep.dueDate)}}</p>
               <p class="md-subhead"> <strong>Comments: </strong> 
                 <md-content ng-repeat='comment in $ctrl.data.currentStep.comments'> {{comment}} </md-content>
               </p>
@@ -76,7 +76,7 @@ angular.
 
             <md-divider layout="column" class="contact-divider">
               <p class="md-subhead"> <strong>Next Step: </strong> {{$ctrl.data.nextStep.name}}</p>
-              <p class="md-subhead"> <strong>Due Date: </strong> {{$ctrl.parseDate($ctrl.data.nextStep.dueDate)}}</p>
+              <p class="md-subhead"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.nextStep.dueDate)}}</p>
               <p class="md-subhead"> <strong>Comments: </strong> 
                 <md-content ng-repeat='comment in $ctrl.data.nextStep.comments'> {{comment}} </md-content>
               </p>
@@ -99,6 +99,7 @@ angular.
 
       Jobs.get().then(function(data) {
         $scope.jobs = data;
+        console.log('scope jobs:', $scope.jobs)
       });
 
       this.toggleFavorite = function() {
@@ -137,83 +138,129 @@ angular.
         }
       }
 
-      this.editJob = function(event) {
+      this.editJob = function($event) {
+        var parentEl = angular.element(document.body)
         $mdDialog.show({
+          parent: parentEl,
+          targetEvent: $event,
+          locals: {
+            items: $scope.items
+          },
           clickOutsideToClose: true,
           scope: $scope,        
           preserveScope: true,           
           template: `
           <md-dialog>
-            <md-dialog-content>
-              <div layout="row" layout-align="center">
-                <span class="md-headline"></span>
+            <md-content layout-padding>
+              <div layout="row">
+                <span flex="80" class="md-display-1">Edit Application</span>
               </div>
 
-              <form name="jobForm" ng-submit="submitJob()">
-
-                <div layout-gt-sm="row" layout-padding>
-                  <md-input-container flex-gt-sm="30">
-                    <label>Add Contact's Name</label>
-                    <md-icon class="material-icons">contacts</md-icon>
-                    <input ng-model="job.contacts[0].name">
-                  </md-input-container>
-
-                  <md-input-container flex-gt-sm="35">
-                    <label>Contact's Phone Number</label>
-                    <md-icon class="material-icons">call</md-icon>
-                    <input ng-model="job.contacts[0].phoneNumber">
-                  </md-input-container>
-
-                  <md-input-container flex-gt-sm="35">
-                    <label>Contact's E-mail</label>
-                    <md-icon class="material-icons">email</md-icon>
-                    <input ng-model="job.contacts[0].email" type='email'>
+              <form name="jobForm" ng-submit="updateJob($ctrl.data)">
+                <div layout="row">
+                  <span class="md-title">Application Information</span>
+                </div>
+                <div layout="row">
+                  <md-input-container flex="30">
+                    <label>Salary</label>
+                    <md-icon class="material-icons">attach_money</md-icon>
+                    <input ng-model="$ctrl.data.salary" type="number">
                   </md-input-container>
                 </div>
+                <div layout="row">
+                  <md-input-container flex="50">
+                    <label>Application Link</label>
+                    <md-icon class="material-icons">web</md-icon>
+                    <input ng-model="$ctrl.data.link" type="url">
+                  </md-input-container>
+                </div>
+                <div layout="row">
+                  <span class="md-title">Primary contact</span>
+                </div>
+                <div layout="row" layout-padding>
+                  <md-input-container flex="40">
+                    <label>Name</label>
+                    <md-icon class="material-icons">contacts</md-icon>
+                    <input ng-model="$ctrl.data.contacts[0].name">
+                  </md-input-container>
 
-                <div layout-gt-sm="row" layout-padding>
-                  <md-input-container flex-gt-sm>
+                  <md-input-container flex="30">
+                    <label>Phone</label>
+                    <md-icon class="material-icons">call</md-icon>
+                    <input ng-model="$ctrl.data.contacts[0].phoneNumber" type="tel">
+                  </md-input-container>
+
+                  <md-input-container flex="30">
+                    <label>e-mail</label>
+                    <md-icon class="material-icons">email</md-icon>
+                    <input ng-model="$ctrl.data.contacts[0].email" type='email'>
+                  </md-input-container>
+                </div>
+                <div layout="row">
+                  <span class="md-title">Modify Steps</span>
+                </div>
+                <br>
+                <div layout="row">
+                  <span class="md-subhead">Current Step</span>
+                </div>
+                <div layout="row" layout-padding>
+                  <md-input-container flex="75">
+                    <md-icon class="material-icons">subject</md-icon>
                     <label>Current Step</label>
-                    <input ng-model="job.currentStep.name" required>
+                    <input ng-model="$ctrl.data.currentStep.name">
                   </md-input-container>
 
-                  <md-input-container flex-gt-sm>
-                    <label>Current Step Date</label>
-                    <md-datepicker ng-model="job.currentStep.dueDate" required></md-datepicker>
+                  <md-input-container flex="25">
+                    <label>Due Date</label>
+                    <md-datepicker ng-model="$ctrl.data.currentStep.dueDate" md-hide-icons="calendar"></md-datepicker>
                   </md-input-container>
-
-                  <md-input-container flex-gt-sm="35">
+                </div>
+                <div layout="row" layout-padding>
+                  <md-input-container flex="90">
                     <label>Current Step Comments</label>
                     <md-icon class="material-icons">comment</md-icon>
-                    <input ng-model="job.currentStep.comments[0]">
+                    <textarea ng-model="$ctrl.data.currentStep.comments[0]" md-maxlength="150" rows="1" md-select-on-focus></textarea>
                   </md-input-container>
                 </div>
-
-                <div layout-gt-sm="row" layout-padding>
-                  <md-input-container flex-gt-sm>
+                <div layout="row">
+                  <span class="md-subhead">Next Step</span>
+                </div>
+                <div layout="row" layout-padding>
+                  <md-input-container flex="75">
                     <label>Next Step</label>
-                    <input ng-model="job.nextStep.name">
+                    <md-icon class="material-icons">subject</md-icon>
+                    <input ng-model="$ctrl.data.nextStep.name">
                   </md-input-container>
 
-                  <md-input-container flex-gt-sm>
-                    <label>Next Step Date</label>
-                    <md-datepicker ng-model="job.nextStep.dueDate"></md-datepicker>
+                  <md-input-container flex="25">
+                    <label>Due Date</label>
+                    <md-datepicker ng-model="$ctrl.data.nextStep.dueDate" md-hide-icons="calendar"></md-datepicker>
                   </md-input-container>
-
-                  <md-input-container flex-gt-sm="35">
+                </div>
+                <div layout="row" layout-padding>
+                  <md-input-container flex="90">
                     <label>Next Step Comments</label>
                     <md-icon class="material-icons">comment</md-icon>
-                    <input ng-model="job.nextStep.comments[0]">
+                    <textarea ng-model="$ctrl.data.nextStep.comments[0]" md-maxlength="150" rows="1" md-select-on-focus></textarea>
                   </md-input-container>
                 </div>
 
-                <md-button type="submit" class="md-primary">Modify Job</md-button>
+                <md-button type="submit" class="md-primary">Update Job</md-button>
               </form>
-            </md-dialog-content>
+            </md-content>
           </md-dialog>`,
           controller: function DialogController($scope, $mdDialog) {
             $scope.closeDialog = function() {
               $mdDialog.hide();
+            }
+            $scope.updateJob = function(job) {
+              Jobs.update(JSON.stringify(job))
+              .then(function(res) {
+
+              })
+              .catch(function(err) {
+
+              })
             }
           }
         })

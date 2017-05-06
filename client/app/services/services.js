@@ -130,11 +130,14 @@ angular.module('app.services', [])
 				console.log(err)
 			})
 		},
-		update: function(data) {
+		update: function(jobData) {
 			return $http({
 				method: 'PATCH',
 				url: 'api/jobs',
-				data: data
+				data: jobData,
+				headers: {
+					'Content-type': 'application/json;charset=utf-8'
+				}
 			})
 			.then(function(res) {
 				console.log(res)
