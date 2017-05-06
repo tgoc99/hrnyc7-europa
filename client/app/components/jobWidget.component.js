@@ -149,7 +149,7 @@ angular.
           parent: parentEl,
           targetEvent: $event,
           locals: {
-            items: $scope.items
+            jobs: $scope.jobs
           },
           clickOutsideToClose: true,
           scope: $scope,        
@@ -254,7 +254,7 @@ angular.
               </form>
             </md-content>
           </md-dialog>`,
-          controller: function DialogController($scope, $mdDialog) {
+          controller: function DialogController($scope, $mdDialog, jobs) {
             $scope.closeDialog = function() {
               $mdDialog.hide();
             }
