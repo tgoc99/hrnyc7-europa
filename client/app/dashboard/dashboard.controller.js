@@ -1,4 +1,5 @@
-angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'newsWidget', 'goalsWidget', 'calendarWidget', 'jobWidget', 'tasksWidget', 'app.services'])
+
+angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'goalsWidget', 'calendarWidget', 'jobWidget', 'tasksWidget'])
   .controller('dashboardController', function dashboardController($scope, Companies, User, Jobs, Tasks){
     
     $scope.getJobs = function() {
@@ -25,6 +26,8 @@ angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'ne
       var fromNow = moment(date).fromNow();
       return `${dateFormat}  |  ${fromNow}`
     }
+
+    $scope.newsArticle = {number:0};
 
     $scope.test = function() {
       Companies.getNews('amazon')
