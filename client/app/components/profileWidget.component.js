@@ -14,6 +14,7 @@ angular.
     </md-card>
     `,
     controller: function() {
+      
       // sample data
       this.imageUrl = 'https://i.imgflip.com/xyx99.jpg?a414816';
       this.username = 'Rick Sanchez';
