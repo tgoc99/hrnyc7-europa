@@ -1,15 +1,16 @@
 <div layout="row" layout-wrap layout-padding>
 
-  <div flex-gt-sm="66" flex-gt-xs="60" flex="100" layout-wrap flex-order-gt-xs="1">
-    <div layout-margin layout-padding flex="100" style="background-color:white;">
+  <div flex-gt-sm="60" flex-gt-xs="70" flex="100" layout-wrap flex-order-gt-xs="1">
+  <div layout-margin layout-padding flex="100" style="background-color:white;padding-top:17px" layout="center center">
+
       <md-input-container flex="100">
-        <label> Search Jobs </label>
+        <label>filter jobs by company or position</label>
         <md-icon class="material-icons">search</md-icon>
-        <input type="text">
+        <input type="text" ng-model="search">
       </md-input-container>
     </div>
 
-    <job-widget flex="100" data="job" ng-repeat="job in jobs" ng-if="jobs.length !== 0"></job-widget>
+    <job-widget flex="100" data="job" ng-repeat="job in jobs | filter: filterJobs" ng-if="jobs.length !== 0"></job-widget>
 
     <md-card ng-if="jobs.length === 0">
       <md-card-header>
@@ -18,7 +19,6 @@
         </md-card-header-text>
       </md-card-header>
     </md-card>
-
   </div>
 
   <div flex-gt-sm="33" flex-gt-xs="40" flex="100" flex-order-gt-xs="-1">
