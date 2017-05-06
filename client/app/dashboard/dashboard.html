@@ -9,7 +9,16 @@
       </md-input-container>
     </div>
 
-    <job-widget flex="100" data="job" ng-repeat="job in jobs"></job-widget>
+    <job-widget flex="100" data="job" ng-repeat="job in jobs" ng-if="jobs.length !== 0"></job-widget>
+
+    <md-card ng-if="jobs.length === 0">
+      <md-card-header>
+        <md-card-header-text>
+          <span class="md-headline">Click on 'Insert Job' above to track an application!</span>
+        </md-card-header-text>
+      </md-card-header>
+    </md-card>
+
   </div>
 
   <div flex-gt-sm="40" flex-gt-xs="30" flex="100" flex-order-gt-xs="-1">
@@ -37,5 +46,4 @@
       </div>
     </div>
   </div>
-
 </div>

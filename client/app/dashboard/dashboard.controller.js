@@ -1,6 +1,18 @@
-angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'newsWidget', 'goalsWidget', 'calendarWidget', 'jobWidget', 'tasksWidget'])
+angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'newsWidget', 'goalsWidget', 'calendarWidget', 'jobWidget', 'tasksWidget', 'app.services'])
   .controller('dashboardController', function dashboardController($scope, Companies, User, Jobs, Tasks){
-    $scope.jobs = sampleData;
+    
+    $scope.getJobs = function() {
+
+      Jobs.get()
+      .then(function(data) {
+        console.log(data)
+        $scope.jobs = data
+      })
+      .catch(function(err) {
+        console.log(err)
+      })
+    }
+    $scope.getJobs()  
 
     $scope.setBackgroundImg = function(job) {
       return `background-image:url("${job.imgURL}")`;
