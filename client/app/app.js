@@ -27,13 +27,29 @@ angular.module('app',[
     .when('/logout', {
       redirectTo: '/'
     })
-
 })
 .controller('navController', function($scope, $location, $interval) {
     $scope.showSignUp = false;
 
+    $scope.renderNavButtons = function() {
+      var currentPath = $location.path();
+      return currentPath !== "/";
+    }
+
+    $scope.handleDashboardClick = function() {
+      $location.path('dashboard');
+    }
+
+    $scope.handleInputClick = function() {
+      $location.path('input');
+    }
+
+    $scope.handleLogoutClick = function() {
+      $location.path('logout');
+    }
+
     $interval(function(){
-        $scope.showSignUp = $location.url() !== "/";
+      $scope.showSignUp = $location.url() !== "/";
     }, 500);
 })
 .run((Auth, $rootScope, $location, $http) => Auth.status($rootScope, $location, $http))
