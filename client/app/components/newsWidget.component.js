@@ -6,7 +6,7 @@ angular.
     template:
     `
     <md-card id="news-widget" class='widget'>
-      <md-divider class="news-img-container" style="background-image:url('{{imageUrl}}')"></md-divider>
+      <md-divider class="news-img-container" style="background-image:url('{{imageUrl}}');background-size:cover;background-repeat:no-repeat"></md-divider>
 
       <md-content>
         <span>{{title}}</span>
@@ -14,7 +14,7 @@ angular.
         <p>{{content}}</p>
       </md-content>
 
-      <md-footer>
+      <md-footer style="padding-bottom:60px">
         <md-button ng-click="prevArticle()">
             <md-tooltip md-direction="top">Previous Article</md-tooltip>
             <md-icon>navigate_before</md-icon>
@@ -39,7 +39,14 @@ angular.
       User.getCompanies().then(comp => {
         News.getNews(comp).then(data=>{
           newsData = data;
-          $scope.articles = newsData.length;
+
+          if(!!newsData) {
+            $scope.articles = newsData.length;
+          } else {
+            $scope.articles = 0;
+            $scope.current = 0;
+          }
+
           setArticle()
         })
       })
@@ -66,10 +73,12 @@ angular.
       }
 
       var setArticle = () => {
-        $scope.imageUrl = newsData[currentArticle].image.thumbnail.contentUrl;
-        $scope.title = newsData[currentArticle].name;
-        $scope.source = newsData[currentArticle].provider[0].name;
-        $scope.content = newsData[currentArticle].description;
+        if(!!newsData) {
+          $scope.imageUrl = newsData[currentArticle].image.thumbnail.contentUrl;
+          $scope.title = newsData[currentArticle].name;
+          $scope.source = newsData[currentArticle].provider[0].name;
+          $scope.content = newsData[currentArticle].description;
+        }
       }
 
     },
