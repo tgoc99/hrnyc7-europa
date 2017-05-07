@@ -38,7 +38,7 @@ angular.
 
           <md-tab label="JOB">
 
-            <md-content class="md-padding">
+            <md-content layout-margin>
               <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.dateCreated)}}</p>
               <p class="md-subhead"><strong>Application Link: </strong>{{$ctrl.data.link}}</p>
               <p class="md-subhead"><strong>Current Step: </strong>{{$ctrl.data.currentStep.name}}</p>
@@ -48,7 +48,7 @@ angular.
           </md-tab>
 
           <md-tab label="COMPANY">
-          <md-content class="md-padding">
+          <md-content layout-margin>
             <p class="md-subhead"><strong>Company: </strong>{{$ctrl.data.officialName}}</p>
             <p class="md-subhead"><strong>Website: </strong><a href='http://{{$ctrl.data.website}}'/>{{$ctrl.data.website}}</a></p>
             <p class="md-subhead"><strong>Description: </strong>{{$ctrl.data.description}}</p>
@@ -59,7 +59,7 @@ angular.
           </md-tab>
 
           <md-tab label="CONTACT">
-            <md-content ng-repeat='contact in $ctrl.data.contacts'>
+            <md-content layout-margin ng-repeat='contact in $ctrl.data.contacts'>
               <md-divider layout="column" class="contact-divider">
                 <p class="md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
                 <p class="md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phoneNumber}}</p>
@@ -74,7 +74,7 @@ angular.
               <p class="md-subhead"> <strong>Current Step: </strong> {{$ctrl.data.currentStep.name}}</p>
               <p class="md-subhead"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.currentStep.dueDate)}}</p>
               <p class="md-subhead"> <strong>Comments: </strong> 
-                <md-content ng-repeat='comment in $ctrl.data.currentStep.comments'> {{comment}} </md-content>
+                <md-content layout-margin ng-repeat='comment in $ctrl.data.currentStep.comments'> {{comment}} </md-content>
               </p>
             </md-divider>
 
@@ -82,7 +82,7 @@ angular.
               <p class="md-subhead"> <strong>Next Step: </strong> {{$ctrl.data.nextStep.name}}</p>
               <p class="md-subhead"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.nextStep.dueDate)}}</p>
               <p class="md-subhead"> <strong>Comments: </strong> 
-                <md-content ng-repeat='comment in $ctrl.data.nextStep.comments'> {{comment}} </md-content>
+                <md-content layout-margin ng-repeat='comment in $ctrl.data.nextStep.comments'> {{comment}} </md-content>
               </p>
             </md-divider>
           </md-tab>

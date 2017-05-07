@@ -1,1 +1,16 @@
-<md-calendar ng-model="date" md-min-date="today" md-max-date="maxDate" md-date-filter="filterDates"></md-calendar>
+<md-calendar class="jobCalWidget" ng-if='dates.length>0' ng-click="showPrerenderedDialog($event)" ng-model="date" md-min-date="today" md-max-date="maxDate" md-date-filter="filterDates">
+</md-calendar>
+
+<div style="visibility: hidden">
+  <div class="md-dialog-container" id="myDialog">
+    <md-dialog layout-padding>
+      <h2>Tasks for {{date}}</h2>
+	    <div layout-padding class="md-headline" ng-repeat="x in task">
+	        {{x.name}}
+	        <li class="md-subhead" ng-repeat="y in x.comments">
+	        	{{y}}
+	        </li>
+	    </div>
+    </md-dialog>
+  </div>
+</div>

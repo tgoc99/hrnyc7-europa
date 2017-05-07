@@ -28,11 +28,11 @@ angular.module('app.services', [])
     .then(data=>{
       var companies = data.length;
       if(companies>4){
-        return data.map(com => com.data.value[0])
+        return data.map(com => com.data.value[0]).reduce((a,b)=>a.concat(b))
       } else if(companies>1){
         return data.map(com=> [com.data.value[0], com.data.value[1]]).reduce((a,b)=>a.concat(b))
       } else if(companies === 1) {
-        return data.map(com=> [com.data.value[0], com.data.value[1],com.data.value[2],com.data.value[3]])
+        return data.map(com=> [com.data.value[0], com.data.value[1],com.data.value[2],com.data.value[3]]).reduce((a,b)=>a.concat(b))
       }
     })
     .catch(function(err) {
