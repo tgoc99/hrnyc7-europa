@@ -127,8 +127,8 @@ module.exports = function(app, express) {
 
 				User.findOneAndUpdate(
 			        { username: username },
-			        { $set: user[0] }, 
-			        { new: true }, 
+			        { $set: user[0] },
+			        { new: true },
 			        function(err, model) {
 			        	if(err) {
 			        		res.status(401).send(err);
@@ -160,8 +160,8 @@ module.exports = function(app, express) {
 
 				User.findOneAndUpdate(
 			        { username: username },
-			        { $set: user[0] }, 
-			        { new: true }, 
+			        { $set: user[0] },
+			        { new: true },
 			        function(err, model) {
 			        	if(err) {
 			        		res.status(401).send(err);
@@ -203,7 +203,7 @@ module.exports = function(app, express) {
 		User.findOneAndUpdate(
 	        { username: username },
 	        {$push: {"tasks": req.body}},
-	        {safe: true, upsert: true, new : true},
+	        {safe: true, upsert: true, new: true},
 	        function(err, model) {
 	        	if(err) {
 	        		res.status(401).send(err);
@@ -217,6 +217,7 @@ module.exports = function(app, express) {
 	// body (_id)  _id is found inside specific tasks and the name
 	// tasks array can be retrieved using get /api/tasks
 	app.patch('/api/tasks', function(req, res) {
+
 		console.log('session info patch /api/tasks', req.session.passport.user);
 		console.log('attempting to patch tasks', req.body);
 
@@ -237,8 +238,8 @@ module.exports = function(app, express) {
 
 				User.findOneAndUpdate(
 			        { username: username },
-			        { $set: user[0] }, 
-			        { new: true }, 
+			        { $set: user[0] },
+			        { new: true },
 			        function(err, model) {
 			        	if(err) {
 			        		res.status(401).send(err);
@@ -254,6 +255,7 @@ module.exports = function(app, express) {
 	// body (_id)  _id is found inside specific tasks
 	// tasks array can be retrieved using get /api/tasks
 	app.delete('/api/tasks', function(req, res) {
+		console.log('REQ.BODY: ', req.body);
 		console.log('session info delete /api/tasks', req.session.passport.user);
 		console.log('attempting to delete tasks', req.body);
 
@@ -270,13 +272,13 @@ module.exports = function(app, express) {
 
 				User.findOneAndUpdate(
 			        { username: username },
-			        { $set: user[0] }, 
-			        { new: true }, 
+			        { $set: user[0] },
+			        { new: true },
 			        function(err, model) {
 			        	if(err) {
 			        		res.status(401).send(err);
 			        	} else {
-			        		res.send('Job removed');
+			        		res.send('Task removed');
 			        	}
 			        }
 			    );
@@ -330,7 +332,7 @@ module.exports = function(app, express) {
 
 				var dates = userSteps.map(step => step.dueDate);
 				dates = dates.filter(step => !!step);
-				
+
 				res.send(dates);
 			}
 		});
