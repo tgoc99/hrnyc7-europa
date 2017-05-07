@@ -10,71 +10,116 @@ angular.
 
       <div class="input-container">
         <input type="text" placeholder="Add a new task..." ng-model="inputValue"></input>
-        <md-button class="md-icon-button" ng-click="$ctrl.createNewTask(inputValue); inputValue = null">
+        <md-button class="md-icon-button" ng-click="$ctrl.createTask(inputValue); inputValue = null">
+            <md-tooltip md-direction="top">Add Task</md-tooltip>
             <md-icon>add</md-icon>
         </md-button>
+
+        <md-button class="md-icon-button" ng-click="$ctrl.deleteAllCompleted()">
+            <md-tooltip md-direction="top">Remove Completed Tasks</md-tooltip>
+            <md-icon>delete</md-icon>
+        </md-button>
+
+        <!-- <md-button class="md-icon-button" ng-click="">
+            <md-tooltip md-direction="top">Edit Mode</md-tooltip>
+            <md-icon>edit_mode</md-icon>
+        </md-button> -->
       </div>
 
       <md-content>
 
         <ul>
           <li ng-repeat="task in $ctrl.tasksList">
-            <md-checkbox>{{task.description}}</md-checkbox>
+            <md-checkbox ng-checked="task.completed" ng-click="$ctrl.toggleCompleted(task._id, task.completed)">{{task.name}}</md-checkbox>
           </li>
         </ul>
+
+
 
       </md-content>
     </md-card>
     `,
-    controller: function() {
+    //  ng-change="$ctrl.toggleCompleted(task._id, task.completed)"
+    controller: function($log, Tasks) {
 
-      // uncomment this for API call
-      // this.user = User.getAllData();
-      // use this meanwhile
-      this.user = {
-        tasksList: [
-          // {
-          //   description: 'Bring back that Mulan szechuan McNugget sauce'
-          // },
-          // {
-          //   description: 'Save the earth'
-          // },
-          // {
-          //   description: 'Finish Greenfield project'
-          // },
-          // {
-          //   description: 'Graduate from Hack Reactor'
-          // },
-          // {
-          //   description: 'Become a billionare'
-          // },
-        ]
-      };
+      this.getTasks = function() {
+        Tasks.get().then(data => {
+          this.tasksList = data || [];
+          console.log('tasks: ', this.tasksList);
+        });
+      }
+      this.getTasks();
 
-      this.tasksList = this.user.tasksList;
+      this.createTask = function(name) {
+        if(name && name.length > 0) {
+          //this.tasksList.push({ name: name });
+          //console.log('tasks: ', this.tasksList);
 
-      // we are not worrying about dates... for now
-
-      this.createNewTask = function(description) {
-
-        if(description && description.length > 0) {
-          this.tasksList.push({
-            description: description,
-            dateCreated: new Date()
+          Tasks.create({ name: name }).then(res => {
+            //console.log('tasks: ', res);
+            this.getTasks();
+            //console.log('tasks list:', this.tasksList);
           });
         }
-
-        // update database
       }
 
-      this.deleteTask = function(description) {
 
-        this.tasksList = this.tasksList.filter(function(task) {
-          return task.description !== description;
+      this.deleteTask = function(id) {
+
+        var query = JSON.stringify({ _id: id });
+
+        //console.log('deleting task: ', query);
+
+        Tasks.delete(query).then(res => {
+          //console.log(res);
+          this.getTasks();
         });
-
-
-        // update database
       }
+
+
+
+      this.updateTask = function(id, name, completed) {
+
+        // for(var i = 0; i < this.tasksList.length; i++) {
+        //   if(id === this.tasksList[i]._id) {
+        //     var current = this.tasksList[i].completed;
+        //   }
+        // }
+
+        var query = { _id: id };
+
+
+        if(name) {
+          query.name = name;
+        }
+
+        if(typeof completed === 'boolean') {
+          //if(completed !== current) {
+            query.completed = completed;
+          //}
+        }
+
+        query = JSON.stringify(query);
+        //console.log('updating task: ', query);
+
+        Tasks.update(query).then(res => {
+          //console.log(res);
+          this.getTasks();
+        });
+      }
+
+      this.toggleCompleted = function(id, completed) {
+        //console.log(id, completed);
+        this.updateTask(id, null, !completed);
+      }
+
+      this.deleteAllCompleted = function() {
+        this.tasksList.forEach(task => {
+          if(task.completed) {
+            this.deleteTask(task._id);
+          }
+        });
+      }
+
     }
   });

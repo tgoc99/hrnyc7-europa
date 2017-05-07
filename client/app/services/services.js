@@ -20,7 +20,7 @@ angular.module('app.services', [])
 		}
   }
 })
-.factory('News', ($http) => { 
+.factory('News', ($http) => {
   var getNews = companiesArray => {
     return Promise.all(companiesArray.map(comp => {
       return $http.get('/api/news/?company='+comp)
@@ -197,7 +197,10 @@ angular.module('app.services', [])
 			return $http({
 				method: 'PATCH',
 				url: 'api/tasks',
-				data: data
+				data: data,
+				headers: {
+					'Content-type': 'application/json;charset=utf-8'
+				}
 			})
 			.then(function(res) {
 				console.log(res)
@@ -211,7 +214,10 @@ angular.module('app.services', [])
 			return $http({
 				method: 'DELETE',
 				url: 'api/tasks',
-				data: data
+				data: data,
+				headers: {
+					'Content-type': 'application/json;charset=utf-8'
+				}
 			})
 			.then(function(res) {
 				console.log(res)
