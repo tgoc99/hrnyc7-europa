@@ -371,6 +371,22 @@ NEWS WIDGET
 DASHBOARD
 */
 
+/*.search-input-container {
+  height: 36px;
+  width: 90%;
+
+  margin: 0;
+  text-align: center;
+}
+
+.search-input {
+  height: 100%;
+  width: 100%;
+
+  border-radius: 18px;
+  border: none;
+}*/
+
 .job-widget-image {
   background-position: center;
   background-size: cover;
