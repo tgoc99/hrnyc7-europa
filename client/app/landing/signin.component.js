@@ -5,33 +5,33 @@ angular.
   component('signInForm', {
     template:
     `
-    <md-card id="signin" class="landingCard">
+    <md-card id="signin" class="landingCard" layout-margin>
       <h2>Please Sign In</h2>
 
       <form name="signInForm" ng-submit="">
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>User Name</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">account_circle</md-icon>
             <input ng-model="$ctrl.user.username" ng-required="true">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>Password</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">lock</md-icon>
             <input ng-model="$ctrl.user.password" ng-required="true" type="password">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-button ng-click="$ctrl.handleClick()" class="md-raised md-primary">Sign In</md-button>
+        <div layout="row">
+          <md-button flex='100' ng-click="$ctrl.handleClick()" class="md-raised md-primary">Sign In</md-button>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-button ng-click="$ctrl.handleGoTo()" class="md-primary">I want to create an account...</md-button>
+        <div layout="row">
+          <md-button flex='100' ng-click="$ctrl.handleGoTo()" class="md-primary">I want to create an account...</md-button>
         </div>
       </form>
     </md-card>
