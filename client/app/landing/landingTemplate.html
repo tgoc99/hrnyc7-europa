@@ -1,0 +1,17 @@
+<div class="landingContainer" layout="row" layout-align="center center">
+  <div ng-if="showWelcomeMessage" class="landing-content" flex="40">
+        <div class="logo">
+          <i class="material-icons">assignment</i>
+          <h2 style="font-weight:300">Linked</h2>
+          <i class="material-icons">compare_arrows</i>
+          <h2 style="font-weight:300">List</h2>
+        </div>
+        <p>Organize, manage, and plan your entire job application process with our slick dashboard and easy-to-use job creation form.</p>
+        <p>Getting a job has never been easier!</p>
+        <md-button ng-click="handleGetStarted()" class="landing-btn md-raised md-primary">GET STARTED</md-button>
+  </div>
+
+  <sign-in-form ng-if="showSignIn" flex="40"></sign-in-form>
+  <sign-up-form ng-if="showSignUp" flex="40"></sign-up-form>
+</div>
+<div class="landingBackground"></div>

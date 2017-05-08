@@ -6,7 +6,9 @@ angular.
     template:
     `
     <md-card id="tasks-widget" class='widget'>
-      <span class="md-headline">Your upcoming tasks </span>
+      <span class="md-headline">Your Task Manager </span>
+
+      <md-divider></md-divider>
 
       <div class="input-container">
         <input type="text" placeholder="Add a new task..." ng-model="inputValue"></input>
@@ -26,6 +28,8 @@ angular.
         </md-button> -->
       </div>
 
+      <md-divider ng-if="$ctrl.tasksList.length > 0"></md-divider>
+
       <md-content>
 
         <ul>
@@ -39,7 +43,6 @@ angular.
       </md-content>
     </md-card>
     `,
-    //  ng-change="$ctrl.toggleCompleted(task._id, task.completed)"
     controller: function($log, Tasks) {
 
       this.getTasks = function() {
@@ -52,26 +55,17 @@ angular.
 
       this.createTask = function(name) {
         if(name && name.length > 0) {
-          //this.tasksList.push({ name: name });
-          //console.log('tasks: ', this.tasksList);
-
           Tasks.create({ name: name }).then(res => {
-            //console.log('tasks: ', res);
             this.getTasks();
-            //console.log('tasks list:', this.tasksList);
           });
         }
       }
 
 
       this.deleteTask = function(id) {
-
         var query = JSON.stringify({ _id: id });
 
-        //console.log('deleting task: ', query);
-
         Tasks.delete(query).then(res => {
-          //console.log(res);
           this.getTasks();
         });
       }
@@ -80,36 +74,22 @@ angular.
 
       this.updateTask = function(id, name, completed) {
 
-        // for(var i = 0; i < this.tasksList.length; i++) {
-        //   if(id === this.tasksList[i]._id) {
-        //     var current = this.tasksList[i].completed;
-        //   }
-        // }
-
         var query = { _id: id };
-
-
         if(name) {
           query.name = name;
         }
 
         if(typeof completed === 'boolean') {
-          //if(completed !== current) {
-            query.completed = completed;
-          //}
+          query.completed = completed;
         }
-
         query = JSON.stringify(query);
-        //console.log('updating task: ', query);
 
         Tasks.update(query).then(res => {
-          //console.log(res);
           this.getTasks();
         });
       }
 
       this.toggleCompleted = function(id, completed) {
-        //console.log(id, completed);
         this.updateTask(id, null, !completed);
       }
 

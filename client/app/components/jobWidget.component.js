@@ -5,8 +5,8 @@ angular.
   component('jobWidget', {
     template:
     `
-    <md-card>
-      <md-card-header>
+    <md-card class="job-card">
+      <md-card-header style="display:flex; align-items:center">
         <md-card-avatar class="job-widget-image" style="{{$ctrl.imageStyle($ctrl.data.imageUrl)}}"></md-card-avatar>
 
         <md-card-header-text>
@@ -30,25 +30,25 @@ angular.
         </md-button>
       </md-card-header>
 
+      <md-divider></md-divider>
       <md-tabs md-dynamic-height="" md-border-bottom="" md-center-tabs="true" md-stretch-tabs="always">
 
          <!--<md-tab>
             <md-tab-label><md-icon>expand_less</md-icon></md-tab-label>
           </md-tab>-->
 
-          <md-tab label="JOB">
-
-            <md-content layout-margin>
+          <md-tab label="JOB INFO">
+          <md-content>
               <p class="md-subhead"><strong>Date Applied: </strong>{{$ctrl.parseDate($ctrl.data.dateCreated)}}</p>
               <p class="md-subhead"><strong>Application Link: </strong>{{$ctrl.data.link}}</p>
               <p class="md-subhead"><strong>Current Step: </strong>{{$ctrl.data.currentStep.name}}</p>
               <p class="md-subhead"><strong>Next Step: </strong>{{$ctrl.data.nextStep.name}}</p>
               <p class="md-subhead"><strong>Salary: </strong>\${{$ctrl.data.salary}}</p>
-            </md-content>
+          </md-content>
           </md-tab>
 
           <md-tab label="COMPANY">
-          <md-content layout-margin>
+          <md-content>
             <p class="md-subhead"><strong>Company: </strong>{{$ctrl.data.officialName}}</p>
             <p class="md-subhead"><strong>Website: </strong><a href='http://{{$ctrl.data.website}}'/>{{$ctrl.data.website}}</a></p>
             <p class="md-subhead"><strong>Description: </strong>{{$ctrl.data.description}}</p>
@@ -59,35 +59,35 @@ angular.
           </md-tab>
 
           <md-tab label="CONTACT">
-            <md-content layout-margin ng-repeat='contact in $ctrl.data.contacts'>
-              <md-divider layout="column" class="contact-divider">
-                <p class="md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
-                <p class="md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phoneNumber}}</p>
-                <p class="md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
-              </md-divider>
-            </md-content>
+          <md-content ng-repeat='contact in $ctrl.data.contacts'>
+            <div layout="column" class="contact-divider" style="padding-left: 0">
+              <p class="md-subhead contact-info"><md-icon>person</md-icon>{{contact.name}}</p>
+              <p class="md-subhead contact-info"><md-icon>phone</md-icon>{{contact.phoneNumber}}</p>
+              <p class="md-subhead contact-info"><md-icon>email</md-icon>{{contact.email}}</p>
+            </div>
+          </md-content>
           </md-tab>
 
           <md-tab label="STATUS">
-
-            <md-divider layout="column" class="contact-divider">
-              <p class="md-subhead"> <strong>Current Step: </strong> {{$ctrl.data.currentStep.name}}</p>
-              <p class="md-subhead"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.currentStep.dueDate)}}</p>
-              <p class="md-subhead"> <strong>Comments: </strong> 
+          <md-content>
+            <div layout="column" class="contact-divider" style="padding-left: 0">
+              <p class="md-subhead" style="margin-top: 0"> <strong>Current Step: </strong> {{$ctrl.data.currentStep.name}}</p>
+              <p class="md-subhead" style="margin-top: 0"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.currentStep.dueDate)}}</p>
+              <p class="md-subhead" style="margin-top: 0; margin-bottom: 0;" ng-if="$ctrl.data.currentStep.comments.length > 0"> <strong>Comments: </strong>
                 <md-content layout-margin ng-repeat='comment in $ctrl.data.currentStep.comments'> {{comment}} </md-content>
               </p>
-            </md-divider>
 
-            <md-divider layout="column" class="contact-divider">
+              <md-divider style="margin-top: 16px; margin-bottom: 16px;"></md-divider>
+
               <p class="md-subhead"> <strong>Next Step: </strong> {{$ctrl.data.nextStep.name}}</p>
-              <p class="md-subhead"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.nextStep.dueDate)}}</p>
-              <p class="md-subhead"> <strong>Comments: </strong> 
+              <p class="md-subhead" style="margin-top: 0"> <strong>Due: </strong> {{$ctrl.parseDate($ctrl.data.nextStep.dueDate)}}</p>
+              <p class="md-subhead" style="margin-top: 0; margin-bottom: 0;" ng-if="$ctrl.data.currentStep.comments.length > 0"> <strong>Comments: </strong>
                 <md-content layout-margin ng-repeat='comment in $ctrl.data.nextStep.comments'> {{comment}} </md-content>
               </p>
-            </md-divider>
-          </md-tab>
+            </div>
 
-          </md-tab>
+          </md-content>
+        </md-tab>
 
         </md-tabs>
 
@@ -151,8 +151,8 @@ angular.
             jobs: $scope.jobs
           },
           clickOutsideToClose: true,
-          scope: $scope,        
-          preserveScope: true,           
+          scope: $scope,
+          preserveScope: true,
           template: `
           <md-dialog>
             <md-content layout-padding>
