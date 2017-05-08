@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       },
       style: {
         files: {
-          'client/app/dist/style.min.css': ['client/lib/angular-material/angular-material.min.css', 'client/app/style.css']
+          'client/app/dist/style.min.css': ['client/lib/angular-material/angular-material.min.css', 'client/style.css']
         }
       }
     },
