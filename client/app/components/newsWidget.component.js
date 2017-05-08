@@ -5,8 +5,11 @@ angular.
   component('newsWidget', {
     template:
     `
-    <md-card id="news-widget" class='widget'>
-      <md-divider class="news-img-container" style="background-image:url('{{imageUrl}}');background-size:cover;background-repeat:no-repeat"></md-divider>
+    <md-card id="news-widget" class='widget' ng-if="articles !== 0">
+      <span class="md-headline">Your Curated News</span>
+      <md-divider></md-divider>
+
+      <div class="news-img-container" style="background-image:url('{{imageUrl}}')"></div>
 
       <md-content>
         <span>{{title}}</span>
@@ -14,6 +17,7 @@ angular.
         <p>{{content}}</p>
       </md-content>
 
+      <md-divider></md-divider>
       <md-footer style="padding-bottom:60px">
         <md-button ng-click="prevArticle()">
             <md-tooltip md-direction="top">Previous Article</md-tooltip>
@@ -34,19 +38,20 @@ angular.
       var currentArticle = 0;
       var newsData;
       $scope.current = 1;
-      $scope.articles;
+      $scope.articles = 0;
 
       User.getCompanies().then(comp => {
-        News.getNews(comp).then(data=>{
+        //console.log('comp', comp);
+        News.getNews(comp).then(data =>{
           newsData = data;
-
+          //console.log('data', data)
+          //console.log('NEWS: ', data);
           if(!!newsData) {
             $scope.articles = newsData.length;
           } else {
             $scope.articles = 0;
             $scope.current = 0;
           }
-
           setArticle()
         })
       })
