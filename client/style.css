@@ -23,8 +23,8 @@ NAV BAR
 */
 
 #main-nav {
-  min-height: 85px;
-
+  min-height: 70pt;
+  height: 10%;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
 }
 
@@ -34,27 +34,24 @@ NAV BAR
   width: 95%;
   margin: auto;
 
-  font-size: 24px;
+  font-size: 7pt;
 
   align-items: center;
   justify-content: space-between;
 }
 
 #navbar-tools md-icon {
-  margin-right: 6px;
+  margin-right: 2pt;
 }
 
 #navbar-tools h2 {
   margin: 0;
-
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
-
-  font-size: 40px;
+  font-size: 37pt;
   font-weight: 300;
 }
 
 #navbar-tools i {
-  font-size: 36px;
+  font-size: 37pt;
 }
 
 .logo {
@@ -99,27 +96,35 @@ LANDING
 .landing-content {
   text-align: left;
   color: white;
-  font-size: 20px;
+  font-size: 20pt;
   margin: auto;
 }
 
 .landing-content .logo {
   justify-content: left;
+  font-size: 70pt;
 }
 
 .landing-content .logo h2{
-  font-size: 60px;
+  font-size: 50pt;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+  margin-bottom: 15pt;
+}
+
+.landing-content p{
+  font-size: 20pt;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
   margin-bottom: 25px;
 }
 
 .landing-content .logo i {
-  font-size: 44px;
-  margin-top: 25px;
+  font-size: 50pt;
+  margin-top: 20pt;
 }
 
 .landing-btn {
   font-weight: 700;
+  font-size: 10pt;
 }
 
 #signin,
