@@ -13,15 +13,15 @@ angular.module('app',[
     .accentPalette('blue');
   $routeProvider
     .when('/', {
-      templateUrl: './app/layout/landing.html',
+      templateUrl: './app/layout/landingTemplate.html',
       controller: 'authController'
     })
     .when('/input', {
-      templateUrl: './app/input/input.html',
+      templateUrl: './app/input/inputTemplate.html',
       controller: 'inputController'
     })
     .when('/dashboard', {
-      templateUrl: './app/dashboard/dashboard.html',
+      templateUrl: './app/dashboard/dashboardTemplate.html',
       controller: 'dashboardController'
     })
     .when('/logout', {
