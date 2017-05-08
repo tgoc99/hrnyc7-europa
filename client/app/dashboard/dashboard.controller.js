@@ -12,7 +12,6 @@ angular.module('app.dashboard', [
 
     Jobs.get()
     .then(function(data) {
-      console.log(data)
       $scope.jobs = data
     })
     .catch(function(err) {
@@ -38,7 +37,6 @@ angular.module('app.dashboard', [
   $scope.test = function() {
     Companies.getNews('amazon')
     .then(function(res) {
-      console.log(res)
     })
   }
 
