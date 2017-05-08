@@ -253,11 +253,18 @@ TASKS WIDGET
   text-align: center;
 }
 
+#tasks-widget .md-headline{
+  margin-bottom: 10px;
+}
+
 #tasks-widget .input-container {
   display: flex;
 
   margin-top: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
+
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #tasks-widget input {
@@ -273,7 +280,7 @@ TASKS WIDGET
 }
 
 #tasks-widget md-content {
-  border-top: 1px solid lightgray;
+  /*border-top: 1px solid lightgray;*/
   background-color: white;
 }
 
@@ -312,12 +319,17 @@ NEWS WIDGET
 }
 
 #news-widget .news-img-container {
-  min-height: 125px;
-  max-height: 125px;
+  /*max-height: 125px;*/
+
+  min-height: 150px;
 
   background-image: cover;
   background-position: center;
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+
+  margin-top: 16px;
+  /*margin-bottom: 16px;*/
 }
 
 #news-widget md-content {
@@ -329,8 +341,10 @@ NEWS WIDGET
 #news-widget span {
   text-align: center;
 
-  font-size: 12pt;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #news-widget md-footer {
@@ -346,7 +360,7 @@ NEWS WIDGET
 }
 
 #news-widget p {
-  font-size: 10pt;
+  font-size: 12pt;
 }
 
 #news-widget div {
@@ -387,14 +401,20 @@ DASHBOARD
   border: none;
 }*/
 
+.job-card .md-card-header {
+  display: flex;
+  align-items: center;
+}
+
 .job-widget-image {
+  height: 90px;
+  width: 90px;
   background-position: center;
   background-size: cover;
 }
 
 .contact-divider {
   position: relative;
-
   padding: 16px;
 }
 
@@ -404,4 +424,13 @@ DASHBOARD
 
 .contact-info md-icon {
   margin-right: 10px;
+}
+
+.job-card md-content {
+  margin: 0 10px 10px 10px;
+  padding: 16px;
+}
+
+.job-card contact-divider {
+  padding-left: 0;
 }
