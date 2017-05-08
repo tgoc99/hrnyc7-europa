@@ -102,7 +102,6 @@ angular.
 
       Jobs.get().then(function(data) {
         $scope.jobs = data;
-        console.log('scope jobs:', $scope.jobs)
       });
 
       this.toggleFavorite = function() {

@@ -1,10 +1,11 @@
 {
-  "name": "tbd",
+  "name": "LinkedList",
   "version": "1.0.0",
   "description": "Project Europa's Greenfield Submission-A tool to help jobseekers manage their job-search process in one central location.",
   "main": "app.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/hrnyc7-europa/hrnyc7-europa#readme",
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
+    "bower": "1.8.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
