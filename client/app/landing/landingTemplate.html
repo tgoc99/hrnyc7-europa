@@ -1,13 +1,13 @@
 <div class="landingContainer" layout="row" layout-align="center center">
   <div ng-if="showWelcomeMessage" class="landing-content" flex="40">
-        <div class="logo">
-          <i class="material-icons">assignment</i>
+        <span class="logo">
+          <i class="material-icons" style="margin-right:20px">assignment</i>
           <h2 style="font-weight:300">Linked</h2>
           <i class="material-icons">compare_arrows</i>
           <h2 style="font-weight:300">List</h2>
-        </div>
-        <p>Organize, manage, and plan your entire job application process with our slick dashboard and easy-to-use job creation form.</p>
-        <p>Getting a job has never been easier!</p>
+        </span>
+        <p class="md-title" layout-padding>Organize, manage, and plan your entire job application process with our slick dashboard and easy-to-use job creation form.</p>
+        <br>
         <md-button ng-click="handleGetStarted()" class="landing-btn md-raised md-primary">GET STARTED</md-button>
   </div>
 

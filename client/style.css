@@ -84,7 +84,7 @@ LANDING
 .landingCard {
   /*width: 50%;*/
   margin: auto;
-  text-align: center;
+  text-align: left;
   padding: 2.5%;
 }
 
@@ -97,14 +97,14 @@ LANDING
 }
 
 .landing-content {
-  text-align: center;
+  text-align: left;
   color: white;
   font-size: 20px;
   margin: auto;
 }
 
 .landing-content .logo {
-  justify-content: center;
+  justify-content: left;
 }
 
 .landing-content .logo h2{
@@ -125,6 +125,9 @@ LANDING
 #signin,
 #signup {
 
+}
+#signup md-input-container {
+  margin: 5px;
 }
 
 /*

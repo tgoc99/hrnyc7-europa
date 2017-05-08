@@ -5,45 +5,45 @@ angular.
   component('signUpForm', {
     template:
     `
-    <md-card id="signup" class="landingCard">
+    <md-card id="signup" class="landingCard" layout-margin>
       <h2>Sign Up for your free account!</h2>
 
       <form name="signUnForm" ng-submit="">
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>User Name</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">account_circle</md-icon>
             <input ng-model="$ctrl.user.username" ng-required="true">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>Email</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">mail</md-icon>
             <input type="email" ng-model="$ctrl.user.email" ng-required="true">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>Profile Picture</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">link</md-icon>
             <input type="url" ng-model="$ctrl.user.profilePic" ng-required="false">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>City</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">location_city</md-icon>
             <input ng-model="$ctrl.user.city" ng-required="false">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100' style="margin-bottom:24px">
             <label>State</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">location_city</md-icon>
             <md-select ng-model="$ctrl.user.state">
@@ -54,20 +54,20 @@ angular.
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-input-container flex='80'>
+        <div layout="row">
+          <md-input-container flex='100'>
             <label>Password</label>
             <md-icon class="material-icons" style="color:rgb(0,150,136)">lock</md-icon>
             <input ng-model="$ctrl.user.password" ng-required="true" type="password">
           </md-input-container>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-button ng-click="$ctrl.handleClick()" class="md-raised md-primary">Sign Up</md-button>
+        <div layout="row">
+          <md-button flex='100' ng-click="$ctrl.handleClick()" class="md-raised md-primary">Sign Up</md-button>
         </div>
 
-        <div layout="row" layout-align="center">
-          <md-button ng-click="$ctrl.handleGoTo()" class="md-primary">I already have an account...</md-button>
+        <div layout="row">
+          <md-button flex='100' ng-click="$ctrl.handleGoTo()" class="md-primary">I already have an account...</md-button>
         </div>
       </form>
     </md-card>
