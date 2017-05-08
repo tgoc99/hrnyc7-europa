@@ -53,7 +53,7 @@
         <span class="md-title">Contact Information</span>
       </div>
 
-      <div layout="row" layout-padding ng-repeat="contact in job.contacts track by $index">
+      <div layout="row" layout-padding ng-repeat="contact in job.contacts track by $index" layout-wrap>
         <md-input-container flex="35">
           <label>Contact's Name</label>
           <md-icon class="material-icons">contacts</md-icon>
@@ -67,15 +67,18 @@
         </md-input-container>
 
         <md-input-container flex="30">
-          <label>Contact's E-mail</label>
+          <label>Contact's E-mail </label>
           <md-icon class="material-icons">email</md-icon>
           <input ng-model="contact.email" type='email'>
         </md-input-container>
-        <md-button ng-hide="$index>0" ng-click="addContact()" class="md-fab" aria-label="Add contact">
-          <i class="material-icons">add</i>
+      </div>
+
+      <div layout="row" layout-align="end end"style="margin-top:-40px;margin-bottom:20px">
+        <md-button style="margin-right:40px" ng-hide="$index>0" ng-click="addContact()" class="md-fab" aria-label="Add contact">
+          <i class="material-icons"  style="margin-top:15px">add</i>
           <md-tooltip>Add Contact</md-tooltip>
         </md-button>
-      </div>
+      </div> 
 
       <div layout="row">
         <span class="md-title">Application Steps</span>
