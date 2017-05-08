@@ -332,8 +332,6 @@ module.exports = function(app, express) {
 
 				var dates = userSteps.filter(step => !!step.dueDate);
 
-				var dates = userSteps.map(step => step.dueDate);
-				dates = dates.filter(step => !!step);
 				res.send(dates);
 			}
 		});

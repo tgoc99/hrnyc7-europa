@@ -2,7 +2,7 @@
 module.exports = {
 
 	apiKeys: {
-		bingSearch: '76b1a1f8b6b54db9b5af1d29d70f1ac6',
+		bingSearch: 'e09b836efcaf4e91a81372b9ef54c046',
 		fullContact: '828d80ab308d8efe'
 	}
 	

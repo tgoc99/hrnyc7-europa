@@ -28,6 +28,12 @@ angular.module('app.input', [
               dueDate: null}
   };
 
+  $scope.addContact = () => {
+    $scope.job.contacts.push({name: undefined,
+              phoneNumber: undefined,
+              email: undefined})
+  }
+
   $scope.submitJob = function(data){
     console.log($scope.job);
 

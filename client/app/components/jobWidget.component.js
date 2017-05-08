@@ -179,26 +179,27 @@ angular.
                   </md-input-container>
                 </div>
                 <div layout="row">
-                  <span class="md-title">Primary contact</span>
+                  <span class="md-title">Contacts</span>
                 </div>
-                <div layout="row" layout-padding>
-                  <md-input-container flex="40">
+                <div layout="row" layout-padding ng-repeat="contact in $ctrl.data.contacts track by $index">
+                  <md-input-container flex="35">
                     <label>Name</label>
                     <md-icon class="material-icons">contacts</md-icon>
-                    <input ng-model="$ctrl.data.contacts[0].name">
+                    <input ng-model="contact.name">
                   </md-input-container>
 
-                  <md-input-container flex="30">
+                  <md-input-container flex="25">
                     <label>Phone</label>
                     <md-icon class="material-icons">call</md-icon>
-                    <input ng-model="$ctrl.data.contacts[0].phoneNumber" type="tel">
+                    <input ng-model="contact.phoneNumber" type="tel">
                   </md-input-container>
 
                   <md-input-container flex="30">
                     <label>e-mail</label>
                     <md-icon class="material-icons">email</md-icon>
-                    <input ng-model="$ctrl.data.contacts[0].email" type='email'>
+                    <input ng-model="contact.email" type='email'>
                   </md-input-container>
+    
                 </div>
                 <div layout="row">
                   <span class="md-title">Modify Steps</span>
@@ -253,7 +254,8 @@ angular.
               </form>
             </md-content>
           </md-dialog>`,
-          controller: function DialogController($scope, $mdDialog, jobs) {
+          controller: function DialogController($scope, $mdDialog, Jobs) {
+
             $scope.closeDialog = function() {
               $mdDialog.hide();
             }

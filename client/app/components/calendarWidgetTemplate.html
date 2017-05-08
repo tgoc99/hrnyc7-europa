@@ -5,10 +5,10 @@
   <div class="md-dialog-container" id="myDialog">
     <md-dialog layout-padding>
       <h2>Tasks for {{date}}</h2>
-	    <div layout-padding class="md-headline" ng-repeat="x in task">
-	        {{x.name}}
+	    <div layout-padding class="md-headline" ng-repeat="x in task track by $index">
+	        Task #{{$index+1}}: {{x.name}}
 	        <li class="md-subhead" ng-repeat="y in x.comments">
-	        	{{y}}
+	        	Task Comments: {{y}}
 	        </li>
 	    </div>
     </md-dialog>
