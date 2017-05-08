@@ -41,11 +41,8 @@ angular.
       $scope.articles = 0;
 
       User.getCompanies().then(comp => {
-        //console.log('comp', comp);
         News.getNews(comp).then(data =>{
           newsData = data;
-          //console.log('data', data)
-          //console.log('NEWS: ', data);
           if(!!newsData) {
             $scope.articles = newsData.length;
           } else {
@@ -79,7 +76,11 @@ angular.
 
       var setArticle = () => {
         if(!!newsData) {
-          $scope.imageUrl = newsData[currentArticle].image.thumbnail.contentUrl;
+          if(newsData[currentArticle].image) {
+            $scope.imageUrl = newsData[currentArticle].image.thumbnail.contentUrl;
+          } else {
+            $scope.imageUrl = 'http://www.freeiconspng.com/uploads/no-image-icon-1.jpg';
+          }
           $scope.title = newsData[currentArticle].name;
           $scope.source = newsData[currentArticle].provider[0].name;
           $scope.content = newsData[currentArticle].description;

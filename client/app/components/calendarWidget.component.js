@@ -6,7 +6,6 @@ angular.module('calendarWidget', [])
     $scope.today = new Date();
     $scope.dates = [];
 
-    //LATER SET MAXDATE AS LATEST DATE FROM API
     $scope.maxDate = new Date();
     $scope.maxDate.setDate($scope.today.getDate() + 21);
     $scope.taskData;
@@ -14,8 +13,8 @@ angular.module('calendarWidget', [])
     $http.get('/api/dates')
     .then(data => {
       $scope.taskData = data;
-      console.log($scope.taskData)
       var jsDates = data.data.map(date => new Date(date.dueDate));
+      $scope.maxDate = new Date(jsDates[jsDates.length-1])
       $scope.dates = jsDates.map(date=> {
         return [date.getFullYear(), date.getMonth(), date.getDate()]
       });
