@@ -4,6 +4,7 @@
 azure.err
 iisnode.yml
 client/lib/
+client/dist/
 .DS_Store
 server/config/
 
