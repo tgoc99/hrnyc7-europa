@@ -362,8 +362,8 @@ NEWS WIDGET
 }
 
 #news-widget button {
-  min-width: 40px;
-  min-height: 20px;
+  min-width: 50px;
+  min-height: 30px;
   margin: 0;
 }
 

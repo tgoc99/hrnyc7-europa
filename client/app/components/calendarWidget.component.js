@@ -7,17 +7,18 @@ angular.module('calendarWidget', [])
     $scope.dates = [];
 
     $scope.maxDate = new Date();
-    $scope.maxDate.setDate($scope.today.getDate() + 21);
+    $scope.maxDate.setDate($scope.today.getDate() + 60);
     $scope.taskData;
 
     $http.get('/api/dates')
     .then(data => {
       $scope.taskData = data;
       var jsDates = data.data.map(date => new Date(date.dueDate));
-      $scope.maxDate = new Date(jsDates[jsDates.length-1])
+      console.log('cal dates', jsDates)
       $scope.dates = jsDates.map(date=> {
         return [date.getFullYear(), date.getMonth(), date.getDate()]
       });
+      console.log('scope dates', $scope.dates)
     });
 
     $scope.showPrerenderedDialog = function(ev) {
@@ -37,6 +38,7 @@ angular.module('calendarWidget', [])
       var year = date.getFullYear();
       var month = date.getMonth();
       var day = date.getDate();
+      console.log('fd dates', $scope.dates)
 
       return $scope.dates.reduce((acc, date)=>{
         if(year===date[0] && month === date[1] && day === date[2]){

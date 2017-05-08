@@ -199,7 +199,10 @@ angular.
                     <md-icon class="material-icons">email</md-icon>
                     <input ng-model="contact.email" type='email'>
                   </md-input-container>
-    
+                  <md-button ng-hide="$index>0" ng-click="addContact($ctrl.data)" class="md-fab" aria-label="Edit contact">
+                    <i class="material-icons">add</i>
+                    <md-tooltip>Add Contact</md-tooltip>
+                  </md-button>
                 </div>
                 <div layout="row">
                   <span class="md-title">Modify Steps</span>
@@ -255,6 +258,13 @@ angular.
             </md-content>
           </md-dialog>`,
           controller: function DialogController($scope, $mdDialog, Jobs) {
+
+            $scope.addContact = (data) => {
+              data.contacts.push({name: undefined,
+                         phoneNumber: undefined,
+                         email: undefined
+              })
+            }
 
             $scope.closeDialog = function() {
               $mdDialog.hide();
