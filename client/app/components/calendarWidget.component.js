@@ -1,6 +1,6 @@
 angular.module('calendarWidget', [])
 .component('calendarWidget', {
-  templateUrl: '/calendarWidgetTemplate.html',
+  templateUrl: './app/components/calendarWidgetTemplate.html',
   controller: function calendarController($scope, $http, $route, $mdDialog){
     // $scope.date = new Date();
     $scope.today = new Date();
