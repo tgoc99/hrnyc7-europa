@@ -1,43 +1,49 @@
 
-angular.module('app.dashboard',['ngMaterial', 'profileWidget', 'newsWidget', 'goalsWidget', 'calendarWidget', 'jobWidget', 'tasksWidget'])
-  .controller('dashboardController', function dashboardController($scope, Companies, User, Jobs, Tasks){
-    
-    $scope.getJobs = function() {
+angular.module('app.dashboard', [
+  'ngMaterial',
+  'profileWidget',
+  'newsWidget',
+  'calendarWidget',
+  'jobWidget',
+  'tasksWidget'])
+.controller('dashboardController', function dashboardController($scope, Companies, User, Jobs, Tasks){
 
-      Jobs.get()
-      .then(function(data) {
-        console.log(data)
-        $scope.jobs = data
-      })
-      .catch(function(err) {
-        console.log(err)
-      })
-    }
-    $scope.getJobs()  
+  $scope.getJobs = function() {
 
-    $scope.setBackgroundImg = function(job) {
-      return `background-image:url("${job.imgURL}")`;
-    }
+    Jobs.get()
+    .then(function(data) {
+      console.log(data)
+      $scope.jobs = data
+    })
+    .catch(function(err) {
+      console.log(err)
+    })
+  }
+  $scope.getJobs()
 
-    $scope.getDate = function(job) {
-      var dateStr = job.applicationDate;
-      var date = new Date(dateStr);
-      var dateFormat = moment(date).format("MMM Do YY");
-      var fromNow = moment(date).fromNow();
-      return `${dateFormat}  |  ${fromNow}`
-    }
+  $scope.setBackgroundImg = function(job) {
+    return `background-image:url("${job.imgURL}")`;
+  }
 
-    $scope.newsArticle = {number:0};
+  $scope.getDate = function(job) {
+    var dateStr = job.applicationDate;
+    var date = new Date(dateStr);
+    var dateFormat = moment(date).format("MMM Do YY");
+    var fromNow = moment(date).fromNow();
+    return `${dateFormat}  |  ${fromNow}`
+  }
 
-    $scope.test = function() {
-      Companies.getNews('amazon')
-      .then(function(res) {
-        console.log(res)
-      })
-    }
+  $scope.newsArticle = {number:0};
 
-    $scope.filterJobs = function (job) {
-        return (angular.lowercase(job.company).indexOf(angular.lowercase($scope.search) || '') !== -1 ||
-                angular.lowercase(job.position).indexOf(angular.lowercase($scope.search) || '') !== -1);
-    };
-  });
+  $scope.test = function() {
+    Companies.getNews('amazon')
+    .then(function(res) {
+      console.log(res)
+    })
+  }
+
+  $scope.filterJobs = function (job) {
+      return (angular.lowercase(job.company).indexOf(angular.lowercase($scope.search) || '') !== -1 ||
+              angular.lowercase(job.position).indexOf(angular.lowercase($scope.search) || '') !== -1);
+  };
+});

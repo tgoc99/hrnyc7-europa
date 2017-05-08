@@ -13,7 +13,7 @@ angular.module('app',[
     .accentPalette('blue');
   $routeProvider
     .when('/', {
-      templateUrl: './app/layout/landingTemplate.html',
+      templateUrl: './app/landing/landingTemplate.html',
       controller: 'authController'
     })
     .when('/input', {
