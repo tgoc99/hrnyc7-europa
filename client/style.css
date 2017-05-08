@@ -57,7 +57,7 @@ NAV BAR
   font-size: 36px;
 }
 
-#logo {
+.logo {
   display: flex;
 
   align-items: center;
@@ -72,28 +72,60 @@ LANDING
 */
 
 .landingBackground {
-    width:100%;
-    height:90vh;
+  width: 100%;
+  height: 91vh;
 
-    background-image: url('assets/landing-bg.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url('assets/landing-bg.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: sepia(80%) brightness(20%) opacity(65%);
+}
 
-    filter:sepia(75%) brightness(20%);
-  }
+.landingCard {
+  /*width: 50%;*/
+  margin: auto;
+  text-align: center;
+  padding: 2.5%;
+}
 
-  .landingCard {
-    width: 400px;
-  }
+.landingContainer {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 91vh;
+  margin: auto;
+}
 
-  .landingContainer {
-    position: absolute;
-    z-index: 1;
+.landing-content {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin: auto;
+}
 
-    width:100%;
-    height:90vh;
-    margin:auto;
-  }
+.landing-content .logo {
+  justify-content: center;
+}
+
+.landing-content .logo h2{
+  font-size: 60px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+  margin-bottom: 25px;
+}
+
+.landing-content .logo i {
+  font-size: 44px;
+  margin-top: 25px;
+}
+
+.landing-btn {
+  font-weight: 700;
+}
+
+#signin,
+#signup {
+
+}
 
 /*
 SIDEBAR

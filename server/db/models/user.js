@@ -9,16 +9,22 @@ var UserSchema = new Schema({
 	username: {
 		type: String,
 	},
-	// change to imageUrl? seems more consistent :)
 	profilePic: {
 		type: String,
-		default: 'http://www.swaconhospital.com/wp-content/uploads/2016/12/3244.png'
+		default: 'http://25.media.tumblr.com/tumblr_mc8ujbmGuk1rndl7do1_1280.png'
 	},
 	email: {
 		type: String,
 		default: 'Please update the email...'
 	},
-	// change to tasksList? seems more consistent :)
+	city: {
+		type: String,
+	 	default: 'New York City'
+	},
+	state: {
+		type: String,
+	 	default: 'NY'
+	},
 	tasks: [Task.schema],
 	jobs: [Job.schema]
 });

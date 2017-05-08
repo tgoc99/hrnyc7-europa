@@ -1,35 +1,20 @@
 angular.module('app.auth', [
   'ngMaterial',
-  'ngMessages'
+  'ngMessages',
+  'signInForm',
+  'signUpForm'
 ])
-.controller('authController', function($scope, $http, $location, Auth) {
+.controller('authController', function($rootScope, $scope, Auth) {
 
   Auth.logout();
 
-  $scope.user = {
-    username: '',
-    password: '',
+  $rootScope.showWelcomeMessage = true;
+  $rootScope.showSignUp = false;
+  $rootScope.showSignIn = false;
+
+  $scope.handleGetStarted = function() {
+    $rootScope.showWelcomeMessage = false;
+    $rootScope.showSignUp = false;
+    $rootScope.showSignIn = true;
   }
-
-  $scope.getStarted = false;
-
-  $scope.showSignUp = true;
-
-  $scope.toggleAuth = () => {
-    $scope.showSignUp = !$scope.showSignUp;
-  }
-
-  $scope.toggleGetStarted = () => {
-    $scope.getStarted = !$scope.getStarted;
-  }
-
-  // send to correct path based on sign in or sign up
-  $scope.authenticateUser = function(userData){
-    if($scope.showSignUp){
-      Auth.register(userData);
-    } else {
-      Auth.signin(userData);
-    }
-  }
-
 })
