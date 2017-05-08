@@ -406,7 +406,16 @@ module.exports = function(app, express) {
 	app.post('/api/register', function(req, res) {
 		console.log('attempting to register', req.body.username, req.body.password);
 
-	  User.register(new User({ username: req.body.username }),
+		/***
+		 * AQUI YACE EL PROBLEMA!
+		 ***/
+	  User.register(new User({
+			username: req.body.username,
+			email: req.body.email,
+			city: req.body.city,
+			state: req.body.state,
+			profilePic: req.body.profilePic
+		 }),
 	    req.body.password, function(err, account) {
 	    if (err) {
 	      return res.status(500).json({

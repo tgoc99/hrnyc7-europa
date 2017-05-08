@@ -407,10 +407,10 @@ DASHBOARD
 }
 
 .job-widget-image {
-  height: 90px;
-  width: 90px;
+  height: 125px;
+  width: 125px;
   background-position: center;
-  background-size: cover;
+  background-size: contain  !important;
 }
 
 .contact-divider {
