@@ -11,7 +11,6 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				console.log(res.data)
 				return res.data;
 			})
 			.catch(function(err) {
@@ -53,7 +52,6 @@ angular.module('app.services', [])
 				url: 'api/users',
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -68,7 +66,6 @@ angular.module('app.services', [])
 				data: data
 			})
 			.then(function(res) {
-				console.log(res);
 				return res.data;
 			})
 			.catch(function(err) {
@@ -81,7 +78,6 @@ angular.module('app.services', [])
 				url: 'api/users'
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data;
 			})
 		},
@@ -91,7 +87,6 @@ angular.module('app.services', [])
 				url: 'api/companies'
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data;
 			})
 			.catch(function(err) {
@@ -110,7 +105,6 @@ angular.module('app.services', [])
 				data: data
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -123,7 +117,6 @@ angular.module('app.services', [])
 				url: 'api/jobs',
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -140,7 +133,6 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -157,7 +149,6 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 		}
@@ -173,7 +164,6 @@ angular.module('app.services', [])
 				data: data
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -186,7 +176,6 @@ angular.module('app.services', [])
 				url: 'api/tasks',
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -203,7 +192,6 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 			.catch(function(err) {
@@ -220,7 +208,6 @@ angular.module('app.services', [])
 				}
 			})
 			.then(function(res) {
-				console.log(res)
 				return res.data
 			})
 		}
@@ -234,7 +221,6 @@ angular.module('app.services', [])
       $location.path('/dashboard')
     }, res => {
       $location.path('/')
-      console.log(res)
       alert(res.data.err.message)
     })
   };

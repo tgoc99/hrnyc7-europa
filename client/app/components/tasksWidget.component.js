@@ -48,7 +48,6 @@ angular.
       this.getTasks = function() {
         Tasks.get().then(data => {
           this.tasksList = data || [];
-          console.log('tasks: ', this.tasksList);
         });
       }
       this.getTasks();
