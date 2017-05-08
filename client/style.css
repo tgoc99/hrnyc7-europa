@@ -172,53 +172,26 @@ PROFILE WIDGET
 
 #profile-widget {
   padding: 16px;
+}
 
-  text-align: center;
+.profile-img-container {
+  display: flex;
+  align-items: center;
 }
 
 .profile-img {
-    width: 125px;
-    height: 125px;
-    margin: 0 auto;
-    margin-top: 25px;
-    margin-bottom: 20px;
-
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    margin-right: 32px;
     border-radius: 50%;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
-
     object-fit: cover;
 }
 
 #profile-widget p {
   margin-top: 10px;
   margin-bottom: 0;
-}
-
-#profile-add-job {
-  height: 40px;
-  margin-top: 25px;
-
-  text-align: center;
-
-  color: white;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  background-color: rgba(0,150,136, 0.8);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
-
-  font-weight: bold;
-}
-
-
-#profile-add-job:hover {
-  background-color: rgba(0,150,136, 1);
-}
-
-#profile-add-job md-icon {
-  float: left;
-
-  margin-left: 10px;
 }
 
 /*

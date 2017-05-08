@@ -84,6 +84,10 @@ angular.
         state: undefined
       }
 
+      this.handleClick = function() {
+        Auth.register(this.user);
+      }
+
       this.handleGoTo = function() {
         $rootScope.showWelcomeMessage = false;
         $rootScope.showSignUp = false;
