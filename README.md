@@ -27,6 +27,7 @@ https://linkedlistjobs.herokuapp.com/
 2. npm start
 
 ## Project File Structure
+```sh
 / [ root ] 
  	README.md
  	package.json
@@ -68,6 +69,7 @@ dashboard.controller.js
 /node_modules
 bower.json
 .bowerrc
+```
 
 ## Requirements
 
