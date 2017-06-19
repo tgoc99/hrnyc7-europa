@@ -2,7 +2,7 @@
 
 Job seekers can use this dashboard to plan and manage the entire job application process.
 
-https://linkedlistjobs.herokuapp.com/#/
+https://linkedlistjobs.herokuapp.com/
 
 ## Team
 
