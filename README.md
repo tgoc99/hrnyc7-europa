@@ -3,7 +3,8 @@
 Job seekers can use this dashboard to plan and manage the entire job application process.
 
 https://linkedlistjobs.herokuapp.com/
-\n (Feel free to login with user:demo, password: demo)
+
+(Feel free to login with user:demo, password: demo)
 
 ## Team
 
