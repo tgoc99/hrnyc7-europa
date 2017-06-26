@@ -8,7 +8,7 @@ https://linkedlistjobs.herokuapp.com/
 
 ## Team
 
-  - __Product Owner__: Thomas O'Connor
+  - __Product Owner / Developer__: Thomas O'Connor
   - __Scrum Master__: Willian Hua
   - __Development Team Members__: Arturo Ruvalcaba, Joel Camacho
 
